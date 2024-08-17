@@ -36,6 +36,14 @@ public partial class Tree : Node
 		Debug.WriteLine(Leaves);
 	}
 
+	public int TryTakeLeaf(int leafmass){
+		int leavesTaken = Mathf.Min(leafmass, Leaves); //i.e if trying to take 4 leaves from 3 leaves on the tree, take 3
+
+		Leaves = (int)MathF.Max(Leaves - leavesTaken, 0); //then remove that many leaves from the tree, I don't think we need the Max but I'm just being safe so we don't get negative leaves somehow
+
+		return leavesTaken;
+	}
+
 
 
 	// // Called every frame. 'delta' is the elapsed time since the previous frame.
