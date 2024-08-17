@@ -16,6 +16,7 @@ public partial class Anthill : Node3D
 	[Export] public Vector3 antSpawningPos;
 
 	[Export] public Path3D[] paths;
+	[Export] public Tree[] targetTrees;
 
 	public AnthillStat GetStat(Stat stat) {
 		return GetNode<AnthillStat>(stat.ToString());
@@ -41,6 +42,7 @@ public partial class Anthill : Node3D
 		antBehaviour instance = antScene.Instantiate<antBehaviour>();
 		instance.Position = antSpawningPos;
 		instance.anthill = this;
+		instance.targetTree = targetTrees[0];
 		paths[0].AddChild(instance);
 	}
 	

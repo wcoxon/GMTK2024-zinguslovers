@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class antBehaviour : PathFollow3D
 {
@@ -7,9 +8,11 @@ public partial class antBehaviour : PathFollow3D
 	public Anthill anthill;
 
 	public double cargo;
+	[Export] public Tree targetTree;
 
 	public override void _Ready()
 	{
+		Progress = 0;
 	}
 	public override void _Process(double delta)
 	{
@@ -17,15 +20,17 @@ public partial class antBehaviour : PathFollow3D
 
 		Progress += (float)moveDistance;
 
-		if((Position - GetParent<Path3D>().Curve.GetPointPosition(3)).Length() < moveDistance){
+		if((Position - GetParent<Path3D>().Curve.GetPointPosition(3)).Length() < moveDistance && cargo==0){
 			//take leaf
-			cargo = anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue();
+			//cargo = anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue();
+			cargo = targetTree.TryTakeLeaf(anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue());
 		}
 		else if(ProgressRatio==1){
+			Debug.WriteLine(cargo);
 			// deposit leaf // empty cargo
 			anthill.Deliver(cargo);
 			cargo = 0;
-			Progress=0;
+			Progress = 0;
 		}
 	}
 }

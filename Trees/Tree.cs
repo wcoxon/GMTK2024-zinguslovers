@@ -4,13 +4,13 @@ using System.Diagnostics;
 
 public partial class Tree : Node
 {
-	public int Leaves; //how many leaves are on the tree
+	public double LeafMass; //how many leaves are on the tree
 
 	[Export]
-	public int MaxLeaves; //maximum leaves on a tree
+	public double MaxLeaves; //maximum leaves on a tree
 
 	[Export]
-	public int RegenerationRate; //per second
+	public double RegenerationRate; //per second
 
 	Timer regenTimer;
 
@@ -21,25 +21,25 @@ public partial class Tree : Node
 
 		regenTimer.Paused = false;
 
-		Leaves = 0;
+		LeafMass = 0;
 
 		regenTimer.Timeout += OnLeafTimerTimeout;
 	}
 
 	public void OnLeafTimerTimeout(){
-		Leaves += RegenerationRate;
+		LeafMass += RegenerationRate;
 
-		if (Leaves > MaxLeaves){
-			Leaves = MaxLeaves;
+		if (LeafMass > MaxLeaves){
+			LeafMass = MaxLeaves;
 		}
 
-		Debug.WriteLine(Leaves);
+		Debug.WriteLine(LeafMass);
 	}
 
-	public int TryTakeLeaf(int leafmass){
-		int leavesTaken = Mathf.Min(leafmass, Leaves); //i.e if trying to take 4 leaves from 3 leaves on the tree, take 3
+	public double TryTakeLeaf(double takeMass){
+		double leavesTaken = Mathf.Min(takeMass, LeafMass); //i.e if trying to take 4 leaves from 3 leaves on the tree, take 3
 
-		Leaves = (int)MathF.Max(Leaves - leavesTaken, 0); //then remove that many leaves from the tree, I don't think we need the Max but I'm just being safe so we don't get negative leaves somehow
+		LeafMass -= leavesTaken; //then remove that many leaves from the tree, I don't think we need the Max but I'm just being safe so we don't get negative leaves somehow
 
 		return leavesTaken;
 	}

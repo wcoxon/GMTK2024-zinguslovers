@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://Anthill/Anthill.cs" id="1_htxim"]
 [ext_resource type="Script" path="res://Anthill/AnthillStat.cs" id="2_kwy1h"]
 
-[node name="Anthill" type="Node3D" node_paths=PackedStringArray("paths")]
+[node name="Anthill" type="Node3D" node_paths=PackedStringArray("paths", "targetTrees")]
 script = ExtResource("1_htxim")
 leafMass = 10.0
 paths = []
+targetTrees = []
 
 [node name="AntSpeed" type="Node" parent="."]
 script = ExtResource("2_kwy1h")

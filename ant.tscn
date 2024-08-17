@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qh8fw"]
 render_priority = 0
 shader = ExtResource("2_d3c6s")
-shader_parameter/albedo = Color(0.639216, 0.364706, 0.239216, 1)
+shader_parameter/albedo = Color(0.64, 0.4928, 0.448, 1)
 shader_parameter/clamp_diffuse_to_max = false
 shader_parameter/cuts = 3
 shader_parameter/wrap = 0.0
@@ -22,15 +22,29 @@ shader_parameter/use_ramp = false
 shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur237"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.120887, 0.0997781, 0.00756109, 1)
-roughness = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tv1i6"]
+render_priority = 0
+shader = ExtResource("2_d3c6s")
+shader_parameter/albedo = Color(0.00351917, 0.00351917, 0.00351917, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 0.41
+shader_parameter/specular_shininess = 4.157
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
 
 [node name="antz" instance=ExtResource("1_navdw")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="Icosphere_002" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_qh8fw")
-surface_material_override/1 = SubResource("StandardMaterial3D_ur237")
+surface_material_override/1 = SubResource("ShaderMaterial_tv1i6")
