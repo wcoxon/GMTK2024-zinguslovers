@@ -32,3 +32,10 @@ Level {0}
 {1} Leaves"
 script = ExtResource("1_23b12")
 upgrade = 1
+
+[node name="AddAnt" type="Button" parent="."]
+layout_mode = 2
+text = "New Ant ({0})
+{1} Leaves"
+script = ExtResource("1_23b12")
+upgrade = 2

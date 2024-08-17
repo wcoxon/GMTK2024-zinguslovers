@@ -6,7 +6,7 @@ public partial class Anthill : Node3D
 {
 	public enum Stat
 	{
-		AntSpeed, AntCarryCapacity
+		AntSpeed, AntCarryCapacity, NewAnt
 	}
 
 	[Export] public double leafMass;
@@ -27,6 +27,9 @@ public partial class Anthill : Node3D
 			leafMass -= obj.GetCost();
 			obj.level++;
 		}
+		if (stat == Stat.NewAnt) {
+			SpawnAnt();
+		}
 	}
 
 	public void Deliver(double mass)
@@ -35,9 +38,10 @@ public partial class Anthill : Node3D
 	}
 	private void SpawnAnt()
 	{
-		Node3D instance = antScene.Instantiate<Node3D>();
+		antBehaviour instance = antScene.Instantiate<antBehaviour>();
 		instance.Position = antSpawningPos;
-		// TODO: Set carry capactiy and speed
+		instance.anthill = this;
+		paths[0].AddChild(instance);
 	}
 	
 	// Called when the node enters the scene tree for the first time.

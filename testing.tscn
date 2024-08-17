@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
 [ext_resource type="PackedScene" uid="uid://cw5rvnk5rvywt" path="res://ant.tscn" id="2_8b78t"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
-[ext_resource type="Script" path="res://antBehaviour.cs" id="3_h42ys"]
-[ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_saeh6"]
+[ext_resource type="PackedScene" uid="uid://cw62dr70qqeeh" path="res://worker.tscn" id="2_flynq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_27fuk"]
 
@@ -43,6 +42,7 @@ point_count = 7
 [node name="test node" type="Node3D"]
 
 [node name="Anthill" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("1_cindc")]
+antScene = ExtResource("2_flynq")
 paths = [NodePath("../Path3D")]
 
 [node name="AnthillUpgrades" parent="." node_paths=PackedStringArray("anthill") instance=ExtResource("2_aj380")]
@@ -81,14 +81,9 @@ environment = SubResource("Environment_54ehq")
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_n3qna")
 
-[node name="Worker" type="PathFollow3D" parent="Path3D" node_paths=PackedStringArray("anthill")]
-transform = Transform3D(0.252141, -0.582036, 10.326, 4.84007, 9.13445, 0.396718, -9.13972, 4.82123, 0.494953, -0.647129, 0.00526549, 1.11407)
-progress = 7.83766
-loop = false
-script = ExtResource("3_h42ys")
+[node name="Worker" parent="Path3D" node_paths=PackedStringArray("anthill") instance=ExtResource("2_flynq")]
+transform = Transform3D(0.252134, -0.582023, 10.326, 4.84005, 9.13446, 0.396712, -9.13973, 4.8212, 0.494943, -0.647133, 0.00526533, 1.11408)
 anthill = NodePath("../../Anthill")
-
-[node name="antz" parent="Path3D/Worker" instance=ExtResource("2_8b78t")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -0.0150138, 0)
