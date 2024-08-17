@@ -1,12 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw5rvnk5rvywt"]
+[gd_scene load_steps=5 format=3 uid="uid://cw5rvnk5rvywt"]
 
 [ext_resource type="PackedScene" uid="uid://divsps1v3wjcg" path="res://antz.fbx" id="1_navdw"]
+[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_d3c6s"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oeytl"]
-diffuse_mode = 3
-specular_mode = 2
-albedo_color = Color(0.638264, 0.365323, 0.238338, 1)
-roughness = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qh8fw"]
+render_priority = 0
+shader = ExtResource("2_d3c6s")
+shader_parameter/albedo = Color(0.639216, 0.364706, 0.239216, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur237"]
 diffuse_mode = 3
@@ -18,5 +32,5 @@ roughness = 0.0
 
 [node name="Icosphere_002" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_oeytl")
+surface_material_override/0 = SubResource("ShaderMaterial_qh8fw")
 surface_material_override/1 = SubResource("StandardMaterial3D_ur237")

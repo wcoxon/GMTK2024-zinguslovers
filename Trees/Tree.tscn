@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw2l7f5x8gaee"]
+[gd_scene load_steps=3 format=3 uid="uid://bw2l7f5x8gaee"]
 
 [ext_resource type="Script" path="res://Trees/Tree.cs" id="1_f3s1k"]
+[ext_resource type="PackedScene" uid="uid://dy8rcht6pe0hy" path="res://Trees/treeModel.tscn" id="2_daby0"]
 
 [node name="Tree" type="Node3D"]
 script = ExtResource("1_f3s1k")
@@ -9,3 +10,5 @@ RegenerationRate = 5
 
 [node name="RegenTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="Tree" parent="." instance=ExtResource("2_daby0")]

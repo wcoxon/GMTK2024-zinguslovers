@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=16 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="Script" path="res://CharacterBody3d.cs" id="1_71xwv"]
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
 [ext_resource type="PackedScene" uid="uid://cw5rvnk5rvywt" path="res://ant.tscn" id="2_8b78t"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
-[ext_resource type="PackedScene" uid="uid://cw62dr70qqeeh" path="res://worker.tscn" id="2_flynq"]
+[ext_resource type="PackedScene" path="res://worker.tscn" id="2_flynq"]
+[ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_27fuk"]
 
@@ -27,8 +28,9 @@ sky_material = SubResource("ProceduralSkyMaterial_ma6td")
 [sub_resource type="Environment" id="Environment_54ehq"]
 background_mode = 2
 sky = SubResource("Sky_bbue5")
-ambient_light_sky_contribution = 0.75
-ambient_light_energy = 8.75
+ambient_light_color = Color(0.0837433, 0.0797045, 0.0240319, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 10.6
 
 [sub_resource type="Curve3D" id="Curve3D_n3qna"]
 _data = {
@@ -82,9 +84,12 @@ environment = SubResource("Environment_54ehq")
 curve = SubResource("Curve3D_n3qna")
 
 [node name="Worker" parent="Path3D" node_paths=PackedStringArray("anthill") instance=ExtResource("2_flynq")]
-transform = Transform3D(0.252134, -0.582023, 10.326, 4.84005, 9.13446, 0.396712, -9.13973, 4.8212, 0.494943, -0.647133, 0.00526533, 1.11408)
+transform = Transform3D(0.252134, -0.582023, 10.326, 4.84005, 9.13446, 0.396712, -9.13973, 4.8212, 0.494942, -0.647133, 0.00526533, 1.11408)
 anthill = NodePath("../../Anthill")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -0.0150138, 0)
 mesh = SubResource("TorusMesh_6ebsn")
+
+[node name="Tree" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, 1.20155, 0, -1.384)
