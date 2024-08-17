@@ -33,7 +33,7 @@ public partial class Tree : Node
 			LeafMass = MaxLeaves;
 		}
 
-		Debug.WriteLine(LeafMass);
+		Debug.WriteLine($"leaves: {LeafMass}");
 	}
 
 	public double TryTakeLeaf(double takeMass){

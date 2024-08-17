@@ -26,7 +26,6 @@ public partial class antBehaviour : PathFollow3D
 			cargo = targetTree.TryTakeLeaf(anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue());
 		}
 		else if(ProgressRatio==1){
-			Debug.WriteLine(cargo);
 			// deposit leaf // empty cargo
 			anthill.Deliver(cargo);
 			cargo = 0;

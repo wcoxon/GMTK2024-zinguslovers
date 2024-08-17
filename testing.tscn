@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=18 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="Script" path="res://CharacterBody3d.cs" id="1_71xwv"]
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
@@ -51,7 +51,14 @@ ambient_light_energy = 0.0
 
 [sub_resource type="Curve3D" id="Curve3D_n3qna"]
 _data = {
-"points": PackedVector3Array(-1.30984, -0.144615, -0.63455, 1.30984, 0.144615, 0.63455, 0, 0, 0, -0.241051, -0.0693054, 0.477665, 0.241051, 0.0693054, -0.477665, 1.84007, 0.0277778, 0.148686, 0.147474, -0.101762, 0.212816, -0.147474, 0.101762, -0.212816, 1.35518, 0.0961378, -1.03943, 0.433175, 0.0608807, -0.0456178, -0.433175, -0.0608807, 0.0456178, 1.13301, 1.96683, -1.217, 0.385559, -0.0705649, -0.355056, -0.385559, 0.0705649, 0.355056, 0.789745, 0.0871663, -1.16626, 0.0313572, -0.0120263, -0.689781, -0.0313572, 0.0120263, 0.689781, -0.616286, 0.028004, -0.832622, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedVector3Array(-0.660586, -0.241408, -0.496228, 0.660586, 0.241408, 0.496228, 0, 0, 0, -0.209867, 0.0177467, 0.424463, 0.209867, -0.0177467, -0.424463, 1.81929, 0.0258944, -0.196779, 0.147474, -0.101762, 0.212816, -0.147474, 0.101762, -0.212816, 1.27971, 0.0770502, -0.964459, 0.433175, 0.0608807, -0.0456178, -0.433175, -0.0608807, 0.0456178, 1.14336, 2.06992, -1.2719, 0.385559, -0.0705649, -0.355056, -0.385559, 0.0705649, 0.355056, 0.829809, -0.010417, -1.03436, -0.0174603, 0.0270135, -0.535042, 0.0174603, -0.0270135, 0.535042, -0.798399, 0.158338, -0.648323, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_mh5qb"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2.7851, 0.0236318, -1.17611, 0, 0, 0, 0, 0, 0, -3.89563, 0.0361846, -3.22673, 0, 0, 0, 0, 0, 0, -3.80243, 2.013, -3.49413, 0, 0, 0, 0, 0, 0, -3.49161, 0.0301491, -3.63846, -0.663041, 0.0227203, 0.168651, 0.663041, -0.0227203, -0.168651, -0.966578, 0.0348559, -1.80529, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
@@ -62,8 +69,8 @@ point_count = 7
 
 [node name="Anthill" parent="." node_paths=PackedStringArray("paths", "targetTrees") instance=ExtResource("1_cindc")]
 antScene = ExtResource("2_flynq")
-paths = [NodePath("../Path3D")]
-targetTrees = [NodePath("../Tree")]
+paths = [NodePath("../Path3D"), NodePath("../Path3D2")]
+targetTrees = [NodePath("../Tree"), NodePath("../Tree2")]
 
 [node name="AnthillUpgrades" parent="." node_paths=PackedStringArray("anthill") instance=ExtResource("2_aj380")]
 anthill = NodePath("../Anthill")
@@ -89,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501833, 0)
 shape = SubResource("SphereShape3D_f43uj")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerAnt"]
-transform = Transform3D(1, 0, 0, 0, 0.887446, 0.460912, 0, -0.460912, 0.887446, 0, 1.72526, 3.99521)
+transform = Transform3D(1, 0, 0, 0, 0.887446, 0.460912, 0, -0.460912, 0.887446, 0, 1.20029, 2.79204)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.324894, -0.915603, -0.236887, 0.45051, -0.370062, 0.812463, -0.831556, 0.157245, 0.532719, 0, 0, 0)
@@ -103,9 +110,12 @@ environment = SubResource("Environment_54ehq")
 curve = SubResource("Curve3D_n3qna")
 
 [node name="Worker" parent="Path3D" node_paths=PackedStringArray("anthill", "targetTree") instance=ExtResource("2_flynq")]
-transform = Transform3D(-0.0520168, 0.0179859, 0.998456, 0.294243, 0.955706, -0.00188664, -0.954293, 0.293698, -0.0550057, 0.50124, 0.106962, -1.06152)
+transform = Transform3D(-0.117901, 0.139835, 0.983073, 0.10848, 0.985875, -0.127221, -0.987034, 0.0916491, -0.13141, 0.505626, 0.0374879, -0.908507)
 anthill = NodePath("../../Anthill")
 targetTree = NodePath("../../Tree")
+
+[node name="Path3D2" type="Path3D" parent="."]
+curve = SubResource("Curve3D_mh5qb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -0.0150138, 0)
@@ -113,5 +123,10 @@ mesh = SubResource("TorusMesh_6ebsn")
 
 [node name="Tree" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, 1.20155, 0, -1.384)
+MaxLeaves = 1000.0
+RegenerationRate = 50.0
+
+[node name="Tree2" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, -3.86931, 0, -3.60417)
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
