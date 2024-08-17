@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw2l7f5x8gaee"]
+
+[ext_resource type="Script" path="res://Trees/Tree.cs" id="1_f3s1k"]
+
+[node name="Tree" type="Node3D"]
+script = ExtResource("1_f3s1k")
+MaxLeaves = 5000
+RegenerationRate = 5
+
+[node name="RegenTimer" type="Timer" parent="."]
+autostart = true
