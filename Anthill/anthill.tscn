@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5056uasx8wna"]
+
+[ext_resource type="Script" path="res://Anthill/Anthill.cs" id="1_htxim"]
+[ext_resource type="Script" path="res://Anthill/AnthillStat.cs" id="2_kwy1h"]
+
+[node name="Anthill" type="Node3D"]
+script = ExtResource("1_htxim")
+leafMass = 1e+06
+
+[node name="AntSpeed" type="Node" parent="."]
+script = ExtResource("2_kwy1h")
+baseValue = 5.0
+incrementValue = 3.0
+baseCost = 25.0
+incrementCost = 100.0
+
+[node name="AntCarryCapacity" type="Node" parent="."]
+script = ExtResource("2_kwy1h")

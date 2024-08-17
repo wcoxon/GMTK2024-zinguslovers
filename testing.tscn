@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=3 format=3 uid="uid://bphr4o5lqd8bk"]
+
+[ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
+[ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
 
 [node name="test node" type="Node3D"]
+
+[node name="Anthill" parent="." instance=ExtResource("1_cindc")]
+
+[node name="AnthillUpgrades" parent="." node_paths=PackedStringArray("anthill") instance=ExtResource("2_aj380")]
+anthill = NodePath("../Anthill")
