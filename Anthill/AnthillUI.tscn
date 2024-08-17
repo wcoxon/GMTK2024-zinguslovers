@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx5uhblqsym7w"]
+
+[ext_resource type="Script" path="res://Anthill/AnthillUI.cs" id="1_8cpm0"]
+[ext_resource type="Script" path="res://Anthill/AnthillUpgradeButton.cs" id="1_23b12"]
+
+[node name="AnthillUI" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -814.0
+offset_bottom = -426.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8cpm0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "{0} Leaves"
+horizontal_alignment = 1
+
+[node name="AntSpeed" type="Button" parent="."]
+layout_mode = 2
+text = "Upgrade Ant Speed 
+Level {0}
+{1} Leaves"
+script = ExtResource("1_23b12")
+
+[node name="AntCarryCapacity" type="Button" parent="."]
+layout_mode = 2
+text = "Upgrade Ant Carry Capacity 
+Level {0}
+{1} Leaves"
+script = ExtResource("1_23b12")
