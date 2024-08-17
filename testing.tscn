@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=15 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="Script" path="res://CharacterBody3d.cs" id="1_71xwv"]
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
@@ -9,13 +9,41 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_27fuk"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6g7pr"]
+albedo_color = Color(0.295489, 0.53789, 0.349397, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_v2h5o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f43uj"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ma6td"]
+sky_top_color = Color(0.521569, 0.592157, 1, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+ground_bottom_color = Color(0.28481, 0.552213, 0.436561, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_bbue5"]
+sky_material = SubResource("ProceduralSkyMaterial_ma6td")
+
+[sub_resource type="Environment" id="Environment_54ehq"]
+background_mode = 2
+sky = SubResource("Sky_bbue5")
+ambient_light_sky_contribution = 0.75
+ambient_light_energy = 8.75
+
+[sub_resource type="Curve3D" id="Curve3D_n3qna"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0.63, 0.1, -1.015, 0, 0, 0, 0.045, 0, 0, 0, 0, 0, 1.99549, 0, 0.127324, 1.505, 0, 0, -0.725, 0, 0, 1.85941, 0.0362796, 1.59382, 0.435, 0.98, 0.765, -0.005, 0.34, 0, 0.765, 0.162063, 1.72, 1.65, 0, 0, -0.895, 0.44, 0, -0.930536, 0, 1.10756, 0.42, 0.745, 0, 0, 0, -0.98, -1.709, 0.072, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="TorusMesh" id="TorusMesh_6ebsn"]
+
 [node name="test node" type="Node3D"]
 
-[node name="Anthill" parent="." instance=ExtResource("1_cindc")]
+[node name="Anthill" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("1_cindc")]
+paths = [NodePath("../Path3D")]
 
 [node name="AnthillUpgrades" parent="." node_paths=PackedStringArray("anthill") instance=ExtResource("2_aj380")]
 anthill = NodePath("../Anthill")
@@ -25,6 +53,7 @@ transform = Transform3D(1.99693, 0, 0, 0, 1, 0, 0, 0, 1.98663, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("PlaneMesh_27fuk")
+surface_material_override/0 = SubResource("StandardMaterial3D_6g7pr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.5, 0)
@@ -40,41 +69,27 @@ script = ExtResource("1_71xwv")
 transform = Transform3D(2.44212, 0, 0, 0, 1.48195, 0, 0, 0, 1, 0, 0.943504, 0)
 shape = SubResource("SphereShape3D_f43uj")
 
-[node name="Drone1" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0.821078, 0, 0.0372734)
-script = ExtResource("3_h42ys")
-
-[node name="antz2" parent="Drone1" instance=ExtResource("2_8b78t")]
-
-[node name="Drone2" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -0.948345, 2.98023e-07, -0.119211)
-script = ExtResource("3_h42ys")
-
-[node name="antz2" parent="Drone2" instance=ExtResource("2_8b78t")]
-
-[node name="Drone3" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -1.87237, 0, -0.0455095)
-script = ExtResource("3_h42ys")
-
-[node name="antz2" parent="Drone3" instance=ExtResource("2_8b78t")]
-
-[node name="Drone4" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -2.79487, -1.78814e-07, -0.0959859)
-script = ExtResource("3_h42ys")
-
-[node name="antz2" parent="Drone4" instance=ExtResource("2_8b78t")]
-
-[node name="Drone5" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -3.84379, 5.96046e-08, -0.105496)
-script = ExtResource("3_h42ys")
-
-[node name="antz2" parent="Drone5" instance=ExtResource("2_8b78t")]
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.0260897, -0.709489, 0.704233, 0, 0.704473, 0.709731, -0.99966, 0.0185167, -0.0183795, 0, 0, 0)
+transform = Transform3D(-0.0260842, -0.723798, 0.689519, -0.000535489, 0.689764, 0.724034, -0.99966, 0.0185166, -0.0183795, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.804614, 0.593798, 0, -0.593798, 0.804614, 0, 1.72526, 3.99521)
+transform = Transform3D(1, 0, 0, 0, 0.704139, 0.710062, 0, -0.710062, 0.704139, 0, 1.72526, 3.99521)
 
-[node name="Tree" parent="." instance=ExtResource("6_saeh6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443941, 0)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_54ehq")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_n3qna")
+
+[node name="Worker" type="PathFollow3D" parent="Path3D" node_paths=PackedStringArray("anthill")]
+transform = Transform3D(0.252141, -0.582036, 10.326, 4.84007, 9.13445, 0.396718, -9.13972, 4.82123, 0.494953, -0.647129, 0.00526549, 1.11407)
+progress = 7.83766
+loop = false
+script = ExtResource("3_h42ys")
+anthill = NodePath("../../Anthill")
+
+[node name="antz" parent="Path3D/Worker" instance=ExtResource("2_8b78t")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -0.0150138, 0)
+mesh = SubResource("TorusMesh_6ebsn")

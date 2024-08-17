@@ -1,39 +1,31 @@
 using Godot;
 using System;
 
-public partial class antBehaviour : CharacterBody3D
+public partial class antBehaviour : PathFollow3D
 {
-	int currentPathNode = 0;
 	[Export]
-	public Vector3[] path = {new Vector3(0,0,0), new Vector3(2,0,0), new Vector3(2,2,0)};
+	public Anthill anthill;
 
-	public const float Speed = 1.0f;
-	public bool returning = false;
+	public double cargo;
 
 	public override void _Ready()
 	{
-		//Position = path[currentPathNode];
 	}
-	public override void _PhysicsProcess(double delta)
+	public override void _Process(double delta)
 	{
-		if(currentPathNode==0) returning = false;
-		else if(currentPathNode==path.Length-1) returning = true;
-		
-		Vector3 start = path[currentPathNode];
-		Vector3 target = returning ? path[currentPathNode-1] : path[currentPathNode+1];
+		double moveDistance = anthill.GetStat(Anthill.Stat.AntSpeed).GetValue()*delta;
 
-		Vector3 moveDirection = (target - Position).Normalized();
+		Progress += (float)moveDistance;
 
-		if(moveDirection==Vector3.Up || moveDirection==Vector3.Down) LookAt(Position-moveDirection,Vector3.Left,true);
-		else LookAt(Position-moveDirection,Vector3.Up,true);
-
-
-		if(delta*Speed >  (Position-target).Length()){
-			Position = target;
-			currentPathNode += returning ? -1 : 1;
+		if((Position - GetParent<Path3D>().Curve.GetPointPosition(3)).Length() < moveDistance){
+			//take leaf
+			cargo = anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue();
 		}
-		else{
-			Position += moveDirection*Speed*(float)delta;
+		else if(ProgressRatio==1){
+			// deposit leaf // empty cargo
+			anthill.Deliver(cargo);
+			cargo = 0;
+			Progress=0;
 		}
 	}
 }

@@ -4,16 +4,19 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oeytl"]
 diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.922802, 0.514732, 0.37843, 1)
+specular_mode = 2
+albedo_color = Color(0.638264, 0.365323, 0.238338, 1)
+roughness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur237"]
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(0.145098, 0, 0, 1)
+albedo_color = Color(0.120887, 0.0997781, 0.00756109, 1)
+roughness = 0.0
 
 [node name="antz" instance=ExtResource("1_navdw")]
 
 [node name="Icosphere_002" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_oeytl")
 surface_material_override/1 = SubResource("StandardMaterial3D_ur237")

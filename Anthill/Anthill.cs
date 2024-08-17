@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+
 public partial class Anthill : Node3D
 {
 	public enum Stat
@@ -13,6 +14,8 @@ public partial class Anthill : Node3D
 	// Setup
 	[Export] public PackedScene antScene;
 	[Export] public Vector3 antSpawningPos;
+
+	[Export] public Path3D[] paths;
 
 	public AnthillStat GetStat(Stat stat) {
 		return GetNode<AnthillStat>(stat.ToString());

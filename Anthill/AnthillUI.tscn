@@ -31,3 +31,4 @@ text = "Upgrade Ant Carry Capacity
 Level {0}
 {1} Leaves"
 script = ExtResource("1_23b12")
+upgrade = 1

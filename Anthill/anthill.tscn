@@ -3,16 +3,21 @@
 [ext_resource type="Script" path="res://Anthill/Anthill.cs" id="1_htxim"]
 [ext_resource type="Script" path="res://Anthill/AnthillStat.cs" id="2_kwy1h"]
 
-[node name="Anthill" type="Node3D"]
+[node name="Anthill" type="Node3D" node_paths=PackedStringArray("paths")]
 script = ExtResource("1_htxim")
-leafMass = 1e+06
+leafMass = 10.0
+paths = []
 
 [node name="AntSpeed" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
-baseValue = 5.0
+baseValue = 2.0
 incrementValue = 3.0
 baseCost = 25.0
 incrementCost = 100.0
 
 [node name="AntCarryCapacity" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
+baseValue = 1.0
+incrementValue = 1.0
+baseCost = 10.0
+incrementCost = 50.0
