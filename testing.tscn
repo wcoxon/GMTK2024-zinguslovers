@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=9 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="Script" path="res://CharacterBody3d.cs" id="1_71xwv"]
-[ext_resource type="PackedScene" uid="uid://cw5rvnk5rvywt" path="res://ant.tscn" id="2_8b78t"]
-[ext_resource type="Script" path="res://antBehaviour.cs" id="3_h42ys"]
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
+[ext_resource type="PackedScene" uid="uid://cw5rvnk5rvywt" path="res://ant.tscn" id="2_8b78t"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
+[ext_resource type="Script" path="res://antBehaviour.cs" id="3_h42ys"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_27fuk"]
 
@@ -74,4 +74,3 @@ transform = Transform3D(-0.0260897, -0.709489, 0.704233, 0, 0.704473, 0.709731, 
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.804614, 0.593798, 0, -0.593798, 0.804614, 0, 1.72526, 3.99521)
-
