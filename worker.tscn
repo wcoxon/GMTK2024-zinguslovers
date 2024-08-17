@@ -3,11 +3,10 @@
 [ext_resource type="Script" path="res://antBehaviour.cs" id="1_bcyw3"]
 [ext_resource type="PackedScene" uid="uid://cw5rvnk5rvywt" path="res://ant.tscn" id="2_sijv2"]
 
-[node name="Worker" type="PathFollow3D" node_paths=PackedStringArray("anthill")]
+[node name="Worker" type="PathFollow3D"]
 transform = Transform3D(0.252134, -0.582024, 10.326, 4.84005, 9.13446, 0.396713, -9.13973, 4.8212, 0.494943, -0.647133, 0.00526533, 1.11408)
 progress = 7.83766
 loop = false
 script = ExtResource("1_bcyw3")
-anthill = NodePath("")
 
 [node name="antz" parent="." instance=ExtResource("2_sijv2")]

@@ -10,7 +10,7 @@ paths = []
 
 [node name="AntSpeed" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
-valueExpression = "4 + 0.1 * l"
+valueExpression = "1 + 0.05 * l"
 costExpression = "100 + 50 *l + 2 ** l"
 
 [node name="AntCarryCapacity" type="Node" parent="."]
@@ -21,4 +21,9 @@ costExpression = "100 + 200 * l"
 [node name="NewAnt" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
 valueExpression = "0"
-costExpression = "25 * 2 ** l"
+costExpression = "floor(25 * l ** 1.5)"
+
+[node name="AntBreedings" type="Node" parent="."]
+script = ExtResource("2_kwy1h")
+valueExpression = "50.0 / l"
+costExpression = "floor(100 * l ** (1.5 + 0.1 * l))"
