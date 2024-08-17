@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw5rvnk5rvywt"]
+
+[ext_resource type="PackedScene" uid="uid://divsps1v3wjcg" path="res://antz.fbx" id="1_navdw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oeytl"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.922802, 0.514732, 0.37843, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur237"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.145098, 0, 0, 1)
+
+[node name="antz" instance=ExtResource("1_navdw")]
+
+[node name="Icosphere_002" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_oeytl")
+surface_material_override/1 = SubResource("StandardMaterial3D_ur237")

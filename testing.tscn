@@ -1,3 +1,69 @@
-[gd_scene format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=7 format=3 uid="uid://bphr4o5lqd8bk"]
+
+[ext_resource type="Script" path="res://CharacterBody3d.cs" id="1_71xwv"]
+[ext_resource type="PackedScene" uid="uid://cw5rvnk5rvywt" path="res://ant.tscn" id="2_8b78t"]
+[ext_resource type="Script" path="res://antBehaviour.cs" id="3_h42ys"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_27fuk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v2h5o"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f43uj"]
 
 [node name="test node" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1.99693, 0, 0, 0, 1, 0, 0, 0, 1.98663, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_27fuk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_v2h5o")
+
+[node name="PlayerAnt" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, 0, 0)
+script = ExtResource("1_71xwv")
+
+[node name="antz2" parent="PlayerAnt" instance=ExtResource("2_8b78t")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAnt"]
+transform = Transform3D(2.44212, 0, 0, 0, 1.48195, 0, 0, 0, 1, 0, 0.943504, 0)
+shape = SubResource("SphereShape3D_f43uj")
+
+[node name="Drone1" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0.821078, 0, 0.0372734)
+script = ExtResource("3_h42ys")
+
+[node name="antz2" parent="Drone1" instance=ExtResource("2_8b78t")]
+
+[node name="Drone2" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -0.948345, 2.98023e-07, -0.119211)
+script = ExtResource("3_h42ys")
+
+[node name="antz2" parent="Drone2" instance=ExtResource("2_8b78t")]
+
+[node name="Drone3" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -1.87237, 0, -0.0455095)
+script = ExtResource("3_h42ys")
+
+[node name="antz2" parent="Drone3" instance=ExtResource("2_8b78t")]
+
+[node name="Drone4" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -2.79487, -1.78814e-07, -0.0959859)
+script = ExtResource("3_h42ys")
+
+[node name="antz2" parent="Drone4" instance=ExtResource("2_8b78t")]
+
+[node name="Drone5" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -3.84379, 5.96046e-08, -0.105496)
+script = ExtResource("3_h42ys")
+
+[node name="antz2" parent="Drone5" instance=ExtResource("2_8b78t")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.0260897, -0.709489, 0.704233, 0, 0.704473, 0.709731, -0.99966, 0.0185167, -0.0183795, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.804614, 0.593798, 0, -0.593798, 0.804614, 0, 1.72526, 3.99521)
