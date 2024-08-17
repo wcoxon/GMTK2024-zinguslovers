@@ -67,13 +67,41 @@ point_count = 7
 
 [node name="test node" type="Node3D"]
 
-[node name="Anthill" parent="." node_paths=PackedStringArray("paths", "targetTrees") instance=ExtResource("1_cindc")]
+[node name="Anthill" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("1_cindc")]
 antScene = ExtResource("2_flynq")
 paths = [NodePath("../Path3D"), NodePath("../Path3D2")]
 targetTrees = [NodePath("../Tree"), NodePath("../Tree2")]
 
-[node name="AnthillUpgrades" parent="." node_paths=PackedStringArray("anthill") instance=ExtResource("2_aj380")]
-anthill = NodePath("../Anthill")
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 21.0
+offset_right = 406.0
+offset_bottom = 370.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AnthillUpgrades" parent="Control/Panel/MarginContainer" node_paths=PackedStringArray("anthill") instance=ExtResource("2_aj380")]
+layout_mode = 2
+anthill = NodePath("../../../../Anthill")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 2.503, 0, 0, 0, 4.975, 0, 0, 0)
