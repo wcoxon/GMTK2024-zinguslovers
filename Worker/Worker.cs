@@ -28,6 +28,12 @@ public partial class Worker : PathFollow3D
 		var rng = new RandomNumberGenerator();
 
 		float[] weights = anthill.targetTrees.Select(tree => (float)tree.Weighting).ToArray();
+
+		if (weights.Sum() <= 0.00001) {
+			hasTarget = false;
+			return;
+		}
+
 		int index = (int)rng.RandWeighted(weights);
 		targetTree = anthill.targetTrees[index];
 
