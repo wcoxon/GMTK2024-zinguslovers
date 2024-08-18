@@ -33,17 +33,13 @@ public partial class Tree : Node
 	}
 
 	public void setOutlined(bool outline){
-		(GetNode<MeshInstance3D>("Tree/Tree").GetSurfaceOverrideMaterial(0).NextPass as ShaderMaterial).SetShaderParameter("outline_width", outline ? 5 : 0);
+		(GetNode<MeshInstance3D>("Tree2/Tree").GetSurfaceOverrideMaterial(0).NextPass as ShaderMaterial).SetShaderParameter("outline_width", outline ? 5 : 0);
 	}
 
 	public void OnLeafTimerTimeout(){
-		LeafMass += RegenerationRate;
-
-		if (LeafMass > MaxLeaves){
-			LeafMass = MaxLeaves;
-		}
+		LeafMass += RegenerationRate * regenTimer.WaitTime;
+		LeafMass = Mathf.Min(LeafMass,MaxLeaves);
 		UpdateLeaves();
-		Debug.WriteLine($"leaves: {LeafMass}");
 	}
 
 	public double TryTakeLeaf(double takeMass){
@@ -64,8 +60,4 @@ public partial class Tree : Node
 		LeavesMesh.Scale = new Vector3(scale, scale, scale);
 	}
 
-	// // Called every frame. 'delta' is the elapsed time since the previous frame.
-	// public override void _Process(double delta)
-	// {
-	// }
 }

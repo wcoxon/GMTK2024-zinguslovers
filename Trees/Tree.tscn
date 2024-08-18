@@ -12,6 +12,7 @@ MaxLeaves = 500.0
 RegenerationRate = 10.0
 
 [node name="RegenTimer" type="Timer" parent="."]
+wait_time = 0.127
 autostart = true
 
 [node name="Tree" parent="." instance=ExtResource("2_daby0")]

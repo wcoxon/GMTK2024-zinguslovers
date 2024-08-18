@@ -10,7 +10,6 @@ render_priority = 0
 shader = ExtResource("2_jtc1d")
 shader_parameter/outline_color = Color(1, 0.8, 0, 1)
 shader_parameter/outline_width = 6.74
-shader_parameter/constant_width = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wfkw"]
 resource_local_to_scene = true
