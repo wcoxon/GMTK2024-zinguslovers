@@ -2,22 +2,18 @@ using Godot;
 using System;
 using System.Diagnostics;
 
-
-public struct Trail{
-	Anthill anthill;
-	Vector3[] points;
-	Tree targetTree;
-}
-
 public partial class Player : CharacterBody3D
 {
 	public const float acceleration = 6.0f;
 	public const float maxSpeed = 2.0f;
 	public const float JumpVelocity = 4.5f;
 	double cargo = 0;
+	public TrailBuilder trailBuilder;
 
 	private AnthillUI _anthillUI;
 	private TreeUI _treeUI;
+
+	[Export] public Anthill anthill;
  
 	public void EnterAnthill(Area3D area){
 		
@@ -57,6 +53,38 @@ public partial class Player : CharacterBody3D
 	public void EnterPickup(Area3D area){
 		cargo += 10;
 		(area.Owner as Node3D).QueueFree();
+	}
+
+	public void StartPathing() {
+		trailBuilder = new TrailBuilder(anthill.Position);
+	}
+
+	public void StopPathing() {
+		if (PathHasTree()) {
+			trailBuilder.AddFinal(anthill.Position);
+            Path3D path = new Path3D { Curve = trailBuilder.curve };
+            Owner.AddChild(path);
+			trailBuilder.tree.path = path;
+			anthill.targetTrees.Add(trailBuilder.tree);
+		}
+		trailBuilder = null;
+	}
+
+	public void PathAddTree(Tree tree) {
+		trailBuilder.tree = tree;
+		trailBuilder.AddPoint(Position);
+		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
+		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
+		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
+		trailBuilder.AddPoint(Position);
+	}
+
+	public bool PathHasTree() {
+		return trailBuilder.tree != null;
+	}
+
+	public bool IsPathing() {
+		return trailBuilder != null;
 	}
 
     public override void _Ready()
@@ -108,5 +136,11 @@ public partial class Player : CharacterBody3D
 		Velocity = velocity;
 		MoveAndSlide();
 
+		if (IsPathing() && (trailBuilder.point - Position).Length() > 0.5f) {
+			trailBuilder.AddPoint(Position);
+		}
 	}
+
+
+		
 }

@@ -65,10 +65,9 @@ shader_parameter/border_width = 0.01
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wy70d"]
 
-[node name="Anthill" type="Node3D" node_paths=PackedStringArray("paths", "targetTrees")]
+[node name="Anthill" type="Node3D" node_paths=PackedStringArray("targetTrees")]
 script = ExtResource("1_htxim")
 leafMass = 10.0
-paths = []
 targetTrees = []
 
 [node name="AntSpeed" type="Node" parent="."]

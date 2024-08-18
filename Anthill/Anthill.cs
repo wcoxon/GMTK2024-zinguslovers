@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using Godot.Collections;
 
 
 public partial class Anthill : Node3D
@@ -14,9 +15,7 @@ public partial class Anthill : Node3D
 	// Setup
 	[Export] public PackedScene antScene;
 	[Export] public Vector3 antSpawningPos;
-
-	//[Export] public Path3D[] paths;
-	[Export] public Tree[] targetTrees;
+	[Export] public Array<Tree> targetTrees;
 
 	[Export] public uint numAnts = 1;
 

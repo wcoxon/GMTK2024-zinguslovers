@@ -76,15 +76,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnthillUI" parent="Control" node_paths=PackedStringArray("anthill") instance=ExtResource("2_aj380")]
+[node name="AnthillUI" parent="Control" node_paths=PackedStringArray("anthill", "player") instance=ExtResource("2_aj380")]
 layout_mode = 2
 offset_left = 50.0
 offset_top = 50.0
 offset_right = 400.0
 offset_bottom = 450.0
 anthill = NodePath("../../Anthill")
+player = NodePath("../../PlayerAnt")
 
-[node name="TreeUI" parent="Control" node_paths=PackedStringArray("tree") instance=ExtResource("4_n6wix")]
+[node name="TreeUI" parent="Control" node_paths=PackedStringArray("tree", "player") instance=ExtResource("4_n6wix")]
 visible = false
 layout_mode = 0
 offset_left = 50.0
@@ -92,6 +93,7 @@ offset_top = 50.0
 offset_right = 400.0
 offset_bottom = 200.0
 tree = NodePath("../../Tree")
+player = NodePath("../../PlayerAnt")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 2.503, 0, 0, 0, 4.975, 0, 0, 0)
@@ -104,7 +106,8 @@ surface_material_override/0 = SubResource("ShaderMaterial_3fiwl")
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_v2h5o")
 
-[node name="PlayerAnt" parent="." instance=ExtResource("5_1ka04")]
+[node name="PlayerAnt" parent="." node_paths=PackedStringArray("anthill") instance=ExtResource("5_1ka04")]
+anthill = NodePath("../Anthill")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.324894, -0.915603, -0.236887, 0.45051, -0.370062, 0.812463, -0.831556, 0.157245, 0.532719, 0, 0, 0)

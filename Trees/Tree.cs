@@ -1,8 +1,9 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using System.IO;
 
-public partial class Tree : Node
+public partial class Tree : Node3D
 {
 	public double LeafMass; //how many leaves are on the tree
 

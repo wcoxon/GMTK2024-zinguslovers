@@ -4,6 +4,8 @@ using System;
 public partial class TreeUI : Panel
 {
 	[Export] public Tree tree;
+	[Export] public Player player;
+
 
 	private Label _infolabel;
 	private Slider _weightSlider;
