@@ -14,10 +14,14 @@ public partial class Tree : Node
 
 	Timer regenTimer;
 
+	MeshInstance3D LeavesMesh;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		regenTimer = GetNode<Timer>("RegenTimer");
+
+		LeavesMesh = GetNode<MeshInstance3D>("Tree2/Leaves");
 
 		regenTimer.Paused = false;
 
@@ -38,7 +42,7 @@ public partial class Tree : Node
 		if (LeafMass > MaxLeaves){
 			LeafMass = MaxLeaves;
 		}
-
+		UpdateLeaves();
 		Debug.WriteLine($"leaves: {LeafMass}");
 	}
 
@@ -47,10 +51,18 @@ public partial class Tree : Node
 
 		LeafMass -= leavesTaken; //then remove that many leaves from the tree, I don't think we need the Max but I'm just being safe so we don't get negative leaves somehow
 
+		UpdateLeaves();
+
 		return leavesTaken;
 	}
 
+	void UpdateLeaves(){
+		double factor = LeafMass / MaxLeaves;
 
+		float scale = (float)Mathf.Lerp(0, 1, factor);
+
+		LeavesMesh.Scale = new Vector3(scale, scale, scale);
+	}
 
 	// // Called every frame. 'delta' is the elapsed time since the previous frame.
 	// public override void _Process(double delta)
