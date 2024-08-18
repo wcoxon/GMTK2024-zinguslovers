@@ -10,7 +10,6 @@ public partial class Anthill : Node3D
 	}
 
 	[Export] public double leafMass;
-	public RandomNumberGenerator rng;
 
 	// Setup
 	[Export] public PackedScene antScene;
@@ -52,16 +51,12 @@ public partial class Anthill : Node3D
 		instance.Position = antSpawningPos;
 		instance.anthill = this;
 
-		int targetIndex = rng.RandiRange(0,targetTrees.Length-1);
-
-		instance.targetTree = targetTrees[targetIndex];
-		paths[targetIndex].AddChild(instance);
+		instance.chooseTarget();
 	}
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		rng = new RandomNumberGenerator();
 		nextAnt = GetStat(Stat.AntBreedings).GetValue();
 
 	}

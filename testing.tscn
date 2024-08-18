@@ -67,7 +67,7 @@ point_count = 7
 
 [node name="test node" type="Node3D"]
 
-[node name="Anthill" parent="." node_paths=PackedStringArray("paths") instance=ExtResource("1_cindc")]
+[node name="Anthill" parent="." node_paths=PackedStringArray("paths", "targetTrees") instance=ExtResource("1_cindc")]
 antScene = ExtResource("2_flynq")
 paths = [NodePath("../Path3D"), NodePath("../Path3D2")]
 targetTrees = [NodePath("../Tree"), NodePath("../Tree2")]
@@ -138,7 +138,7 @@ environment = SubResource("Environment_54ehq")
 curve = SubResource("Curve3D_n3qna")
 
 [node name="Worker" parent="Path3D" node_paths=PackedStringArray("anthill", "targetTree") instance=ExtResource("2_flynq")]
-transform = Transform3D(-0.117901, 0.139835, 0.983073, 0.10848, 0.985875, -0.127221, -0.987034, 0.0916491, -0.13141, 0.505626, 0.0374879, -0.908507)
+transform = Transform3D(-0.117894, 0.139834, 0.983074, 0.108482, 0.985875, -0.127221, -0.987035, 0.0916526, -0.131404, 0.505616, 0.0374891, -0.908506)
 anthill = NodePath("../../Anthill")
 targetTree = NodePath("../../Tree")
 

@@ -14,6 +14,18 @@ public partial class antBehaviour : PathFollow3D
 	{
 		Progress = 0;
 	}
+
+	public void chooseTarget(){
+		var rng = new RandomNumberGenerator();
+		int targetIndex = rng.RandiRange(0,anthill.targetTrees.Length-1);
+
+		targetTree = anthill.targetTrees[targetIndex];
+		GetParent()?.RemoveChild(this);
+		anthill.paths[targetIndex].AddChild(this);
+
+		Progress = 0;
+	}
+
 	public override void _Process(double delta)
 	{
 		double moveDistance = anthill.GetStat(Anthill.Stat.AntSpeed).GetValue()*delta;
@@ -22,14 +34,16 @@ public partial class antBehaviour : PathFollow3D
 
 		if((Position - GetParent<Path3D>().Curve.GetPointPosition(3)).Length() < moveDistance && cargo==0){
 			//take leaf
-			//cargo = anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue();
 			cargo = targetTree.TryTakeLeaf(anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue());
 		}
 		else if(ProgressRatio==1){
 			// deposit leaf // empty cargo
 			anthill.Deliver(cargo);
 			cargo = 0;
-			Progress = 0;
+
+			chooseTarget();
+
+
 		}
 	}
 }
