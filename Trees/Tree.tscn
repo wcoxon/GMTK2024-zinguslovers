@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3x2q3"]
 
-[node name="Tree" type="Node3D"]
+[node name="Tree2" type="Node3D"]
 script = ExtResource("1_f3s1k")
 MaxLeaves = 500.0
 RegenerationRate = 10.0

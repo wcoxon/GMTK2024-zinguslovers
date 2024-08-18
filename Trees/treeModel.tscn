@@ -1,13 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://4gyvtwtw7m22"]
+[gd_scene load_steps=7 format=3 uid="uid://4gyvtwtw7m22"]
 
 [ext_resource type="PackedScene" uid="uid://dyqe8atu8d3r8" path="res://Trees/Tree.fbx" id="1_dosqq"]
-[ext_resource type="Material" path="res://Trees/highlightMaterial.tres" id="2_ft7up"]
+[ext_resource type="Shader" path="res://Trees/outlineShader.gdshader" id="2_jtc1d"]
 [ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_n8nm6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kne6r"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_jtc1d")
+shader_parameter/outline_color = Color(1, 0.8, 0, 1)
+shader_parameter/outline_width = 6.74
+shader_parameter/constant_width = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wfkw"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = ExtResource("2_ft7up")
+next_pass = SubResource("ShaderMaterial_kne6r")
 shader = ExtResource("2_n8nm6")
 shader_parameter/albedo = Color(0.472039, 0.694351, 0.237351, 1)
 shader_parameter/clamp_diffuse_to_max = true
@@ -28,7 +36,7 @@ shader_parameter/border_width = 0.01
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1q6jb"]
 resource_local_to_scene = true
 render_priority = 0
-next_pass = ExtResource("2_ft7up")
+next_pass = SubResource("ShaderMaterial_kne6r")
 shader = ExtResource("2_n8nm6")
 shader_parameter/albedo = Color(0.485269, 0.217638, 0.103028, 1)
 shader_parameter/clamp_diffuse_to_max = true
