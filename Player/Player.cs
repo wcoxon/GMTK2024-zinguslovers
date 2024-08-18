@@ -11,7 +11,8 @@ public struct Trail{
 
 public partial class Player : CharacterBody3D
 {
-	public const float Speed = 2.0f;
+	public const float acceleration = 6.0f;
+	public const float maxSpeed = 2.0f;
 	public const float JumpVelocity = 4.5f;
 	double cargo = 0;
 
@@ -64,61 +65,48 @@ public partial class Player : CharacterBody3D
 		_treeUI = Owner.GetNode<TreeUI>("Control/TreeUI");
     }
 
-
     public override void _PhysicsProcess(double delta)
 	{
 		Vector3 velocity = Velocity;
 
-		// Add the gravity.
+		// Add gravity
 		if (!IsOnFloor())
 		{
 			velocity += GetGravity() * (float)delta;
 		}
 
-		// Handle Jump.
+		// Handle Jump
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
 		}
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 inputDir = Input.GetVector("left", "right", "up", "down");
 		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
 		if (direction != Vector3.Zero)
 		{
-			velocity.X = direction.X * Speed;
-			velocity.Z = direction.Z * Speed;
+			velocity += direction * acceleration * (float)delta;
+
+			velocity = velocity.Normalized() * Mathf.Min(velocity.Length(),maxSpeed);
 			
-			((Node3D)GetChild(0)).LookAt(Position-velocity,Vector3.Up,true);
 			GetNode<AnimationPlayer>("Ants/AnimationPlayer").Play();
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+			velocity = velocity.Normalized() * (float)Mathf.Max(velocity.Length()-acceleration*delta,0);
+		}
+		
+		GetNode<AnimationPlayer>("Ants/AnimationPlayer").SpeedScale = velocity.Length()/2.0f;
+
+		if(velocity == Vector3.Zero){
 			GetNode<AnimationPlayer>("Ants/AnimationPlayer").Pause();
 		}
-
+		else{
+			((Node3D)GetChild(0)).LookAt(Position-velocity,Vector3.Up,true);
+		}
 
 		Velocity = velocity;
 		MoveAndSlide();
-
-
-
-		//if close to the anthill
-		// if press e
-		//  create new path3d and reference from player
-
-		//if player has referenced path3d
-		// if distance from last point in path3d > 5 or wtv
-		//  add point at player position
-		// if no tree on path and press e on a tree
-		//  attach tree, add point at top of tree to path
-		// if tree on path and press e on nest
-		//  add nest position to path and add path-tree to anthill
-		//  actually if tree of this path is already a targeted tree, replace path of that tree with this path
-
 
 	}
 }
