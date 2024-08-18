@@ -4,7 +4,7 @@ using System;
 public partial class AnthillUI : Panel
 {
 	[Export] public Anthill anthill;
-	[Export] public CharacterBody3d player;
+	[Export] public Player player;
 
 	private Label _infolabel;
 	private string _labelformat;

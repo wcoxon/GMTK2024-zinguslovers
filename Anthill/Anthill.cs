@@ -47,7 +47,7 @@ public partial class Anthill : Node3D
 	private void SpawnAnt()
 	{
 		numAnts++;
-		antBehaviour instance = antScene.Instantiate<antBehaviour>();
+		Worker instance = antScene.Instantiate<Worker>();
 		instance.Position = antSpawningPos;
 		instance.anthill = this;
 
@@ -58,9 +58,7 @@ public partial class Anthill : Node3D
 	public override void _Ready()
 	{
 		nextAnt = GetStat(Stat.AntBreedings).GetValue();
-
 	}
-
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

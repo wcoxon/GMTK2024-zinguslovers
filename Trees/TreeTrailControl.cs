@@ -3,7 +3,7 @@ using System;
 
 public partial class TreeTrailControl : Button
 {
-	CharacterBody3d player;
+	Player player;
 	string[] names;
 
 	// Called when the node enters the scene tree for the first time.

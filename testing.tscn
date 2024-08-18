@@ -1,12 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=16 format=3 uid="uid://bphr4o5lqd8bk"]
 
-[ext_resource type="Script" path="res://CharacterBody3d.cs" id="1_71xwv"]
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
-[ext_resource type="PackedScene" uid="uid://cw5rvnk5rvywt" path="res://ant.tscn" id="2_8b78t"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
-[ext_resource type="PackedScene" uid="uid://cw62dr70qqeeh" path="res://worker.tscn" id="2_flynq"]
+[ext_resource type="PackedScene" uid="uid://cw62dr70qqeeh" path="res://Worker/worker.tscn" id="2_flynq"]
 [ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="4_e63rj"]
 [ext_resource type="PackedScene" uid="uid://mpj4r3rqtn1m" path="res://Trees/TreeUI.tscn" id="4_n6wix"]
+[ext_resource type="PackedScene" uid="uid://dy2g4lfqc406l" path="res://Player/Player.tscn" id="5_1ka04"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_27fuk"]
@@ -31,10 +30,6 @@ shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v2h5o"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_f43uj"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_xbkky"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ma6td"]
 sky_top_color = Color(0.521569, 0.592157, 1, 1)
@@ -81,14 +76,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnthillUI" parent="Control" node_paths=PackedStringArray("anthill", "player") instance=ExtResource("2_aj380")]
+[node name="AnthillUI" parent="Control" node_paths=PackedStringArray("anthill") instance=ExtResource("2_aj380")]
 layout_mode = 2
 offset_left = 50.0
 offset_top = 50.0
 offset_right = 400.0
 offset_bottom = 450.0
 anthill = NodePath("../../Anthill")
-player = NodePath("../../PlayerAnt")
 
 [node name="TreeUI" parent="Control" node_paths=PackedStringArray("tree") instance=ExtResource("4_n6wix")]
 visible = false
@@ -110,31 +104,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_3fiwl")
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_v2h5o")
 
-[node name="PlayerAnt" type="CharacterBody3D" parent="."]
-script = ExtResource("1_71xwv")
-
-[node name="antz2" parent="PlayerAnt" instance=ExtResource("2_8b78t")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAnt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501833, 0)
-shape = SubResource("SphereShape3D_f43uj")
-
-[node name="Camera3D" type="Camera3D" parent="PlayerAnt"]
-transform = Transform3D(1, 0, 0, 0, 0.887446, 0.460912, 0, -0.460912, 0.887446, 0, 1.20029, 2.79204)
-
-[node name="Anthill detector" type="Area3D" parent="PlayerAnt"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAnt/Anthill detector"]
-shape = SubResource("SphereShape3D_xbkky")
-
-[node name="Tree detector" type="Area3D" parent="PlayerAnt"]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAnt/Tree detector"]
-shape = SubResource("SphereShape3D_xbkky")
+[node name="PlayerAnt" parent="." instance=ExtResource("5_1ka04")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.324894, -0.915603, -0.236887, 0.45051, -0.370062, 0.812463, -0.831556, 0.157245, 0.532719, 0, 0, 0)
@@ -148,7 +118,7 @@ environment = SubResource("Environment_54ehq")
 curve = SubResource("Curve3D_n3qna")
 
 [node name="Worker" parent="Path3D" node_paths=PackedStringArray("anthill", "targetTree") instance=ExtResource("2_flynq")]
-transform = Transform3D(-0.214714, 0.103453, 0.971122, 0.132758, 0.988186, -0.0759164, -0.967559, 0.112631, -0.225921, 0.503703, 0.0270895, -1.07539)
+transform = Transform3D(-0.214714, 0.103452, 0.97112, 0.132758, 0.988184, -0.0759162, -0.967559, 0.11263, -0.225921, 0.503703, 0.0270895, -1.07539)
 anthill = NodePath("../../Anthill")
 targetTree = NodePath("../../Tree")
 
@@ -164,8 +134,3 @@ RegenerationRate = 50.0
 transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, -3.86931, 0, -3.60417)
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
-
-[connection signal="area_entered" from="PlayerAnt/Anthill detector" to="PlayerAnt" method="EnterAnthill"]
-[connection signal="area_exited" from="PlayerAnt/Anthill detector" to="PlayerAnt" method="ExitAnthill"]
-[connection signal="area_entered" from="PlayerAnt/Tree detector" to="PlayerAnt" method="EnterTree"]
-[connection signal="area_exited" from="PlayerAnt/Tree detector" to="PlayerAnt" method="ExitTree"]

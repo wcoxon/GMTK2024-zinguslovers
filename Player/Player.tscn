@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy2g4lfqc406l"]
+
+[ext_resource type="Script" path="res://Player/Player.cs" id="1_s0fi0"]
+[ext_resource type="PackedScene" uid="uid://gjxeii22103a" path="res://Worker/antModel.tscn" id="2_a7pon"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f43uj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xbkky"]
+
+[node name="PlayerAnt" type="CharacterBody3D"]
+script = ExtResource("1_s0fi0")
+
+[node name="ant" parent="." instance=ExtResource("2_a7pon")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501833, 0)
+shape = SubResource("SphereShape3D_f43uj")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.895999, 0.444057, 0, -0.444057, 0.895999, 0, 1.92353, 3.11992)
+
+[node name="Anthill detector" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Anthill detector"]
+shape = SubResource("SphereShape3D_xbkky")
+
+[node name="Tree detector" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree detector"]
+shape = SubResource("SphereShape3D_xbkky")
+
+[connection signal="area_entered" from="Anthill detector" to="." method="EnterAnthill"]
+[connection signal="area_exited" from="Anthill detector" to="." method="ExitAnthill"]
+[connection signal="area_entered" from="Tree detector" to="." method="EnterTree"]
+[connection signal="area_exited" from="Tree detector" to="." method="ExitTree"]
