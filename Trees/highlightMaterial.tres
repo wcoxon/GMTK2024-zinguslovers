@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dt6dr2co1f6m1"]
+
+[ext_resource type="Shader" path="res://Trees/outlineShader.gdshader" id="1_jqdiu"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_jqdiu")
+shader_parameter/outline_color = Color(1, 0.8, 0, 1)
+shader_parameter/outline_width = 6.74
+shader_parameter/constant_width = true

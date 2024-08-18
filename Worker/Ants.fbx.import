@@ -4,19 +4,19 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c2d2qcraycqc4"
-path="res://.godot/imported/Ants.fbx-06136c1e54fce3d48091e37872176ba5.scn"
+path="res://.godot/imported/Ants.fbx-6bb79ac93c26853aa6f3f082f16838a6.scn"
 
 [deps]
 
-source_file="res://Ants.fbx"
-dest_files=["res://.godot/imported/Ants.fbx-06136c1e54fce3d48091e37872176ba5.scn"]
+source_file="res://Worker/Ants.fbx"
+dest_files=["res://.godot/imported/Ants.fbx-6bb79ac93c26853aa6f3f082f16838a6.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=0.1
 nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true

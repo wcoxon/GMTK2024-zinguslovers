@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://4gyvtwtw7m22"]
+[gd_scene load_steps=6 format=3 uid="uid://4gyvtwtw7m22"]
 
 [ext_resource type="PackedScene" uid="uid://dyqe8atu8d3r8" path="res://Trees/Tree.fbx" id="1_dosqq"]
+[ext_resource type="Material" uid="uid://dt6dr2co1f6m1" path="res://Trees/highlightMaterial.tres" id="2_ft7up"]
 [ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_n8nm6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wfkw"]
 render_priority = 0
+next_pass = ExtResource("2_ft7up")
 shader = ExtResource("2_n8nm6")
 shader_parameter/albedo = Color(0.472039, 0.694351, 0.237351, 1)
 shader_parameter/clamp_diffuse_to_max = true
@@ -24,6 +26,7 @@ shader_parameter/border_width = 0.01
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1q6jb"]
 render_priority = 0
+next_pass = ExtResource("2_ft7up")
 shader = ExtResource("2_n8nm6")
 shader_parameter/albedo = Color(0.485269, 0.217638, 0.103028, 1)
 shader_parameter/clamp_diffuse_to_max = true

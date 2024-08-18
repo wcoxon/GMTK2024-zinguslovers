@@ -24,6 +24,12 @@ public partial class Tree : Node
 		LeafMass = 0;
 
 		regenTimer.Timeout += OnLeafTimerTimeout;
+
+		setOutlined(false);
+	}
+
+	public void setOutlined(bool outline){
+		(GetNode<MeshInstance3D>("Tree/Tree").GetSurfaceOverrideMaterial(0).NextPass as ShaderMaterial).SetShaderParameter("outline_width", outline ? 5 : 0);
 	}
 
 	public void OnLeafTimerTimeout(){

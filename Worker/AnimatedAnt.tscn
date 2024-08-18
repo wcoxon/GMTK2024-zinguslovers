@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://wjewpvohmfj5"]
+
+[ext_resource type="PackedScene" uid="uid://c2d2qcraycqc4" path="res://Worker/Ants.fbx" id="1_6dor2"]
+[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_hykm8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q12yd"]
+render_priority = 0
+shader = ExtResource("2_hykm8")
+shader_parameter/albedo = Color(0.844009, 0.461566, 0.319192, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 9.5e-08
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tv1i6"]
+render_priority = 0
+shader = ExtResource("2_hykm8")
+shader_parameter/albedo = Color(0.00351917, 0.00351917, 0.00351917, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 0.41
+shader_parameter/specular_shininess = 4.157
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="Animation" id="Animation_khncv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AntLegs:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.96706, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AntBody:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.31613, 0.174533)]
+}
+
+[sub_resource type="Animation" id="Animation_jbxk1"]
+resource_name = "WalkMode"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AntLegs:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.96706, 0), Vector3(0, 3.31613, 0), Vector3(0, 2.96706, 0), Vector3(0, 3.31613, 0), Vector3(0, 2.96706, 0), Vector3(0, 3.31613, 0), Vector3(0, 2.96706, 0), Vector3(0, 3.31613, 0), Vector3(0, 2.96706, 0), Vector3(0, 3.31613, 0), Vector3(0, 2.96706, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AntBody:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.31613, 0.174533), Vector3(0, 2.96706, -0.174533), Vector3(0, 3.31613, 0.174533), Vector3(0, 2.96706, -0.174533), Vector3(0, 3.31613, 0.174533), Vector3(0, 2.96706, -0.174533), Vector3(0, 3.31613, 0.174533), Vector3(0, 2.96706, -0.174533), Vector3(0, 3.31613, 0.174533), Vector3(0, 2.96706, -0.174533), Vector3(0, 3.31613, 0.174533)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_diekb"]
+_data = {
+"RESET": SubResource("Animation_khncv"),
+"WalkMode": SubResource("Animation_jbxk1")
+}
+
+[node name="Ants" instance=ExtResource("1_6dor2")]
+
+[node name="AntBody" parent="." index="0"]
+transform = Transform3D(-0.969845, 0.17101, -0.173652, 0.173648, 0.984808, 0, 0.171014, -0.0301545, -0.984807, 1.76232e-25, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_q12yd")
+surface_material_override/1 = SubResource("ShaderMaterial_tv1i6")
+
+[node name="AntLegs" parent="." index="1"]
+transform = Transform3D(-0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, -0.984808, 1.76232e-25, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_q12yd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_diekb")
+}
+autoplay = "WalkMode"
+playback_auto_capture_transition_type = 2
+playback_auto_capture_ease_type = 2
+speed_scale = 0.6

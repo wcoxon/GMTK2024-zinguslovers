@@ -33,14 +33,17 @@ public partial class Player : CharacterBody3D
 	public void EnterTree(Area3D area){
 		//show UI stuff
 		Debug.WriteLine("entered tree");
+
 		_anthillUI.Hide();
 		_treeUI.Show();
 		_treeUI.SetTree(area.Owner as Tree);
+		(area.Owner as Tree).setOutlined(true);
 	}
 	public void ExitTree(Area3D area){
 		//hide UI stuff
 		Debug.WriteLine("exited tree");
 		_treeUI.Hide();
+		(area.Owner as Tree).setOutlined(false);
 	}
 
     public override void _Ready()
@@ -76,11 +79,13 @@ public partial class Player : CharacterBody3D
 			velocity.Z = direction.Z * Speed;
 			
 			((Node3D)GetChild(0)).LookAt(Position-velocity,Vector3.Up,true);
+			GetNode<AnimationPlayer>("Ants/AnimationPlayer").Play();
 		}
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+			GetNode<AnimationPlayer>("Ants/AnimationPlayer").Pause();
 		}
 
 

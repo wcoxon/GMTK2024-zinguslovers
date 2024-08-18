@@ -10,6 +10,7 @@ public partial class TreeUI : Panel
 
 	public void SetTree(Tree new_tree) {
 		tree = new_tree;
+		
 	}
 
 	// Called when the node enters the scene tree for the first time.
