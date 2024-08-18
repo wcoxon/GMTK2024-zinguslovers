@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://b08uawy5x15n0"]
+
+[ext_resource type="PackedScene" uid="uid://ce7m4bgx7op1v" path="res://Trees/Tree2.fbx" id="1_txp0n"]
+[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_pqx6n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_anoy2"]
+render_priority = 0
+shader = ExtResource("2_pqx6n")
+shader_parameter/albedo = Color(0.486275, 0.215686, 0.101961, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.135
+shader_parameter/steepness = 1.315
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = true
+shader_parameter/border_width = 0.895
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n540g"]
+render_priority = 0
+shader = ExtResource("2_pqx6n")
+shader_parameter/albedo = Color(0.470588, 0.694118, 0.239216, 1)
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 4
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[node name="Tree2" instance=ExtResource("1_txp0n")]
+
+[node name="Tree" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_anoy2")
+
+[node name="Leaves" parent="." index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.9, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_n540g")
