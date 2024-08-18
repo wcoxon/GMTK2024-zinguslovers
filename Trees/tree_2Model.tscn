@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b08uawy5x15n0"]
+[gd_scene load_steps=7 format=3 uid="uid://buje34pan8o7e"]
 
 [ext_resource type="PackedScene" uid="uid://ce7m4bgx7op1v" path="res://Trees/Tree2.fbx" id="1_txp0n"]
 [ext_resource type="Shader" path="res://Trees/outlineShader.gdshader" id="2_0w2kr"]

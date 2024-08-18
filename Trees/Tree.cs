@@ -16,9 +16,10 @@ public partial class Tree : Node
 
 	[Export]
 	public double RegenerationRate; //per second
-	Timer regenTimer;
 
-	MeshInstance3D LeavesMesh;
+	protected Timer regenTimer;
+
+	protected MeshInstance3D LeavesMesh;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -36,7 +37,7 @@ public partial class Tree : Node
 		setOutlined(false);
 	}
 
-	public void setOutlined(bool outline){
+	public virtual void setOutlined(bool outline){
 		(GetNode<MeshInstance3D>("Tree2/Tree").GetSurfaceOverrideMaterial(0).NextPass as ShaderMaterial).SetShaderParameter("outline_width", outline ? 5 : 0);
 	}
 
@@ -56,7 +57,7 @@ public partial class Tree : Node
 		return leavesTaken;
 	}
 
-	void UpdateLeaves(){
+	protected virtual void UpdateLeaves(){
 		double factor = LeafMass / MaxLeaves;
 
 		float scale = (float)Mathf.Lerp(0, 1, factor);
