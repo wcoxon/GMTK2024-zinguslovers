@@ -13,28 +13,44 @@ public partial class CharacterBody3d : CharacterBody3D
 {
 	public const float Speed = 2.0f;
 	public const float JumpVelocity = 4.5f;
+
+	private AnthillUI _anthillUI;
+	private TreeUI _treeUI;
  
 	public void EnterAnthill(Area3D area){
 		//show UI stuff
 		Debug.WriteLine("entered anthill");
+		_treeUI.Hide();
+		_anthillUI.Show();
 		// (deposit player leaves)
 	}
 	public void ExitAnthill(Area3D area){
 		//hide UI stuff
 		Debug.WriteLine("exited anthill");
+		_anthillUI.Hide();
 	}
 
 	public void EnterTree(Area3D area){
 		//show UI stuff
 		Debug.WriteLine("entered tree");
+		_anthillUI.Hide();
+		_treeUI.Show();
+		_treeUI.SetTree(area.Owner as Tree);
 	}
 	public void ExitTree(Area3D area){
 		//hide UI stuff
 		Debug.WriteLine("exited tree");
+		_treeUI.Hide();
 	}
 
+    public override void _Ready()
+    {
+        _anthillUI = Owner.GetNode<AnthillUI>("Control/AnthillUI");
+		_treeUI = Owner.GetNode<TreeUI>("Control/TreeUI");
+    }
 
-	public override void _PhysicsProcess(double delta)
+
+    public override void _PhysicsProcess(double delta)
 	{
 		Vector3 velocity = Velocity;
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=19 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="Script" path="res://CharacterBody3d.cs" id="1_71xwv"]
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
 [ext_resource type="PackedScene" uid="uid://cw62dr70qqeeh" path="res://worker.tscn" id="2_flynq"]
 [ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="4_e63rj"]
+[ext_resource type="PackedScene" uid="uid://mpj4r3rqtn1m" path="res://Trees/TreeUI.tscn" id="4_n6wix"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_27fuk"]
@@ -80,28 +81,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Control"]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 21.0
-offset_right = 406.0
-offset_bottom = 370.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="AnthillUpgrades" parent="Control/Panel/MarginContainer" node_paths=PackedStringArray("anthill") instance=ExtResource("2_aj380")]
+[node name="AnthillUI" parent="Control" node_paths=PackedStringArray("anthill", "player") instance=ExtResource("2_aj380")]
 layout_mode = 2
-anthill = NodePath("../../../../Anthill")
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 400.0
+offset_bottom = 450.0
+anthill = NodePath("../../Anthill")
+player = NodePath("../../PlayerAnt")
+
+[node name="TreeUI" parent="Control" node_paths=PackedStringArray("tree") instance=ExtResource("4_n6wix")]
+visible = false
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 400.0
+offset_bottom = 200.0
+tree = NodePath("../../Tree")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 2.503, 0, 0, 0, 4.975, 0, 0, 0)
@@ -152,7 +148,7 @@ environment = SubResource("Environment_54ehq")
 curve = SubResource("Curve3D_n3qna")
 
 [node name="Worker" parent="Path3D" node_paths=PackedStringArray("anthill", "targetTree") instance=ExtResource("2_flynq")]
-transform = Transform3D(-0.214716, 0.103453, 0.971122, 0.132758, 0.988186, -0.0759165, -0.967559, 0.112631, -0.225923, 0.503704, 0.0270895, -1.07539)
+transform = Transform3D(-0.214714, 0.103453, 0.971122, 0.132758, 0.988186, -0.0759164, -0.967559, 0.112631, -0.225921, 0.503703, 0.0270895, -1.07539)
 anthill = NodePath("../../Anthill")
 targetTree = NodePath("../../Tree")
 

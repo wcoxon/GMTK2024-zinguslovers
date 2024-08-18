@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bw2l7f5x8gaee"]
 
 [ext_resource type="Script" path="res://Trees/Tree.cs" id="1_f3s1k"]
-[ext_resource type="PackedScene" uid="uid://4gyvtwtw7m22" path="res://Trees/treeModel.tscn" id="2_daby0"]
+[ext_resource type="PackedScene" path="res://Trees/treeModel.tscn" id="2_daby0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3x2q3"]
 
