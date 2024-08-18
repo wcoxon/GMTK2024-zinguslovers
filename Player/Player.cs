@@ -13,16 +13,23 @@ public partial class Player : CharacterBody3D
 {
 	public const float Speed = 2.0f;
 	public const float JumpVelocity = 4.5f;
+	double cargo = 0;
 
 	private AnthillUI _anthillUI;
 	private TreeUI _treeUI;
  
 	public void EnterAnthill(Area3D area){
+		
 		//show UI stuff
 		Debug.WriteLine("entered anthill");
 		_treeUI.Hide();
 		_anthillUI.Show();
 		// (deposit player leaves)
+		if(cargo>0){
+			Debug.WriteLine($"depositing cargo: {cargo}");
+			(area.Owner as Anthill).Deliver(cargo);
+			cargo = 0;
+		}
 	}
 	public void ExitAnthill(Area3D area){
 		//hide UI stuff
@@ -44,6 +51,11 @@ public partial class Player : CharacterBody3D
 		Debug.WriteLine("exited tree");
 		_treeUI.Hide();
 		(area.Owner as Tree).setOutlined(false);
+	}
+
+	public void EnterPickup(Area3D area){
+		cargo += 10;
+		(area.Owner as Node3D).QueueFree();
 	}
 
     public override void _Ready()

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsl8d5okbeoxs"]
+
+[ext_resource type="PackedScene" uid="uid://6jsk1hue8uf3" path="res://Leaf/leafModel.tscn" id="1_e0ppp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_06cxl"]
+radius = 0.2
+
+[node name="LeafPickup" type="Node3D"]
+
+[node name="leaf" parent="." instance=ExtResource("1_e0ppp")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_06cxl")

@@ -53,3 +53,5 @@ horizontal_alignment = 1
 [node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 10.0
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/HSlider" to="." method="WeightChanged"]

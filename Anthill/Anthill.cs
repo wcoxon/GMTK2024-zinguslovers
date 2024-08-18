@@ -15,7 +15,7 @@ public partial class Anthill : Node3D
 	[Export] public PackedScene antScene;
 	[Export] public Vector3 antSpawningPos;
 
-	[Export] public Path3D[] paths;
+	//[Export] public Path3D[] paths;
 	[Export] public Tree[] targetTrees;
 
 	[Export] public uint numAnts = 1;

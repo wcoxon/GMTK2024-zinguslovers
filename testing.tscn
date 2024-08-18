@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=17 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://mpj4r3rqtn1m" path="res://Trees/TreeUI.tscn" id="4_n6wix"]
 [ext_resource type="PackedScene" uid="uid://dy2g4lfqc406l" path="res://Player/Player.tscn" id="5_1ka04"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
+[ext_resource type="PackedScene" uid="uid://bsl8d5okbeoxs" path="res://Leaf/LeafPickup.tscn" id="8_t344i"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_27fuk"]
 
@@ -63,9 +64,8 @@ point_count = 7
 
 [node name="test node" type="Node3D"]
 
-[node name="Anthill" parent="." node_paths=PackedStringArray("paths", "targetTrees") instance=ExtResource("1_cindc")]
+[node name="Anthill" parent="." node_paths=PackedStringArray("targetTrees") instance=ExtResource("1_cindc")]
 antScene = ExtResource("2_flynq")
-paths = [NodePath("../Path3D"), NodePath("../Path3D2")]
 targetTrees = [NodePath("../Tree"), NodePath("../Tree2")]
 
 [node name="Control" type="Control" parent="."]
@@ -125,12 +125,23 @@ targetTree = NodePath("../../Tree")
 [node name="Path3D2" type="Path3D" parent="."]
 curve = SubResource("Curve3D_mh5qb")
 
-[node name="Tree" parent="." instance=ExtResource("6_0mw8x")]
+[node name="Tree" parent="." node_paths=PackedStringArray("path") instance=ExtResource("6_0mw8x")]
 transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, 1.20155, 0, -1.384)
+path = NodePath("../Path3D")
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
 
-[node name="Tree2" parent="." instance=ExtResource("6_0mw8x")]
+[node name="Tree2" parent="." node_paths=PackedStringArray("path") instance=ExtResource("6_0mw8x")]
 transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, -3.86931, 0, -3.60417)
+path = NodePath("../Path3D2")
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
+
+[node name="LeafPickup" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18962, -2.38419e-07, -0.00427794)
+
+[node name="LeafPickup2" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92781, -2.38419e-07, -2.9635)
+
+[node name="LeafPickup3" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05281, -2.38419e-07, -2.00395)

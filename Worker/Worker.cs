@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 public partial class Worker : PathFollow3D
 {
@@ -17,11 +18,14 @@ public partial class Worker : PathFollow3D
 
 	public void chooseTarget(){
 		var rng = new RandomNumberGenerator();
-		int targetIndex = rng.RandiRange(0,anthill.targetTrees.Length-1);
 
-		targetTree = anthill.targetTrees[targetIndex];
+		float[] weights = anthill.targetTrees.Select(tree => (float)tree.Weighting).ToArray();
+		int index = (int)rng.RandWeighted(weights);
+		targetTree = anthill.targetTrees[index];
+
+
 		GetParent()?.RemoveChild(this);
-		anthill.paths[targetIndex].AddChild(this);
+		anthill.targetTrees[index].path.AddChild(this);
 
 		Progress = 0;
 	}

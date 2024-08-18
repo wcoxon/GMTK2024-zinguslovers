@@ -6,12 +6,16 @@ public partial class Tree : Node
 {
 	public double LeafMass; //how many leaves are on the tree
 
+	public double Weighting = 1;
+
+	[Export] 
+	public Path3D path;
+
 	[Export]
 	public double MaxLeaves; //maximum leaves on a tree
 
 	[Export]
 	public double RegenerationRate; //per second
-
 	Timer regenTimer;
 
 	MeshInstance3D LeavesMesh;
