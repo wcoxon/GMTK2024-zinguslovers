@@ -33,6 +33,8 @@ shader_parameter/border_width = 0.01
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f43uj"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_xbkky"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ma6td"]
 sky_top_color = Color(0.521569, 0.592157, 1, 1)
 sky_horizon_color = Color(1, 1, 1, 1)
@@ -51,7 +53,7 @@ ambient_light_energy = 0.0
 
 [sub_resource type="Curve3D" id="Curve3D_n3qna"]
 _data = {
-"points": PackedVector3Array(-0.660586, -0.241408, -0.496228, 0.660586, 0.241408, 0.496228, 0, 0, 0, -0.209867, 0.0177467, 0.424463, 0.209867, -0.0177467, -0.424463, 1.81929, 0.0258944, -0.196779, 0.147474, -0.101762, 0.212816, -0.147474, 0.101762, -0.212816, 1.27971, 0.0770502, -0.964459, 0.433175, 0.0608807, -0.0456178, -0.433175, -0.0608807, 0.0456178, 1.14336, 2.06992, -1.2719, 0.385559, -0.0705649, -0.355056, -0.385559, 0.0705649, 0.355056, 0.829809, -0.010417, -1.03436, -0.0174603, 0.0270135, -0.535042, 0.0174603, -0.0270135, 0.535042, -0.798399, 0.158338, -0.648323, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedVector3Array(-0.660586, -0.241408, -0.496228, 0.660586, 0.241408, 0.496228, 0, 0, 0, -0.209867, 0.0177467, 0.424463, 0.209867, -0.0177467, -0.424463, 1.81929, 0.0258944, -0.196779, 0.147474, -0.101762, 0.212816, -0.147474, 0.101762, -0.212816, 1.27971, 0.0770502, -0.964459, 0.433175, 0.0608807, -0.0456178, -0.433175, -0.0608807, 0.0456178, 1.14336, 2.06992, -1.2719, 0.385559, -0.0705649, -0.355056, -0.385559, 0.0705649, 0.355056, 0.829809, -0.010417, -1.22561, -0.0174603, 0.0270135, -0.535042, 0.0174603, -0.0270135, 0.535042, -0.656191, 0.0480696, -0.648323, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
@@ -62,8 +64,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
-
-[sub_resource type="TorusMesh" id="TorusMesh_6ebsn"]
 
 [node name="test node" type="Node3D"]
 
@@ -126,6 +126,20 @@ shape = SubResource("SphereShape3D_f43uj")
 [node name="Camera3D" type="Camera3D" parent="PlayerAnt"]
 transform = Transform3D(1, 0, 0, 0, 0.887446, 0.460912, 0, -0.460912, 0.887446, 0, 1.20029, 2.79204)
 
+[node name="Anthill detector" type="Area3D" parent="PlayerAnt"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAnt/Anthill detector"]
+shape = SubResource("SphereShape3D_xbkky")
+
+[node name="Tree detector" type="Area3D" parent="PlayerAnt"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAnt/Tree detector"]
+shape = SubResource("SphereShape3D_xbkky")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.324894, -0.915603, -0.236887, 0.45051, -0.370062, 0.812463, -0.831556, 0.157245, 0.532719, 0, 0, 0)
 shadow_enabled = true
@@ -138,16 +152,12 @@ environment = SubResource("Environment_54ehq")
 curve = SubResource("Curve3D_n3qna")
 
 [node name="Worker" parent="Path3D" node_paths=PackedStringArray("anthill", "targetTree") instance=ExtResource("2_flynq")]
-transform = Transform3D(-0.117894, 0.139834, 0.983074, 0.108482, 0.985875, -0.127221, -0.987035, 0.0916526, -0.131404, 0.505616, 0.0374891, -0.908506)
+transform = Transform3D(-0.214716, 0.103453, 0.971122, 0.132758, 0.988186, -0.0759165, -0.967559, 0.112631, -0.225923, 0.503704, 0.0270895, -1.07539)
 anthill = NodePath("../../Anthill")
 targetTree = NodePath("../../Tree")
 
 [node name="Path3D2" type="Path3D" parent="."]
 curve = SubResource("Curve3D_mh5qb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, -0.0150138, 0)
-mesh = SubResource("TorusMesh_6ebsn")
 
 [node name="Tree" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, 1.20155, 0, -1.384)
@@ -158,3 +168,8 @@ RegenerationRate = 50.0
 transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, -3.86931, 0, -3.60417)
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
+
+[connection signal="area_entered" from="PlayerAnt/Anthill detector" to="PlayerAnt" method="EnterAnthill"]
+[connection signal="area_exited" from="PlayerAnt/Anthill detector" to="PlayerAnt" method="ExitAnthill"]
+[connection signal="area_entered" from="PlayerAnt/Tree detector" to="PlayerAnt" method="EnterTree"]
+[connection signal="area_exited" from="PlayerAnt/Tree detector" to="PlayerAnt" method="ExitTree"]
