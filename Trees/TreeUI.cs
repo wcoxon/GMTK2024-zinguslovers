@@ -1,10 +1,9 @@
 using Godot;
 using System;
 
-public partial class AnthillUI : Panel
+public partial class TreeUI : Panel
 {
-	[Export] public Anthill anthill;
-	[Export] public CharacterBody3d player;
+	[Export] public Tree tree;
 
 	private Label _infolabel;
 	private string _labelformat;
@@ -19,6 +18,6 @@ public partial class AnthillUI : Panel
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		_infolabel.Text = string.Format(_labelformat, anthill.leafMass);
+		_infolabel.Text = String.Format(_labelformat, tree.LeafMass);
 	}
 }

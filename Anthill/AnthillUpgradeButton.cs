@@ -8,16 +8,16 @@ public partial class AnthillUpgradeButton : Button
 	private Anthill anthill;
 	private AnthillStat stat;
 
-	String FormatText;
+	string FormatText;
 
 	private void DoFormat() {
 		if (upgrade == Anthill.Stat.NewAnt) {
-			Text = String.Format(FormatText, stat.level, stat.GetCost(), anthill.numAnts, anthill.numAnts + 1);
+			Text = string.Format(FormatText, stat.level, stat.GetCost(), anthill.numAnts, anthill.numAnts + 1);
 		} else {
 			stat.level++;
 			  double new_val = stat.GetValue();
 			stat.level--;
-			Text = String.Format(FormatText, stat.level, stat.GetCost(), stat.GetValue(), new_val);
+			Text = string.Format(FormatText, stat.level, stat.GetCost(), stat.GetValue(), new_val);
 		}
 
 	}
