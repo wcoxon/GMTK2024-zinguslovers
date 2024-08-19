@@ -47,7 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 script = ExtResource("3_ujr0h")
 
 [node name="Camera3D" type="Camera3D" parent="CameraController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [connection signal="area_entered" from="Anthill detector" to="." method="EnterAnthill"]
 [connection signal="area_exited" from="Anthill detector" to="." method="ExitAnthill"]
