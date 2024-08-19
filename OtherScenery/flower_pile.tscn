@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://damonai63d4pv"]
+
+[ext_resource type="PackedScene" uid="uid://8el5av8rcr1o" path="res://OtherScenery/FlowerPile.fbx" id="1_av1t4"]
+[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_kpt0x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rcsns"]
+render_priority = 0
+shader = ExtResource("2_kpt0x")
+shader_parameter/albedo = Color(0.976471, 0.596078, 0.847059, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 2
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[node name="FlowerPile" instance=ExtResource("1_av1t4")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_rcsns")
