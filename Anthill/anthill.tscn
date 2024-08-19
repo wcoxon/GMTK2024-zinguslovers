@@ -74,7 +74,6 @@ targetTrees = []
 script = ExtResource("2_kwy1h")
 valueExpression = "1 + 0.05 * l"
 costExpression = "100 + 50 *l + 2 ** l"
-level = 55
 
 [node name="AntCarryCapacity" type="Node" parent="."]
 script = ExtResource("2_kwy1h")

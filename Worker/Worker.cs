@@ -41,7 +41,7 @@ public partial class Worker : PathFollow3D
 
 
 		GetParent()?.RemoveChild(this);
-		anthill.targetTrees[index].path.AddChild(this);
+		targetTree.path.AddChild(this);
 
 		Progress = 0;
 		hasTarget = true;
@@ -58,8 +58,9 @@ public partial class Worker : PathFollow3D
 
 		Progress += (float)moveDistance;
 
+		//Debug.WriteLine(targetTree.leafIndex);
 		//if at point [3] in the path, collect a leaf
-		if((Position - GetParent<Path3D>().Curve.GetPointPosition(3)).Length() < moveDistance && cargo==0){
+		if((Position - targetTree.path.Curve.GetPointPosition(targetTree.leafIndex)).Length() < moveDistance && cargo==0){
 			//take leaf
 			cargo = targetTree.TryTakeLeaf(anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue());
 			leaf.Show();

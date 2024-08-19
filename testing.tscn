@@ -1,42 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=13 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
 [ext_resource type="PackedScene" uid="uid://cw62dr70qqeeh" path="res://Worker/worker.tscn" id="2_flynq"]
-[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="4_e63rj"]
 [ext_resource type="PackedScene" uid="uid://mpj4r3rqtn1m" path="res://Trees/TreeUI.tscn" id="4_n6wix"]
 [ext_resource type="PackedScene" uid="uid://dy2g4lfqc406l" path="res://Player/Player.tscn" id="5_1ka04"]
+[ext_resource type="PackedScene" uid="uid://dydxsbjj2mirx" path="res://ground.tscn" id="5_my2hh"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
 [ext_resource type="PackedScene" uid="uid://bsl8d5okbeoxs" path="res://Leaf/LeafPickup.tscn" id="8_t344i"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_27fuk"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3fiwl"]
-render_priority = 0
-shader = ExtResource("4_e63rj")
-shader_parameter/albedo = Color(0.44255, 0.707537, 0.640222, 1)
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
-shader_parameter/wrap = 0.0
-shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = true
-shader_parameter/use_specular = false
-shader_parameter/specular_strength = 1.0
-shader_parameter/specular_shininess = 16.0
-shader_parameter/use_rim = false
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_v2h5o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ma6td"]
 sky_top_color = Color(0.521569, 0.592157, 1, 1)
 sky_horizon_color = Color(1, 1, 1, 1)
-ground_bottom_color = Color(0.28481, 0.552213, 0.436561, 1)
-ground_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0.537255, 0.682353, 1)
+ground_horizon_color = Color(0.804743, 0.804743, 0.804743, 1)
 
 [sub_resource type="Sky" id="Sky_bbue5"]
 sky_material = SubResource("ProceduralSkyMaterial_ma6td")
@@ -50,14 +27,7 @@ ambient_light_energy = 0.0
 
 [sub_resource type="Curve3D" id="Curve3D_n3qna"]
 _data = {
-"points": PackedVector3Array(-0.660586, -0.241408, -0.496228, 0.660586, 0.241408, 0.496228, 0, 0, 0, -0.209867, 0.0177467, 0.424463, 0.209867, -0.0177467, -0.424463, 1.81929, 0.0258944, -0.196779, 0.147474, -0.101762, 0.212816, -0.147474, 0.101762, -0.212816, 1.27971, 0.0770502, -0.964459, 0.433175, 0.0608807, -0.0456178, -0.433175, -0.0608807, 0.0456178, 1.14336, 2.06992, -1.2719, 0.385559, -0.0705649, -0.355056, -0.385559, 0.0705649, 0.355056, 0.829809, -0.010417, -1.22561, -0.0174603, 0.0270135, -0.535042, 0.0174603, -0.0270135, 0.535042, -0.656191, 0.0480696, -0.648323, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
-
-[sub_resource type="Curve3D" id="Curve3D_mh5qb"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2.7851, 0.0236318, -1.17611, 0, 0, 0, 0, 0, 0, -3.89563, 0.0361846, -3.22673, 0, 0, 0, 0, 0, 0, -3.80243, 2.013, -3.49413, 0, 0, 0, 0, 0, 0, -3.49161, 0.0301491, -3.63846, -0.663041, 0.0227203, 0.168651, 0.663041, -0.0227203, -0.168651, -0.966578, 0.0348559, -1.80529, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedVector3Array(-0.660586, -0.241408, -0.496228, 0.660586, 0.241408, 0.496228, 0, 0, 0, -0.209867, 0.0177467, 0.424463, 0.209867, -0.0177467, -0.424463, 1.81929, 0.168892, -0.196779, 0.147474, -0.101762, 0.212816, -0.147474, 0.101762, -0.212816, 1.27971, 0.169109, -0.964459, 0.433175, 0.0608807, -0.0456178, -0.433175, -0.0608807, 0.0456178, 1.14336, 2.06992, -1.2719, 0.385559, -0.0705649, -0.355056, -0.385559, 0.0705649, 0.355056, 0.829809, -0.010417, -1.22561, -0.0174603, 0.0270135, -0.535042, 0.0174603, -0.0270135, 0.535042, -0.656191, 0.0480696, -0.648323, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
@@ -65,8 +35,9 @@ point_count = 7
 [node name="test node" type="Node3D"]
 
 [node name="Anthill" parent="." node_paths=PackedStringArray("targetTrees") instance=ExtResource("1_cindc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.258757, 0)
 antScene = ExtResource("2_flynq")
-targetTrees = [NodePath("../Tree"), NodePath("../Tree2")]
+targetTrees = [NodePath("../Tree")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -95,16 +66,8 @@ offset_bottom = 200.0
 tree = NodePath("../../Tree")
 player = NodePath("../../PlayerAnt")
 
-[node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 2.503, 0, 0, 0, 4.975, 0, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
-mesh = SubResource("PlaneMesh_27fuk")
-surface_material_override/0 = SubResource("ShaderMaterial_3fiwl")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_v2h5o")
+[node name="Ground" parent="." instance=ExtResource("5_my2hh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.59245, 0)
 
 [node name="PlayerAnt" parent="." node_paths=PackedStringArray("anthill") instance=ExtResource("5_1ka04")]
 anthill = NodePath("../Anthill")
@@ -120,31 +83,32 @@ environment = SubResource("Environment_54ehq")
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_n3qna")
 
-[node name="Worker" parent="Path3D" node_paths=PackedStringArray("anthill", "targetTree") instance=ExtResource("2_flynq")]
-transform = Transform3D(-0.226577, 0.0739424, 0.971121, 0, 0.997063, -0.0759163, -0.97394, -0.0172019, -0.225921, 0.503703, 0.0270895, -1.07539)
-anthill = NodePath("../../Anthill")
-targetTree = NodePath("../../Tree")
-
-[node name="Path3D2" type="Path3D" parent="."]
-curve = SubResource("Curve3D_mh5qb")
-
 [node name="Tree" parent="." node_paths=PackedStringArray("path") instance=ExtResource("6_0mw8x")]
 transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, 1.20155, 0, -1.384)
 path = NodePath("../Path3D")
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
 
-[node name="Tree2" parent="." node_paths=PackedStringArray("path") instance=ExtResource("6_0mw8x")]
-transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, -3.86931, 0, -3.60417)
-path = NodePath("../Path3D2")
+[node name="Tree2" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, -3.86931, -0.427778, -3.60417)
+MaxLeaves = 1000.0
+RegenerationRate = 50.0
+
+[node name="Tree3" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, -3.86931, 0.0746576, 7.97655)
+MaxLeaves = 1000.0
+RegenerationRate = 50.0
+
+[node name="Tree4" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, 6.95113, 0.0746576, 7.97655)
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
 
 [node name="LeafPickup" parent="." instance=ExtResource("8_t344i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18962, -2.38419e-07, -0.00427794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18962, -0.479389, -0.00427794)
 
 [node name="LeafPickup2" parent="." instance=ExtResource("8_t344i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92781, -2.38419e-07, -2.9635)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92781, -0.19153, -2.9635)
 
 [node name="LeafPickup3" parent="." instance=ExtResource("8_t344i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05281, -2.38419e-07, -2.00395)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05281, -0.516916, -2.00395)

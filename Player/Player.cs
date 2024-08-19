@@ -65,10 +65,13 @@ public partial class Player : CharacterBody3D
 		if (PathHasTree()) {
 			trailBuilder.AddFinal(anthill.Position);
 			Debug.WriteLine("setting tree path to new one");
-			trailBuilder.tree.path.Curve = trailBuilder.curve;
-            //Path3D path = new Path3D { Curve = trailBuilder.curve };
-            //Owner.AddChild(path);
-			//trailBuilder.tree.path = path;
+			if(trailBuilder.tree.path==null){
+				Path3D path = new Path3D{Curve = trailBuilder.curve};
+				trailBuilder.tree.path = path;
+				Owner.AddChild(path);
+			}
+			else trailBuilder.tree.path.Curve = trailBuilder.curve;
+
 			anthill.targetTrees.Add(trailBuilder.tree);
 		}
 		trailBuilder = null;
@@ -78,11 +81,16 @@ public partial class Player : CharacterBody3D
 		trailBuilder.tree = tree;
 		trailBuilder.AddPoint(Position);
 		trailBuilder.AddPoint(Position);
+
+		
 		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
 		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
 		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
+		trailBuilder.tree.leafIndex = trailBuilder.curve.PointCount;
+
 		trailBuilder.AddPoint(Position);
 		trailBuilder.AddPoint(Position);
+
 
 	}
 

@@ -11,6 +11,7 @@ public partial class Tree : Node3D
 
 	[Export] 
 	public Path3D path;
+	public int leafIndex = 3;
 
 	[Export]
 	public double MaxLeaves; //maximum leaves on a tree
@@ -36,6 +37,8 @@ public partial class Tree : Node3D
 		regenTimer.Timeout += OnLeafTimerTimeout;
 
 		setOutlined(false);
+
+		
 	}
 
 	public virtual void setOutlined(bool outline){
