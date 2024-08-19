@@ -161,8 +161,15 @@ public partial class Player : CharacterBody3D
 
 		if (Input.IsActionJustReleased("jump"))
 		{
-			velocity.Y *= 0.4f;
+			if (velocity.Y > 0){
+				velocity.Y *= 0.4f;
+			}
+			
 		}
+
+		// if(!IsOnFloor()){
+		// 	LerpVelocity = new Vector2(velocity.X, velocity.Z)
+		// }
 
 		if(!velocity.IsEqualApprox(Vector3.Zero)){
 			
