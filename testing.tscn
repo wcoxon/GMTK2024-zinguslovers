@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=14 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
@@ -29,19 +29,11 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.5
 ambient_light_energy = 0.0
 
-[sub_resource type="Curve3D" id="Curve3D_n3qna"]
-_data = {
-"points": PackedVector3Array(-0.660586, -0.241408, -0.496228, 0.660586, 0.241408, 0.496228, 0, 0, 0, -0.209867, 0.0177467, 0.424463, 0.209867, -0.0177467, -0.424463, 1.81929, 0.168892, -0.196779, 0.147474, -0.101762, 0.212816, -0.147474, 0.101762, -0.212816, 1.27971, 0.169109, -0.964459, 0.433175, 0.0608807, -0.0456178, -0.433175, -0.0608807, 0.0456178, 1.14336, 2.06992, -1.2719, 0.385559, -0.0705649, -0.355056, -0.385559, 0.0705649, 0.355056, 0.829809, -0.010417, -1.22561, -0.0174603, 0.0270135, -0.535042, 0.0174603, -0.0270135, 0.535042, -0.656191, 0.0480696, -0.648323, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
-
 [node name="test node" type="Node3D"]
 
-[node name="Anthill" parent="." node_paths=PackedStringArray("targetTrees") instance=ExtResource("1_cindc")]
+[node name="Anthill" parent="." instance=ExtResource("1_cindc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.258757, 0)
 antScene = ExtResource("2_flynq")
-targetTrees = [NodePath("../Tree")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -78,7 +70,7 @@ anthill = NodePath("../Anthill")
 trailParticle = ExtResource("7_8bgau")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.0330877, -0.781398, 0.623155, 0.160026, 0.611311, 0.775043, -0.986558, 0.125365, 0.104817, 0, 0, 0)
+transform = Transform3D(-0.0501769, -0.842849, 0.535806, 0.155517, 0.523345, 0.837809, -0.986558, 0.125365, 0.104817, 0, 0, 0)
 light_energy = 1.5
 shadow_enabled = true
 shadow_blur = 1.565
@@ -86,27 +78,23 @@ shadow_blur = 1.565
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_54ehq")
 
-[node name="Path3D" type="Path3D" parent="."]
-curve = SubResource("Curve3D_n3qna")
-
-[node name="Tree" parent="." node_paths=PackedStringArray("path") instance=ExtResource("6_0mw8x")]
-transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, 1.20155, 0, -1.384)
-path = NodePath("../Path3D")
+[node name="Tree" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(-0.214667, 0, 0.976687, 0, 1, 0, -0.976687, 0, -0.214667, -4.00525, -2.7657, 50.5586)
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
 
 [node name="Tree2" parent="." instance=ExtResource("6_0mw8x")]
-transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, -3.86931, -0.427778, -3.60417)
+transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, 70.572, -0.39378, -3.71347)
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
 
 [node name="Tree3" parent="." instance=ExtResource("6_0mw8x")]
-transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, -3.86931, 0.0746576, 7.97655)
+transform = Transform3D(-0.160364, 0, 0.987058, 0, 1, 0, -0.987058, 0, -0.160364, -10.0252, 0.0746576, 12.8392)
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
 
 [node name="Tree4" parent="." instance=ExtResource("6_0mw8x")]
-transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, 6.95113, 0.0746576, 7.97655)
+transform = Transform3D(-0.882915, 0, 0.469533, 0, 1, 0, -0.469533, 0, -0.882915, 18.8676, -0.393105, 10.6443)
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
 
@@ -117,31 +105,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18962, -0.479389, -0.00427
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92781, -0.19153, -2.9635)
 
 [node name="LeafPickup3" parent="." instance=ExtResource("8_t344i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05281, -0.516916, -2.00395)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05281, -0.906932, -2.00395)
 
 [node name="BigTree" parent="." instance=ExtResource("9_u5sqt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66077, -0.882064, -15.696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.596, -3.90134, 46.9098)
 TreeHeight = 0.0
 
 [node name="Tree5" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17101, -0.522283, -7.79472)
 
 [node name="Tree6" parent="." instance=ExtResource("6_0mw8x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0822, 0.186533, 24.6313)
+transform = Transform3D(0.152986, 0, -0.988228, 0, 1, 0, 0.988228, 0, 0.152986, 12.9076, 0.186533, 32.3994)
 
 [node name="Tree7" parent="." instance=ExtResource("6_0mw8x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75422, 0.0246428, 13.2024)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06145, 0.439632, 13.7399)
 
 [node name="Tree8" parent="." instance=ExtResource("6_0mw8x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.372, -0.422145, -0.0683226)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.8333, -0.540496, 7.23633)
 
 [node name="Tree9" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.99896, -0.997096, -13.8504)
 MaxLeaves = 1000.0
 
 [node name="Tree10" parent="." instance=ExtResource("6_0mw8x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.333, -0.0678661, 16.8598)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.2257, -3.09047, 27.8323)
 
 [node name="Tree11" parent="." instance=ExtResource("6_0mw8x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74698, -0.724748, 2.35017)
+transform = Transform3D(-0.328306, 0, 0.944571, 0, 1, 0, -0.944571, 0, -0.328306, -9.74698, -0.724748, 2.35017)
 RegenerationRate = 40.0
+
+[node name="Tree12" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47128, 0.453104, 30.5277)
+
+[node name="Tree13" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.8923, -0.175146, -20.5073)
+
+[node name="BigTree2" parent="." instance=ExtResource("9_u5sqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.649, -3.27444, -44.0502)
