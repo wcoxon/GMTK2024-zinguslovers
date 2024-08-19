@@ -6,7 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://duw1inemfjgxl" path="res://Leaf/Leaf4.obj" id="4_e7osw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rvkqj"]
-radius = 0.909324
+radius = 0.787825
 height = 5.86504
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y8paa"]
@@ -59,8 +59,9 @@ scale_max = 0.05
 
 [node name="BigTree" type="Node3D"]
 script = ExtResource("1_td25i")
-MaxLeaves = 500.0
-RegenerationRate = 5.0
+MaxLeaves = 10000.0
+RegenerationRate = 500.0
+TreeHeight = 6.5
 
 [node name="BiTree" parent="." instance=ExtResource("1_jnj6i")]
 

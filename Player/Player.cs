@@ -83,9 +83,9 @@ public partial class Player : CharacterBody3D
 		trailBuilder.AddPoint(Position);
 
 		
-		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
-		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
-		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
+		trailBuilder.AddPoint(tree.Position + Vector3.Up * tree.TreeHeight);
+		trailBuilder.AddPoint(tree.Position + Vector3.Up * tree.TreeHeight);
+		trailBuilder.AddPoint(tree.Position + Vector3.Up * tree.TreeHeight);
 		trailBuilder.tree.leafIndex = trailBuilder.curve.PointCount;
 
 		trailBuilder.AddPoint(Position);
