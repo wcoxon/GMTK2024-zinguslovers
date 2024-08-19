@@ -77,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.594433, 0)
 shape = SubResource("CapsuleShape3D_rvkqj")
 
 [node name="Leaves" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.11613, 0.0175017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.88484, 0.0175017)
 material_override = SubResource("ShaderMaterial_y8paa")
 cast_shadow = 0
 emitting = false
