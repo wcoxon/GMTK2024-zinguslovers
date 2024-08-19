@@ -167,10 +167,6 @@ public partial class Player : CharacterBody3D
 			
 		}
 
-		// if(!IsOnFloor()){
-		// 	LerpVelocity = new Vector2(velocity.X, velocity.Z)
-		// }
-
 		if(!velocity.IsEqualApprox(Vector3.Zero)){
 			
 			Vector3 up = GetFloorNormal();
@@ -179,7 +175,7 @@ public partial class Player : CharacterBody3D
 			}
 			if(Mathf.Abs(velocity.Normalized().Y)!=1)GetNode<Node3D>("Ants").LookAt(Position+velocity,up,false);
 		}
-
+		
 		Velocity = velocity;
 		MoveAndSlide();
 
