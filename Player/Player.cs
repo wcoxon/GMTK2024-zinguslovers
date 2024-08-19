@@ -25,7 +25,6 @@ public partial class Player : CharacterBody3D
 	}
 
 	public void EnterAnthill(Area3D area){
-		
 		//show UI stuff
 		Debug.WriteLine("entered anthill");
 		_treeUI.Hide();
@@ -65,9 +64,11 @@ public partial class Player : CharacterBody3D
 	public void StopPathing() {
 		if (PathHasTree()) {
 			trailBuilder.AddFinal(anthill.Position);
-            Path3D path = new Path3D { Curve = trailBuilder.curve };
-            Owner.AddChild(path);
-			trailBuilder.tree.path = path;
+			Debug.WriteLine("setting tree path to new one");
+			trailBuilder.tree.path.Curve = trailBuilder.curve;
+            //Path3D path = new Path3D { Curve = trailBuilder.curve };
+            //Owner.AddChild(path);
+			//trailBuilder.tree.path = path;
 			anthill.targetTrees.Add(trailBuilder.tree);
 		}
 		trailBuilder = null;

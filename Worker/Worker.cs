@@ -8,12 +8,14 @@ public partial class Worker : PathFollow3D
 	[Export]
 	public Anthill anthill;
 
+	private Node3D leaf;
 	bool hasTarget;
 	public double cargo;
 	[Export] public Tree targetTree;
 
 	public override void _Ready()
 	{
+		leaf = GetNode<Node3D>("leaf");
 		Progress = 0;
 		hasTarget = anthill.targetTrees.Count > 0;
 	}
@@ -56,14 +58,18 @@ public partial class Worker : PathFollow3D
 
 		Progress += (float)moveDistance;
 
+		//if at point [3] in the path, collect a leaf
 		if((Position - GetParent<Path3D>().Curve.GetPointPosition(3)).Length() < moveDistance && cargo==0){
 			//take leaf
 			cargo = targetTree.TryTakeLeaf(anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue());
+			leaf.Show();
+			leaf.Scale = Vector3.Zero.Lerp(Vector3.One*10,(float)(cargo/anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue()));
 		}
 		else if(ProgressRatio==1){
 			// deposit leaf // empty cargo
 			anthill.Deliver(cargo);
 			cargo = 0;
+			GetNode<Node3D>("leaf").Hide();
 
 			chooseTarget();
 		}

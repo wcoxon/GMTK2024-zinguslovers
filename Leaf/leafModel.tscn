@@ -25,4 +25,5 @@ shader_parameter/border_width = 0.01
 [node name="leaf" instance=ExtResource("1_3rjp6")]
 
 [node name="Plane" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.0162431)
 surface_material_override/0 = SubResource("ShaderMaterial_bqhjg")

@@ -20,7 +20,7 @@ public partial class TreeTrailControl : Button
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (tree.path != null) {
+		if (player.anthill.targetTrees.Contains(tree)) {
 			Text = names[1];
 			Disabled = false;
 		} else if (player.IsPathing() && !player.PathHasTree()) {
@@ -32,8 +32,8 @@ public partial class TreeTrailControl : Button
 	}
 
 	public override void _Pressed() {
-		if (tree.path != null) {
-			tree.path = null;
+		if (player.anthill.targetTrees.Contains(tree)) {
+			//tree.path = null;
 			player.anthill.targetTrees.Remove(tree);
 		} else {
 			player.PathAddTree(tree);
