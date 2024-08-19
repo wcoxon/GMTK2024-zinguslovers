@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy2g4lfqc406l"]
+[gd_scene load_steps=7 format=3 uid="uid://dy2g4lfqc406l"]
 
 [ext_resource type="Script" path="res://Player/Player.cs" id="1_s0fi0"]
 [ext_resource type="PackedScene" uid="uid://wjewpvohmfj5" path="res://Worker/AnimatedAnt.tscn" id="2_5owu4"]
+[ext_resource type="Script" path="res://Player/CameraController.cs" id="3_ujr0h"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f43uj"]
 radius = 0.15
@@ -19,9 +20,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.170653, 0.028035)
 shape = SubResource("SphereShape3D_f43uj")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.895999, 0.444057, 0, -0.444057, 0.895999, 0, 1.92353, 3.11992)
 
 [node name="Anthill detector" type="Area3D" parent="."]
 collision_layer = 0
@@ -43,6 +41,13 @@ collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Leaf detector"]
 shape = SubResource("SphereShape3D_uv2m7")
+
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("3_ujr0h")
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [connection signal="area_entered" from="Anthill detector" to="." method="EnterAnthill"]
 [connection signal="area_exited" from="Anthill detector" to="." method="ExitAnthill"]

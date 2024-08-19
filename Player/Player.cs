@@ -4,8 +4,8 @@ using System.Diagnostics;
 
 public partial class Player : CharacterBody3D
 {
-	public const float acceleration = 6.0f;
-	public const float maxSpeed = 2.0f;
+	public const float acceleration = 9.0f;
+	public const float maxSpeed = 3.0f;
 	public const float JumpVelocity = 4.5f;
 	double cargo = 0;
 	public TrailBuilder trailBuilder;
@@ -13,6 +13,7 @@ public partial class Player : CharacterBody3D
 
 	private AnthillUI _anthillUI;
 	private TreeUI _treeUI;
+	public CameraController _cameraController;
 
 	protected PackedScene leafScene;
 
@@ -30,29 +31,26 @@ public partial class Player : CharacterBody3D
 	}
 
 	public void EnterAnthill(Area3D area){
-		//show UI stuff
-		Debug.WriteLine("entered anthill");
+		//show UI
 		_treeUI.Hide();
 		_anthillUI.Show();
 	}
 	public void ExitAnthill(Area3D area){
-		//hide UI stuff
-		Debug.WriteLine("exited anthill");
+		//hide UI
 		_anthillUI.Hide();
 	}
 
 	public void EnterTree(Area3D area){
-		//show UI stuff
-		Debug.WriteLine("entered tree");
-
+		// hide anthill ui
 		_anthillUI.Hide();
+
+		//show tree UI
 		_treeUI.Show();
 		_treeUI.SetTree(area.Owner as Tree);
 		(area.Owner as Tree).setOutlined(true);
 	}
 	public void ExitTree(Area3D area){
-		//hide UI stuff
-		Debug.WriteLine("exited tree");
+		//hide tree UI
 		_treeUI.Hide();
 		(area.Owner as Tree).setOutlined(false);
 	}
@@ -109,7 +107,6 @@ public partial class Player : CharacterBody3D
 	public bool PathHasTree() {
 		return trailBuilder.tree != null;
 	}
-
 	public bool IsPathing() {
 		return trailBuilder != null;
 	}
@@ -119,36 +116,24 @@ public partial class Player : CharacterBody3D
         _anthillUI = Owner.GetNode<AnthillUI>("Control/AnthillUI");
 		_treeUI = Owner.GetNode<TreeUI>("Control/TreeUI");
 		leafScene = GD.Load<PackedScene>("res://PlayerPickupParticles.tscn");
+		_cameraController = GetNode<CameraController>("CameraController");
     }
 
     public override void _PhysicsProcess(double delta)
 	{
-		Vector3 velocity = Velocity;
-
-		// Add gravity
-		if (!IsOnFloor())
-		{
-			velocity += GetGravity() * (float)delta;
-		}
-
-		// Handle Jump
-		if (Input.IsActionJustPressed("jump") && IsOnFloor())
-		{
-			velocity.Y = JumpVelocity;
-		}
+		Vector3 velocity = new Vector3(Velocity.X,0,Velocity.Z);
 
 		Vector2 inputDir = Input.GetVector("left", "right", "up", "down");
-		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+		Vector3 direction = new Vector3(inputDir.X, 0, inputDir.Y).Rotated(Vector3.Up,-Mathf.DegToRad(_cameraController.yaw)).Normalized();
+
 		if (direction != Vector3.Zero)
 		{
 			velocity += direction * acceleration * (float)delta;
 
+			//limit walking speed
 			velocity = velocity.Normalized() * Mathf.Min(velocity.Length(),maxSpeed);
 			
 			GetNode<AnimationPlayer>("Ants/AnimationPlayer").Play();
-
-			if(!velocity.IsEqualApprox(Vector3.Zero))
-				((Node3D)GetChild(0)).LookAt(Position-velocity,Vector3.Up,true);
 		}
 		else
 		{
@@ -156,9 +141,31 @@ public partial class Player : CharacterBody3D
 		}
 		
 		GetNode<AnimationPlayer>("Ants/AnimationPlayer").SpeedScale = velocity.Length()/2.0f;
-
 		if(velocity == Vector3.Zero){
 			GetNode<AnimationPlayer>("Ants/AnimationPlayer").Pause();
+		}
+
+
+		//add vertical component after limited speed
+		velocity.Y = Velocity.Y;
+		//add gravity
+		if (!IsOnFloor())
+		{
+			velocity += GetGravity() * (float)delta;
+		}
+		// Handle Jump
+		if (Input.IsActionJustPressed("jump") && IsOnFloor())
+		{
+			velocity.Y = JumpVelocity;
+		}
+
+		if(!velocity.IsEqualApprox(Vector3.Zero)){
+			
+			Vector3 up = GetFloorNormal();
+			if(up==Vector3.Zero){
+				up = Vector3.Up;
+			}
+			if(Mathf.Abs(velocity.Normalized().Y)!=1)GetNode<Node3D>("Ants").LookAt(Position+velocity,up,false);
 		}
 
 		Velocity = velocity;
@@ -176,7 +183,4 @@ public partial class Player : CharacterBody3D
 		Node3D sceneInstance = (Node3D)leafScene.Instantiate();
 		AddChild(sceneInstance);
 	}
-
-
-		
 }
