@@ -13,6 +13,8 @@ public partial class Player : CharacterBody3D
 	private AnthillUI _anthillUI;
 	private TreeUI _treeUI;
 
+	protected PackedScene leafScene;
+
 	[Export] public Anthill anthill;
 
 	public double getCargo(){
@@ -55,6 +57,7 @@ public partial class Player : CharacterBody3D
 	public void EnterPickup(Area3D area){
 		cargo += 10;
 		(area.Owner as Node3D).QueueFree();
+		LeafPoofAnimation();
 	}
 
 	public void StartPathing() {
@@ -106,6 +109,7 @@ public partial class Player : CharacterBody3D
     {
         _anthillUI = Owner.GetNode<AnthillUI>("Control/AnthillUI");
 		_treeUI = Owner.GetNode<TreeUI>("Control/TreeUI");
+		leafScene = GD.Load<PackedScene>("res://PlayerPickupParticles.tscn");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -154,6 +158,11 @@ public partial class Player : CharacterBody3D
 		if (IsPathing() && (trailBuilder.point - Position).Length() > 0.5f) {
 			trailBuilder.AddPoint(Position);
 		}
+	}
+
+	public void LeafPoofAnimation(){
+		Node3D sceneInstance = (Node3D)leafScene.Instantiate();
+		AddChild(sceneInstance);
 	}
 
 
