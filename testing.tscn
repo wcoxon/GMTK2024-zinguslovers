@@ -77,8 +77,9 @@ anthill = NodePath("../Anthill")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.0330877, -0.781398, 0.623155, 0.160026, 0.611311, 0.775043, -0.986558, 0.125365, 0.104817, 0, 0, 0)
+light_energy = 1.5
 shadow_enabled = true
-shadow_blur = 0.0
+shadow_blur = 1.565
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_54ehq")

@@ -64,13 +64,17 @@ public partial class Tree : Node3D
 		LeafMass -= leavesTaken; //then remove that many leaves from the tree, I don't think we need the Max but I'm just being safe so we don't get negative leaves somehow
 
 		UpdateLeaves();
-		
-		Node3D sceneInstance = (Node3D)LeafScene.Instantiate();
-		sceneInstance.Position += Vector3.Up * TreeHeight;
-		AddChild(sceneInstance);
+		LeafPoofAnimation();
+
 
 
 		return leavesTaken;
+	}
+
+	public void LeafPoofAnimation(){
+		Node3D sceneInstance = (Node3D)LeafScene.Instantiate();
+		sceneInstance.Position += Vector3.Up * TreeHeight;
+		AddChild(sceneInstance);
 	}
 
 	protected virtual void UpdateLeaves(){
