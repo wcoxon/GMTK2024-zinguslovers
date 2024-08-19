@@ -23,6 +23,8 @@ public partial class Tree : Node3D
 
 	protected MeshInstance3D LeavesMesh;
 
+	PackedScene LeafScene;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -35,6 +37,8 @@ public partial class Tree : Node3D
 		LeafMass = 0;
 
 		regenTimer.Timeout += OnLeafTimerTimeout;
+
+		LeafScene = GD.Load<PackedScene>("res://leavesPart.tscn");
 
 		setOutlined(false);
 
@@ -57,6 +61,9 @@ public partial class Tree : Node3D
 		LeafMass -= leavesTaken; //then remove that many leaves from the tree, I don't think we need the Max but I'm just being safe so we don't get negative leaves somehow
 
 		UpdateLeaves();
+		
+		var sceneInstance = LeafScene.Instantiate();
+		AddChild(sceneInstance);
 
 		return leavesTaken;
 	}

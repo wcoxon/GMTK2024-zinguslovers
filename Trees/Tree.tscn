@@ -1,9 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw2l7f5x8gaee"]
+[gd_scene load_steps=9 format=3 uid="uid://bw2l7f5x8gaee"]
 
 [ext_resource type="Script" path="res://Trees/Tree.cs" id="1_f3s1k"]
 [ext_resource type="PackedScene" uid="uid://buje34pan8o7e" path="res://Trees/tree_2Model.tscn" id="3_cvd2e"]
+[ext_resource type="PackedScene" uid="uid://cqeqjb630x4vs" path="res://leavesPart.tscn" id="4_2d057"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3x2q3"]
+
+[sub_resource type="Curve" id="Curve_pfi6o"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_djubc"]
+curve = SubResource("Curve_pfi6o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_83on8"]
+resource_local_to_scene = true
+lifetime_randomness = 0.07
+particle_flag_align_y = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+velocity_pivot = Vector3(0, 1, 0)
+spread = 180.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+angular_velocity_curve = SubResource("CurveTexture_djubc")
+orbit_velocity_min = 6.0
+orbit_velocity_max = 6.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 0.999978
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 0.999998
+scale_min = 0.05
+scale_max = 0.05
 
 [node name="Tree2" type="Node3D"]
 script = ExtResource("1_f3s1k")
@@ -23,3 +54,6 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.594433, 0)
 shape = SubResource("CapsuleShape3D_3x2q3")
+
+[node name="Leaves" parent="." instance=ExtResource("4_2d057")]
+process_material = SubResource("ParticleProcessMaterial_83on8")
