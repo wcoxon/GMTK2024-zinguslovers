@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=15 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dy2g4lfqc406l" path="res://Player/Player.tscn" id="5_1ka04"]
 [ext_resource type="PackedScene" uid="uid://dydxsbjj2mirx" path="res://ground.tscn" id="5_my2hh"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
+[ext_resource type="PackedScene" uid="uid://cibe3m4xgf7wu" path="res://Player/TrailParticle.tscn" id="7_8bgau"]
 [ext_resource type="PackedScene" uid="uid://bsl8d5okbeoxs" path="res://Leaf/LeafPickup.tscn" id="8_t344i"]
 [ext_resource type="PackedScene" uid="uid://bvo58bbvt58xt" path="res://Trees/BigTree.tscn" id="9_u5sqt"]
 
@@ -74,6 +75,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -5.18376, 0)
 
 [node name="PlayerAnt" parent="." node_paths=PackedStringArray("anthill") instance=ExtResource("5_1ka04")]
 anthill = NodePath("../Anthill")
+trailParticle = ExtResource("7_8bgau")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.0330877, -0.781398, 0.623155, 0.160026, 0.611311, 0.775043, -0.986558, 0.125365, 0.104817, 0, 0, 0)
@@ -119,7 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05281, -0.516916, -2.00395
 
 [node name="BigTree" parent="." instance=ExtResource("9_u5sqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66077, -0.882064, -15.696)
-TreeHeight = 10.0
+TreeHeight = 0.0
 
 [node name="Tree5" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17101, -0.522283, -7.79472)

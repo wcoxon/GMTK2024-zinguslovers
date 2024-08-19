@@ -9,6 +9,7 @@ public partial class Player : CharacterBody3D
 	public const float JumpVelocity = 4.5f;
 	double cargo = 0;
 	public TrailBuilder trailBuilder;
+	private Node _trailParticles;
 
 	private AnthillUI _anthillUI;
 	private TreeUI _treeUI;
@@ -16,6 +17,8 @@ public partial class Player : CharacterBody3D
 	protected PackedScene leafScene;
 
 	[Export] public Anthill anthill;
+
+	[Export] public PackedScene trailParticle;
 
 	public double getCargo(){
 		return cargo;
@@ -62,22 +65,30 @@ public partial class Player : CharacterBody3D
 
 	public void StartPathing() {
 		trailBuilder = new TrailBuilder(anthill.Position);
+		_trailParticles = new Node();
+		Owner.AddChild(_trailParticles);
 	}
 
 	public void StopPathing() {
+		Owner.RemoveChild(_trailParticles);
 		if (PathHasTree()) {
 			trailBuilder.AddFinal(anthill.Position);
 			Debug.WriteLine("setting tree path to new one");
-			if(trailBuilder.tree.path==null){
+			
+			if (trailBuilder.tree.path==null){
 				Path3D path = new Path3D{Curve = trailBuilder.curve};
 				trailBuilder.tree.path = path;
 				Owner.AddChild(path);
 			}
 			else trailBuilder.tree.path.Curve = trailBuilder.curve;
 
+			trailBuilder.tree.pathTrail = _trailParticles;
+			trailBuilder.tree.path.AddChild(_trailParticles);
+
 			anthill.targetTrees.Add(trailBuilder.tree);
 		}
 		trailBuilder = null;
+		_trailParticles = null;
 	}
 
 	public void PathAddTree(Tree tree) {
@@ -93,8 +104,6 @@ public partial class Player : CharacterBody3D
 
 		trailBuilder.AddPoint(Position);
 		trailBuilder.AddPoint(Position);
-
-
 	}
 
 	public bool PathHasTree() {
@@ -157,6 +166,9 @@ public partial class Player : CharacterBody3D
 
 		if (IsPathing() && (trailBuilder.point - Position).Length() > 0.5f) {
 			trailBuilder.AddPoint(Position);
+			Node3D particle = trailParticle.Instantiate<Node3D>();
+			particle.Position = Position + new Vector3(0, 0.05f, 0);
+			_trailParticles.AddChild(particle);
 		}
 	}
 

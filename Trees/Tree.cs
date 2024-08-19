@@ -11,6 +11,7 @@ public partial class Tree : Node3D
 
 	[Export] 
 	public Path3D path;
+	public Node pathTrail = null;
 	public int leafIndex = 3;
 
 	[Export]
