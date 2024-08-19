@@ -159,6 +159,11 @@ public partial class Player : CharacterBody3D
 			velocity.Y = JumpVelocity;
 		}
 
+		if (Input.IsActionJustReleased("jump"))
+		{
+			velocity.Y *= 0.4f;
+		}
+
 		if(!velocity.IsEqualApprox(Vector3.Zero)){
 			
 			Vector3 up = GetFloorNormal();
