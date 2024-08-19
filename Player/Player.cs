@@ -118,6 +118,9 @@ public partial class Player : CharacterBody3D
 			velocity = velocity.Normalized() * Mathf.Min(velocity.Length(),maxSpeed);
 			
 			GetNode<AnimationPlayer>("Ants/AnimationPlayer").Play();
+
+			if(!velocity.IsEqualApprox(Vector3.Zero))
+				((Node3D)GetChild(0)).LookAt(Position-velocity,Vector3.Up,true);
 		}
 		else
 		{
@@ -129,9 +132,9 @@ public partial class Player : CharacterBody3D
 		if(velocity == Vector3.Zero){
 			GetNode<AnimationPlayer>("Ants/AnimationPlayer").Pause();
 		}
-		else{
-			((Node3D)GetChild(0)).LookAt(Position-velocity,Vector3.Up,true);
-		}
+		//else{
+		//	((Node3D)GetChild(0)).LookAt(Position-velocity,Vector3.Up,true);
+		//}
 
 		Velocity = velocity;
 		MoveAndSlide();

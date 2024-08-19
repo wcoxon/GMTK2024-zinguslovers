@@ -121,7 +121,7 @@ environment = SubResource("Environment_54ehq")
 curve = SubResource("Curve3D_n3qna")
 
 [node name="Worker" parent="Path3D" node_paths=PackedStringArray("anthill", "targetTree") instance=ExtResource("2_flynq")]
-transform = Transform3D(-0.214714, 0.103452, 0.97112, 0.132758, 0.988183, -0.0759162, -0.967559, 0.11263, -0.225921, 0.503703, 0.0270895, -1.07539)
+transform = Transform3D(-0.226577, 0.0739423, 0.97112, 0, 0.997061, -0.0759162, -0.97394, -0.0172019, -0.225921, 0.503703, 0.0270895, -1.07539)
 anthill = NodePath("../../Anthill")
 targetTree = NodePath("../../Tree")
 
