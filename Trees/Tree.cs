@@ -23,7 +23,7 @@ public partial class Tree : Node3D
 
 	protected MeshInstance3D LeavesMesh;
 
-	PackedScene LeafScene;
+	protected PackedScene LeafScene;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

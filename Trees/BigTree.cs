@@ -26,6 +26,8 @@ public partial class BigTree : Tree
 
 		Debug.WriteLine("Gaming");
 
+		LeafScene = GD.Load<PackedScene>("res://leavesPart.tscn");
+
 		foreach (Node leafMesh in TreeModel.GetChildren())
         {
 			Debug.WriteLine($"leafMesh {leafMesh.Name}");
