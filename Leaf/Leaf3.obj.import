@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cyy2qirxahc37"
+path="res://.godot/imported/Leaf3.obj-9961c2ca30abed2a70a614716592cc6b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Leaf3.obj-9961c2ca30abed2a70a614716592cc6b.mesh"]
+
+source_file="res://Leaf/Leaf3.obj"
+dest_files=["res://.godot/imported/Leaf3.obj-9961c2ca30abed2a70a614716592cc6b.mesh", "res://.godot/imported/Leaf3.obj-9961c2ca30abed2a70a614716592cc6b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
