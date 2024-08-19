@@ -9,16 +9,34 @@ public partial class AnthillUI : Panel
 	private Label _infolabel;
 	private string _labelformat;
 
+	private Button _depositbutton;
+	private string _depositformat;
+
+
+
+	public void UpdateText(){
+		_infolabel.Text = string.Format(_labelformat, anthill.leafMass);
+		_depositbutton.Text = string.Format(_depositformat, player.getCargo());
+	}
+	public void DepositLeaves(){
+		player.DeliverTo(anthill);
+	}
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_infolabel = GetNode<Label>("MarginContainer/VBoxContainer/Label");
 		_labelformat = _infolabel.Text;
+
+		_depositbutton = GetNode<Button>("MarginContainer/VBoxContainer/DepositButton");
+		_depositformat = _depositbutton.Text;
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		_infolabel.Text = string.Format(_labelformat, anthill.leafMass);
+		UpdateText();
+
 	}
 }

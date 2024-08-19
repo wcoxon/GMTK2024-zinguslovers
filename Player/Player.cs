@@ -14,19 +14,22 @@ public partial class Player : CharacterBody3D
 	private TreeUI _treeUI;
 
 	[Export] public Anthill anthill;
- 
+
+	public double getCargo(){
+		return cargo;
+	}
+	public void DeliverTo(Anthill anthill){
+		Debug.WriteLine($"depositing cargo: {cargo}");
+		anthill.Deliver(cargo);
+		cargo = 0;
+	}
+
 	public void EnterAnthill(Area3D area){
 		
 		//show UI stuff
 		Debug.WriteLine("entered anthill");
 		_treeUI.Hide();
 		_anthillUI.Show();
-		// (deposit player leaves)
-		if(cargo>0){
-			Debug.WriteLine($"depositing cargo: {cargo}");
-			(area.Owner as Anthill).Deliver(cargo);
-			cargo = 0;
-		}
 	}
 	public void ExitAnthill(Area3D area){
 		//hide UI stuff
