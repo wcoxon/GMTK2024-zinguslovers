@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=14 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
@@ -8,12 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://dydxsbjj2mirx" path="res://ground.tscn" id="5_my2hh"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
 [ext_resource type="PackedScene" uid="uid://bsl8d5okbeoxs" path="res://Leaf/LeafPickup.tscn" id="8_t344i"]
+[ext_resource type="PackedScene" uid="uid://bvo58bbvt58xt" path="res://Trees/BigTree.tscn" id="9_u5sqt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ma6td"]
 sky_top_color = Color(0.521569, 0.592157, 1, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-ground_bottom_color = Color(0, 0.537255, 0.682353, 1)
-ground_horizon_color = Color(0.804743, 0.804743, 0.804743, 1)
+sky_horizon_color = Color(0.93, 0.93, 0.93, 1)
+sky_curve = 0.0230839
+ground_bottom_color = Color(0.584314, 0.752941, 1, 1)
+ground_horizon_color = Color(0.584314, 0.752941, 1, 1)
 
 [sub_resource type="Sky" id="Sky_bbue5"]
 sky_material = SubResource("ProceduralSkyMaterial_ma6td")
@@ -21,8 +23,9 @@ sky_material = SubResource("ProceduralSkyMaterial_ma6td")
 [sub_resource type="Environment" id="Environment_54ehq"]
 background_mode = 2
 sky = SubResource("Sky_bbue5")
-ambient_light_color = Color(0.0837433, 0.0797045, 0.0240319, 1)
-ambient_light_sky_contribution = 0.0
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.1
 ambient_light_energy = 0.0
 
 [sub_resource type="Curve3D" id="Curve3D_n3qna"]
@@ -66,14 +69,14 @@ offset_bottom = 200.0
 tree = NodePath("../../Tree")
 player = NodePath("../../PlayerAnt")
 
-[node name="Ground" parent="." instance=ExtResource("5_my2hh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.59245, 0)
+[node name="AntMap" parent="." instance=ExtResource("5_my2hh")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -5.18376, 0)
 
 [node name="PlayerAnt" parent="." node_paths=PackedStringArray("anthill") instance=ExtResource("5_1ka04")]
 anthill = NodePath("../Anthill")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.324894, -0.915603, -0.236887, 0.45051, -0.370062, 0.812463, -0.831556, 0.157245, 0.532719, 0, 0, 0)
+transform = Transform3D(-0.0330877, -0.781398, 0.623155, 0.160026, 0.611311, 0.775043, -0.986558, 0.125365, 0.104817, 0, 0, 0)
 shadow_enabled = true
 shadow_blur = 0.0
 
@@ -112,3 +115,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92781, -0.19153, -2.9635)
 
 [node name="LeafPickup3" parent="." instance=ExtResource("8_t344i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05281, -0.516916, -2.00395)
+
+[node name="BigTree" parent="." instance=ExtResource("9_u5sqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66077, -0.882064, -15.696)
+
+[node name="Tree5" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17101, -0.522283, -7.79472)
+
+[node name="Tree6" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0822, 0.186533, 24.6313)
+
+[node name="Tree7" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75422, 0.0246428, 13.2024)
+
+[node name="Tree8" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.372, -0.422145, -0.0683226)
+
+[node name="Tree9" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.99896, -0.997096, -13.8504)
+MaxLeaves = 1000.0
+
+[node name="Tree10" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.333, -0.0678661, 16.8598)
+
+[node name="Tree11" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74698, -0.724748, 2.35017)
+RegenerationRate = 40.0

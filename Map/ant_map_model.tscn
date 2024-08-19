@@ -1,0 +1,190 @@
+[gd_scene load_steps=7 format=3 uid="uid://c72ihbnemf7g2"]
+
+[ext_resource type="PackedScene" uid="uid://dniy07aq5qn0s" path="res://Map/antMap.fbx" id="1_veo2g"]
+[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_mlnh1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dibdf"]
+render_priority = 0
+shader = ExtResource("2_mlnh1")
+shader_parameter/albedo = Color(0.586068, 0.754817, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xag6u"]
+render_priority = 0
+shader = ExtResource("2_mlnh1")
+shader_parameter/albedo = Color(0.687449, 0.390281, 0, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_al01d"]
+render_priority = 0
+shader = ExtResource("2_mlnh1")
+shader_parameter/albedo = Color(0.662452, 0.662452, 0.662452, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dgeeh"]
+render_priority = 0
+shader = ExtResource("2_mlnh1")
+shader_parameter/albedo = Color(9.14484e-07, 0.587656, 0.298741, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = false
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[node name="antMap" instance=ExtResource("1_veo2g")]
+
+[node name="Plane_001" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_dibdf")
+
+[node name="Tree" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_xag6u")
+
+[node name="Tree_001" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_xag6u")
+
+[node name="Icosphere_005" parent="." index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_006" parent="." index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Cylinder_001" parent="." index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_xag6u")
+
+[node name="Cylinder_002" parent="." index="6"]
+surface_material_override/0 = SubResource("ShaderMaterial_xag6u")
+
+[node name="Cylinder_003" parent="." index="7"]
+surface_material_override/0 = SubResource("ShaderMaterial_xag6u")
+
+[node name="Cylinder_004" parent="." index="8"]
+surface_material_override/0 = SubResource("ShaderMaterial_xag6u")
+
+[node name="Icosphere_011" parent="." index="9"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_013" parent="." index="10"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_014" parent="." index="11"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_015" parent="." index="12"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_016" parent="." index="13"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Plane_002" parent="." index="14"]
+surface_material_override/0 = SubResource("ShaderMaterial_dgeeh")
+
+[node name="Icosphere_023" parent="." index="15"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_019" parent="." index="16"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_020" parent="." index="17"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_021" parent="." index="18"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_007" parent="." index="19"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_010" parent="." index="20"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_004" parent="." index="21"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_022" parent="." index="22"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_024" parent="." index="23"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_001" parent="." index="24"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_002" parent="." index="25"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_003" parent="." index="26"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_008" parent="." index="27"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_017" parent="." index="28"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Cylinder_005" parent="." index="29"]
+surface_material_override/0 = SubResource("ShaderMaterial_xag6u")
+
+[node name="Cylinder_006" parent="." index="30"]
+surface_material_override/0 = SubResource("ShaderMaterial_xag6u")
+
+[node name="Icosphere_025" parent="." index="31"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Icosphere_026" parent="." index="32"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")
+
+[node name="Tree_003" parent="." index="33"]
+surface_material_override/0 = SubResource("ShaderMaterial_xag6u")
+
+[node name="Tree_004" parent="." index="34"]
+surface_material_override/0 = SubResource("ShaderMaterial_xag6u")
+
+[node name="Icosphere_027" parent="." index="35"]
+surface_material_override/0 = SubResource("ShaderMaterial_al01d")

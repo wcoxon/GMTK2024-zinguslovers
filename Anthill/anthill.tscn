@@ -91,7 +91,7 @@ valueExpression = "50.0 / l"
 costExpression = "floor(100 * l ** (1.5 + 0.1 * l))"
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(30, 0, 0, 0, -1.31134e-06, 46.08, 0, -30, -2.01422e-06, 0, -0.0147505, 0)
+transform = Transform3D(55.73, 0, 0, 0, -2.43604e-06, 85.601, 0, -55.73, -3.74174e-06, 0, -0.117101, 0)
 mesh = SubResource("ArrayMesh_hv2ij")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_ixvpk")
