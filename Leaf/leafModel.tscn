@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bqhjg"]
 render_priority = 0
 shader = ExtResource("2_m4whg")
-shader_parameter/albedo = Color(0.268873, 0.556178, 0, 1)
+shader_parameter/albedo = Color(0.3969, 0.797774, 7.70092e-07, 1)
 shader_parameter/clamp_diffuse_to_max = false
 shader_parameter/cuts = 3
 shader_parameter/wrap = 0.0
