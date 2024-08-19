@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dy2g4lfqc406l" path="res://Player/Player.tscn" id="5_1ka04"]
 [ext_resource type="PackedScene" uid="uid://dydxsbjj2mirx" path="res://ground.tscn" id="5_my2hh"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
-[ext_resource type="PackedScene" uid="uid://cibe3m4xgf7wu" path="res://Player/TrailParticle.tscn" id="7_8bgau"]
+[ext_resource type="PackedScene" path="res://Player/TrailParticle.tscn" id="7_8bgau"]
 [ext_resource type="PackedScene" uid="uid://bsl8d5okbeoxs" path="res://Leaf/LeafPickup.tscn" id="8_t344i"]
 [ext_resource type="PackedScene" uid="uid://bvo58bbvt58xt" path="res://Trees/BigTree.tscn" id="9_u5sqt"]
 
@@ -109,7 +109,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05281, -0.906932, -2.00395
 
 [node name="BigTree" parent="." instance=ExtResource("9_u5sqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.596, -3.90134, 46.9098)
-TreeHeight = 0.0
 
 [node name="Tree5" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17101, -0.522283, -7.79472)
@@ -142,3 +141,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.8923, -0.175146, -20.5073)
 
 [node name="BigTree2" parent="." instance=ExtResource("9_u5sqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.649, -3.27444, -44.0502)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
