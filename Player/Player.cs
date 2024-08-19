@@ -73,10 +73,13 @@ public partial class Player : CharacterBody3D
 	public void PathAddTree(Tree tree) {
 		trailBuilder.tree = tree;
 		trailBuilder.AddPoint(Position);
+		trailBuilder.AddPoint(Position);
 		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
 		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
 		trailBuilder.AddPoint(tree.Position + Vector3.Up * 2.5f);
 		trailBuilder.AddPoint(Position);
+		trailBuilder.AddPoint(Position);
+
 	}
 
 	public bool PathHasTree() {
