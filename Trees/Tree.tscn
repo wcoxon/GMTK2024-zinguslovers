@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Trees/Tree.cs" id="1_f3s1k"]
 [ext_resource type="PackedScene" uid="uid://buje34pan8o7e" path="res://Trees/tree_2Model.tscn" id="3_cvd2e"]
-[ext_resource type="PackedScene" path="res://leavesPart.tscn" id="4_2d057"]
+[ext_resource type="PackedScene" uid="uid://cqeqjb630x4vs" path="res://leavesPart.tscn" id="4_2d057"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3x2q3"]
 
@@ -40,7 +40,6 @@ scale_max = 0.05
 script = ExtResource("1_f3s1k")
 MaxLeaves = 500.0
 RegenerationRate = 10.0
-TreeHeight = 2.5
 
 [node name="RegenTimer" type="Timer" parent="."]
 wait_time = 0.127

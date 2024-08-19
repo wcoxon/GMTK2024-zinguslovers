@@ -25,7 +25,7 @@ background_mode = 2
 sky = SubResource("Sky_bbue5")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_sky_contribution = 0.1
+ambient_light_sky_contribution = 0.5
 ambient_light_energy = 0.0
 
 [sub_resource type="Curve3D" id="Curve3D_n3qna"]
@@ -119,6 +119,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05281, -0.516916, -2.00395
 
 [node name="BigTree" parent="." instance=ExtResource("9_u5sqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66077, -0.882064, -15.696)
+TreeHeight = 10.0
 
 [node name="Tree5" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17101, -0.522283, -7.79472)
