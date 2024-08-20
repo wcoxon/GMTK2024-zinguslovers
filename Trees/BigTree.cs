@@ -18,21 +18,30 @@ public partial class BigTree : Tree
 		regenTimer.Timeout += OnLeafTimerTimeout;
 		setOutlined(false);
 
+		//This is how you do signals in Godot apparently!
+		EventManager.instance.Test += () => {
+			Debug.WriteLine("Gaming6");
+		};
+
+		EventManager.instance.EmitSignal(EventManager.SignalName.Test);
+		//Signal jank end.
+
+
 		allLeafMeshes = new List<MeshInstance3D>();
 
 		Node3D TreeModel = GetNode<Node3D>("BiTree");
 
 		TreeModel.GetChildren();
 
-		Debug.WriteLine("Gaming");
+		Debug.WriteLine("Gaming2");
 
 		LeafScene = GD.Load<PackedScene>("res://leavesPart.tscn");
 
 		foreach (Node leafMesh in TreeModel.GetChildren())
         {
-			Debug.WriteLine($"leafMesh {leafMesh.Name}");
+			// Debug.WriteLine($"leafMesh {leafMesh.Name}");
 			if (leafMesh is MeshInstance3D){
-				Debug.WriteLine($"written leafMesh {leafMesh.Name}");
+				// Debug.WriteLine($"written leafMesh {leafMesh.Name}");
 
 				if(leafMesh.Name != "Tree"){
 					allLeafMeshes.Add(leafMesh as MeshInstance3D);

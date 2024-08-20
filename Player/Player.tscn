@@ -47,6 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 script = ExtResource("3_ujr0h")
 
 [node name="Camera3D" type="Camera3D" parent="CameraController"]
+current = true
 
 [node name="AudioListener3D" type="AudioListener3D" parent="CameraController/Camera3D"]
 current = true
