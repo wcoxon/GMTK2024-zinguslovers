@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2wbb4rmvpnb3"]
+[gd_scene load_steps=8 format=3 uid="uid://wjewpvohmfj5"]
 
 [ext_resource type="PackedScene" uid="uid://c2d2qcraycqc4" path="res://Worker/Ants.fbx" id="1_6dor2"]
 [ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_hykm8"]

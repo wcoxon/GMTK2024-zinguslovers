@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dy2g4lfqc406l"]
 
 [ext_resource type="Script" path="res://Player/Player.cs" id="1_s0fi0"]
-[ext_resource type="PackedScene" path="res://Worker/AnimatedAnt.tscn" id="2_5owu4"]
+[ext_resource type="PackedScene" uid="uid://wjewpvohmfj5" path="res://Worker/AnimatedAnt.tscn" id="2_5owu4"]
 [ext_resource type="Script" path="res://Player/CameraController.cs" id="3_ujr0h"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f43uj"]
