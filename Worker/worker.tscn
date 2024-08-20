@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cw62dr70qqeeh"]
 
 [ext_resource type="Script" path="res://Worker/Worker.cs" id="1_ll78s"]
-[ext_resource type="PackedScene" uid="uid://wjewpvohmfj5" path="res://Worker/AnimatedAnt.tscn" id="3_85hql"]
+[ext_resource type="PackedScene" path="res://Worker/AnimatedAnt.tscn" id="3_85hql"]
 [ext_resource type="PackedScene" uid="uid://6jsk1hue8uf3" path="res://Leaf/leafModel.tscn" id="3_tdc7x"]
 
 [node name="Worker" type="PathFollow3D"]

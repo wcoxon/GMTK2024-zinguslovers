@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dy2g4lfqc406l" path="res://Player/Player.tscn" id="5_1ka04"]
 [ext_resource type="PackedScene" uid="uid://dydxsbjj2mirx" path="res://ground.tscn" id="5_my2hh"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
-[ext_resource type="PackedScene" path="res://Player/TrailParticle.tscn" id="7_8bgau"]
+[ext_resource type="PackedScene" uid="uid://cibe3m4xgf7wu" path="res://Player/TrailParticle.tscn" id="7_8bgau"]
 [ext_resource type="PackedScene" uid="uid://bsl8d5okbeoxs" path="res://Leaf/LeafPickup.tscn" id="8_t344i"]
 [ext_resource type="PackedScene" uid="uid://bvo58bbvt58xt" path="res://Trees/BigTree.tscn" id="9_u5sqt"]
 
