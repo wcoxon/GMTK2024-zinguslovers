@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://wjewpvohmfj5"]
+[gd_scene load_steps=8 format=3 uid="uid://d2wbb4rmvpnb3"]
 
 [ext_resource type="PackedScene" uid="uid://c2d2qcraycqc4" path="res://Worker/Ants.fbx" id="1_6dor2"]
 [ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_hykm8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q12yd"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_hykm8")
 shader_parameter/albedo = Color(0.844009, 0.461566, 0.319192, 1)

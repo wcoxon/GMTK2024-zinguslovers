@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo3es1s5pj0mt"]
+
+[sub_resource type="Animation" id="Animation_uikcq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.71693, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_brb2k"]
+resource_name = "ZoomOut"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.71693, 0), Vector3(0, 60, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nre4s"]
+_data = {
+"RESET": SubResource("Animation_uikcq"),
+"ZoomOut": SubResource("Animation_brb2k")
+}
+
+[node name="EndingCutsceneCamera" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.71693, 0)
+current = true
+
+[node name="EndingAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nre4s")
+}
+autoplay = "ZoomOut"

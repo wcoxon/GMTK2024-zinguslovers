@@ -24,6 +24,9 @@ public partial class Player : CharacterBody3D
 
 	[Export] public PackedScene trailParticle;
 
+	private RandomNumberGenerator _rng = new RandomNumberGenerator();
+	private Material _particleMaterial;
+
 	public double getCargo(){
 		return cargo;
 	}
@@ -76,6 +79,12 @@ public partial class Player : CharacterBody3D
 		trailBuilder = new TrailBuilder(anthill.Position);
 		_trailParticles = new Node();
 		Owner.AddChild(_trailParticles);
+
+		_particleMaterial = new StandardMaterial3D() {AlbedoColor = new Color(
+			_rng.RandfRange(0.3f, 1f), 
+			_rng.RandfRange(0.3f, 1f), 
+			_rng.RandfRange(0.2f, 0.5f)
+		)};
 	}
 
 	public void StopPathing() {
@@ -189,10 +198,6 @@ public partial class Player : CharacterBody3D
 			
 		}
 
-		// if(!IsOnFloor()){
-		// 	LerpVelocity = new Vector2(velocity.X, velocity.Z)
-		// }
-
 		if(!velocity.IsEqualApprox(Vector3.Zero)){
 			
 			Vector3 up = GetFloorNormal();
@@ -201,20 +206,35 @@ public partial class Player : CharacterBody3D
 			}
 			if(Mathf.Abs(velocity.Normalized().Y)!=1)GetNode<Node3D>("Ants").LookAt(Position+velocity,up,false);
 		}
-
+		
 		Velocity = velocity;
 		MoveAndSlide();
 
 		if (IsPathing() && (trailBuilder.point - Position).Length() > 0.5f) {
 			trailBuilder.AddPoint(Position);
-			Node3D particle = trailParticle.Instantiate<Node3D>();
+			GpuParticles3D particle = trailParticle.Instantiate<GpuParticles3D>();
 			particle.Position = Position + new Vector3(0, 0.05f, 0);
+			particle.MaterialOverride = _particleMaterial;
 			_trailParticles.AddChild(particle);
+		}
+
+		if (Position.Y < -4.9f) {
+			Reset();
 		}
 	}
 
 	public void LeafPoofAnimation(){
 		Node3D sceneInstance = (Node3D)leafScene.Instantiate();
 		AddChild(sceneInstance);
+	}
+
+	public void Reset() {
+		Position = anthill.Position;
+		if (_trailParticles != null) {
+			Owner.RemoveChild(_trailParticles);
+			_trailParticles = null;
+		}
+		cargo = 0;
+		trailBuilder = null;
 	}
 }

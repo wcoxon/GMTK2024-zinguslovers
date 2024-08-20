@@ -22,6 +22,8 @@ public partial class Anthill : Node3D
 	private TutorialUI tutorialUI;
 	private double nextAnt;
 
+	private RandomNumberGenerator rng = new RandomNumberGenerator();
+
 	public AnthillStat GetStat(Stat stat) {
 		return GetNode<AnthillStat>(stat.ToString());
 	}
@@ -37,7 +39,7 @@ public partial class Anthill : Node3D
 			SpawnAnt();
 		}
 		if (stat == Stat.AntBreedings) {
-			nextAnt = Math.Min(nextAnt, GetStat(Stat.AntBreedings).GetValue());
+			nextAnt = Math.Min(nextAnt, 60f/GetStat(Stat.AntBreedings).GetValue());
 		}
 	}
 
@@ -51,15 +53,23 @@ public partial class Anthill : Node3D
 		Worker instance = antScene.Instantiate<Worker>();
 		instance.Position = antSpawningPos;
 		instance.anthill = this;
-
+		instance.Scale = Vector3.One * rng.RandfRange(0.7f, 1f);
+		MeshInstance3D body = instance.GetNode<MeshInstance3D>("Ants/AntBody");
+		ShaderMaterial material = body.GetSurfaceOverrideMaterial(0) as ShaderMaterial;
+		material.SetShaderParameter("albedo", Color.FromHsv(
+			rng.RandfRange(0.02f, 0.07f), 
+			rng.RandfRange(0.52f, 0.72f), 
+			rng.RandfRange(0.75f, 0.95f)
+		));
+		body.SetSurfaceOverrideMaterial(0, material);
 		instance.chooseTarget();
 	}
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		nextAnt = GetStat(Stat.AntBreedings).GetValue();
 		tutorialUI = Owner.GetNode<TutorialUI>("Control/TutorialUI");
+		nextAnt = 60f/GetStat(Stat.AntBreedings).GetValue();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,7 +78,7 @@ public partial class Anthill : Node3D
 		nextAnt -= delta;
 		if (nextAnt < 0) {
 			SpawnAnt();
-			nextAnt = GetStat(Stat.AntBreedings).GetValue();
+			nextAnt = 60f/GetStat(Stat.AntBreedings).GetValue();
 		}
 	}
 }

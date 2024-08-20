@@ -1,14 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=19 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
 [ext_resource type="PackedScene" uid="uid://cw62dr70qqeeh" path="res://Worker/worker.tscn" id="2_flynq"]
+[ext_resource type="PackedScene" path="res://ending_cutscene_camera.tscn" id="3_guiyu"]
 [ext_resource type="PackedScene" uid="uid://mpj4r3rqtn1m" path="res://Trees/TreeUI.tscn" id="4_n6wix"]
 [ext_resource type="PackedScene" uid="uid://dy2g4lfqc406l" path="res://Player/Player.tscn" id="5_1ka04"]
 [ext_resource type="PackedScene" uid="uid://dydxsbjj2mirx" path="res://ground.tscn" id="5_my2hh"]
 [ext_resource type="PackedScene" uid="uid://dem8kblop6pv7" path="res://PlayerUI.tscn" id="5_yd60h"]
 [ext_resource type="PackedScene" uid="uid://c2qw6lxwoq5la" path="res://TutorialUI.tscn" id="6_0e54j"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
+[ext_resource type="PackedScene" path="res://BlackoutCanvas.tscn" id="6_jswdr"]
 [ext_resource type="PackedScene" uid="uid://cibe3m4xgf7wu" path="res://Player/TrailParticle.tscn" id="7_8bgau"]
 [ext_resource type="PackedScene" uid="uid://bsl8d5okbeoxs" path="res://Leaf/LeafPickup.tscn" id="8_t344i"]
 [ext_resource type="PackedScene" uid="uid://bvo58bbvt58xt" path="res://Trees/BigTree.tscn" id="9_u5sqt"]
@@ -38,6 +40,8 @@ ambient_light_energy = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.258757, 0)
 antScene = ExtResource("2_flynq")
 
+[node name="EndingCutsceneCamera" parent="Anthill" instance=ExtResource("3_guiyu")]
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -51,7 +55,7 @@ layout_mode = 2
 offset_left = 50.0
 offset_top = 50.0
 offset_right = 400.0
-offset_bottom = 450.0
+offset_bottom = 500.0
 anthill = NodePath("../../Anthill")
 player = NodePath("../../PlayerAnt")
 
@@ -87,6 +91,8 @@ offset_right = 383.0
 offset_bottom = 593.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Blackout" parent="Control" instance=ExtResource("6_jswdr")]
 
 [node name="AntMap" parent="." instance=ExtResource("5_my2hh")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -5.18376, 0)
@@ -135,7 +141,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05281, -0.906932, -2.00395
 
 [node name="BigTree" parent="." instance=ExtResource("9_u5sqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.596, -3.90134, 46.9098)
-TreeHeight = 0.0
 
 [node name="Tree5" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17101, -0.522283, -7.79472)
@@ -339,3 +344,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.3023, -3.29236, -42.434)
 
 [node name="FlowerTree" parent="." instance=ExtResource("13_jyv6v")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.69038, -0.241376, 4.10974)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
