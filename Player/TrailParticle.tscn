@@ -21,6 +21,7 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_k0twd")
 
 [sub_resource type="SphereMesh" id="SphereMesh_nn5bu"]
+lightmap_size_hint = Vector2i(3, 2)
 radius = 0.05
 height = 0.1
 radial_segments = 8

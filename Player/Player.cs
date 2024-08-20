@@ -195,10 +195,24 @@ public partial class Player : CharacterBody3D
 			particle.MaterialOverride = _particleMaterial;
 			_trailParticles.AddChild(particle);
 		}
+
+		if (Position.Y < -5.15f) {
+			Reset();
+		}
 	}
 
 	public void LeafPoofAnimation(){
 		Node3D sceneInstance = (Node3D)leafScene.Instantiate();
 		AddChild(sceneInstance);
+	}
+
+	public void Reset() {
+		Position = anthill.Position;
+		if (_trailParticles != null) {
+			Owner.RemoveChild(_trailParticles);
+			_trailParticles = null;
+		}
+		cargo = 0;
+		trailBuilder = null;
 	}
 }
