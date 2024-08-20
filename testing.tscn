@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://mpj4r3rqtn1m" path="res://Trees/TreeUI.tscn" id="4_n6wix"]
 [ext_resource type="PackedScene" uid="uid://dy2g4lfqc406l" path="res://Player/Player.tscn" id="5_1ka04"]
 [ext_resource type="PackedScene" uid="uid://dydxsbjj2mirx" path="res://ground.tscn" id="5_my2hh"]
-[ext_resource type="PackedScene" path="res://PlayerUI.tscn" id="5_yd60h"]
-[ext_resource type="PackedScene" path="res://TutorialUI.tscn" id="6_0e54j"]
+[ext_resource type="PackedScene" uid="uid://dem8kblop6pv7" path="res://PlayerUI.tscn" id="5_yd60h"]
+[ext_resource type="PackedScene" uid="uid://c2qw6lxwoq5la" path="res://TutorialUI.tscn" id="6_0e54j"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
 [ext_resource type="PackedScene" uid="uid://bwu2y072lacuf" path="res://EventLogic/BlackoutCanvas.tscn" id="6_jswdr"]
 [ext_resource type="PackedScene" uid="uid://cibe3m4xgf7wu" path="res://Player/TrailParticle.tscn" id="7_8bgau"]
@@ -72,27 +72,14 @@ tree = NodePath("../../Tree")
 player = NodePath("../../PlayerAnt")
 
 [node name="PlayerUI" parent="Control" instance=ExtResource("5_yd60h")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_right = 0.0
-offset_left = 893.0
-offset_right = 1081.0
-grow_horizontal = 1
+layout_mode = 1
 
 [node name="TutorialUI" parent="Control" instance=ExtResource("6_0e54j")]
 layout_mode = 1
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 343.0
-offset_top = 553.0
-offset_right = 796.0
-offset_bottom = 593.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = -250.0
+offset_top = -90.0
+offset_right = 250.0
+offset_bottom = -50.0
 
 [node name="Blackout" parent="Control" instance=ExtResource("6_jswdr")]
 

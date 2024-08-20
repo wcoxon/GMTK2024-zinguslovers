@@ -16,17 +16,27 @@ grow_vertical = 0
 pivot_offset = Vector2(195.27, 0)
 script = ExtResource("1_ohem7")
 
-[node name="HintLabel" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Use WASD to move
-right click and drag to look around
-use scroll wheel to zoom
-Walk into leaves to collect them
-deposit your leaves at the anthill
-create a pheromone trail at your anthill
-Connect your trail to a tree
-Connect your trail back to the anthill
-Purchase workers and upgrade your colony at your anthill"
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HintLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Use WASD to move.
+Right click and drag to look around.
+Use scroll wheel to zoom.
+Walk into leaves to collect them.
+Deposit your leaves at the anthill.
+Create a pheromone trail at your anthill.
+Connect your trail to a tree.
+Connect your trail back to the anthill.
+Purchase workers and Upgrade your colony at your anthill."
 horizontal_alignment = 1

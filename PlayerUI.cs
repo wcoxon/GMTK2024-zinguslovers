@@ -8,7 +8,7 @@ public partial class PlayerUI : Panel
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		leafCount = GetNode<Label>("LeafCount");
+		leafCount = GetNode<Label>("MarginContainer/LeafCount");
 		leafFormat = leafCount.Text;
 	}
 	public void updateLeafCount(double count){
