@@ -16,6 +16,8 @@ public partial class TreeUI : Panel
 	string capacityFormat;
 	string regenFormat;
 
+	public bool hidden = false;
+
 	public void SetTree(Tree new_tree) {
 		tree = new_tree;
 		capacityLabel.Text = string.Format(capacityFormat, tree.MaxLeaves);
@@ -42,6 +44,15 @@ public partial class TreeUI : Panel
 
 
 		_weightSlider = GetNode<Slider>("MarginContainer/VBoxContainer/HSlider");
+
+		EventManager.instance.BeginEndingCutscene += () => {
+			Hide();
+			hidden = true;
+		};
+
+		EventManager.instance.PostEndingCutscene += () => {
+			hidden = false;
+		};
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

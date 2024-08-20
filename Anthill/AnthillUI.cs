@@ -12,6 +12,8 @@ public partial class AnthillUI : Panel
 	private Button _depositbutton;
 	private string _depositformat;
 
+	public bool hidden = false;
+
 
 	public void UpdateText(){
 		_infolabel.Text = string.Format(_labelformat, anthill.leafMass);
@@ -30,8 +32,14 @@ public partial class AnthillUI : Panel
 		_depositbutton = GetNode<Button>("MarginContainer/VBoxContainer/DepositButton");
 		_depositformat = _depositbutton.Text;
 
-		
+		EventManager.instance.BeginEndingCutscene += () => {
+			Hide();
+			hidden = true;
+		};
 
+		EventManager.instance.PostEndingCutscene += () => {
+			hidden = false;
+		};
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

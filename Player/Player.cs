@@ -43,7 +43,10 @@ public partial class Player : CharacterBody3D
 	public void EnterAnthill(Area3D area){
 		//show UI
 		_treeUI.Hide();
-		_anthillUI.Show();
+		if (!_anthillUI.hidden){
+			_anthillUI.Show();
+		}
+		
 	}
 	public void ExitAnthill(Area3D area){
 		//hide UI
@@ -55,7 +58,9 @@ public partial class Player : CharacterBody3D
 		_anthillUI.Hide();
 
 		//show tree UI
-		_treeUI.Show();
+		if (!_treeUI.hidden){
+			_treeUI.Show();
+		}
 		_treeUI.SetTree(area.Owner as Tree);
 		(area.Owner as Tree).setOutlined(true);
 	}

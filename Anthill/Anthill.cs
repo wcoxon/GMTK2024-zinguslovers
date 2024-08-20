@@ -20,6 +20,9 @@ public partial class Anthill : Node3D
 	[Export] public uint numAnts = 1;
 	
 	private TutorialUI tutorialUI;
+
+	[Export] public int GoalAntNumber = 1000;
+
 	private double nextAnt;
 
 	private RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -70,6 +73,10 @@ public partial class Anthill : Node3D
 		));
 		body.SetSurfaceOverrideMaterial(0, material);
 		instance.chooseTarget();
+
+		if	(numAnts == GoalAntNumber){
+			EventManager.instance.EmitSignal(EventManager.SignalName.BeginEndingCutscene);
+		}
 	}
 	
 	// Called when the node enters the scene tree for the first time.
