@@ -196,7 +196,7 @@ public partial class Player : CharacterBody3D
 			_trailParticles.AddChild(particle);
 		}
 
-		if (Position.Y < -5.15f) {
+		if (Position.Y < -4.9f) {
 			Reset();
 		}
 	}
