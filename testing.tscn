@@ -152,19 +152,27 @@ transform = Transform3D(0.152986, 0, -0.988228, 0, 1, 0, 0.988228, 0, 0.152986, 
 
 [node name="Tree7" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06145, 0.439632, 13.7399)
+MaxLeaves = 1000.0
 
 [node name="Tree8" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.8333, -0.540496, 7.23633)
+MaxLeaves = 1000.0
+RegenerationRate = 20.0
 
 [node name="Tree9" parent="." instance=ExtResource("6_0mw8x")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.99896, -1.89547, -25.2153)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.99896, -1.89547, -25.2153)
 MaxLeaves = 1000.0
+RegenerationRate = 100.0
+TreeHeight = 3.0
 
 [node name="Tree10" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.2257, -3.09047, 27.8323)
+MaxLeaves = 2500.0
+RegenerationRate = 5.0
 
 [node name="Tree11" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(-0.328306, 0, 0.944571, 0, 1, 0, -0.944571, 0, -0.328306, -9.74698, -0.724748, 2.35017)
+MaxLeaves = 300.0
 RegenerationRate = 40.0
 
 [node name="Tree12" parent="." instance=ExtResource("6_0mw8x")]
@@ -172,21 +180,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47128, 0.453104, 30.5277)
 
 [node name="Tree13" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.8923, -0.175146, -20.5073)
+MaxLeaves = 600.0
+RegenerationRate = 200.0
 
 [node name="BigTree2" parent="." instance=ExtResource("9_u5sqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.649, -3.27444, -44.0502)
+MaxLeaves = 50000.0
+RegenerationRate = 200.0
 
 [node name="Tree14" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9497, -1.46086, -23.8532)
+MaxLeaves = 1000.0
+RegenerationRate = 30.0
 
 [node name="Tree15" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.1287, -0.296221, -16.2887)
 
 [node name="Tree16" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.1644, -3.2203, -43.374)
+MaxLeaves = 7000.0
+RegenerationRate = 5.0
 
 [node name="Tree17" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.532, -2.99043, -10.724)
+MaxLeaves = 2500.0
+RegenerationRate = 50.0
 
 [node name="Tree18" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.4103, -1.48086, 7.55748)
@@ -349,6 +367,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.69038, -0.241376, 21.82)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_wugkv")
+volume_db = 8.978
 autoplay = true
 parameters/looping = true
 
@@ -357,6 +376,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4442, -1.93963, -15.504)
 
 [node name="Tree22" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.3744, -2.95884, 22.7288)
+MaxLeaves = 450.0
+RegenerationRate = 20.0
 
 [node name="LeafPickup53" parent="." instance=ExtResource("8_t344i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.094, -3.39623, 23.6852)
@@ -543,9 +564,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.5648, -0.773776, -26.7837)
 
 [node name="BigTree3" parent="." instance=ExtResource("9_u5sqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.2697, 2.00359, -16.4403)
+MaxLeaves = 20000.0
 
 [node name="FlowerTree3" parent="." instance=ExtResource("13_jyv6v")]
 transform = Transform3D(-1.15622, 0, 2.76824, 0, 3, 0, -2.76824, 0, -1.15622, 52.2553, -0.657886, -20.8382)
+MaxLeaves = 900.0
 
 [node name="FlowerTree4" parent="." instance=ExtResource("13_jyv6v")]
 transform = Transform3D(-1.65987, 0, -2.49897, 0, 3, 0, 2.49897, 0, -1.65987, 67.5372, -2.7775, -37.563)
