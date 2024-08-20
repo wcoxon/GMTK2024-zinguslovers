@@ -21,6 +21,8 @@ public partial class Anthill : Node3D
 
 	private double nextAnt;
 
+	private RandomNumberGenerator rng = new RandomNumberGenerator();
+
 	public AnthillStat GetStat(Stat stat) {
 		return GetNode<AnthillStat>(stat.ToString());
 	}
@@ -49,7 +51,15 @@ public partial class Anthill : Node3D
 		Worker instance = antScene.Instantiate<Worker>();
 		instance.Position = antSpawningPos;
 		instance.anthill = this;
-
+		instance.Scale = Vector3.One * rng.RandfRange(0.7f, 1f);
+		MeshInstance3D body = instance.GetNode<MeshInstance3D>("Ants/AntBody");
+		ShaderMaterial material = body.GetSurfaceOverrideMaterial(0) as ShaderMaterial;
+		material.SetShaderParameter("albedo", Color.FromHsv(
+			rng.RandfRange(0.02f, 0.07f), 
+			rng.RandfRange(0.52f, 0.72f), 
+			rng.RandfRange(0.75f, 0.95f)
+		));
+		body.SetSurfaceOverrideMaterial(0, material);
 		instance.chooseTarget();
 	}
 	
