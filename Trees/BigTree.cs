@@ -14,7 +14,7 @@ public partial class BigTree : Tree
 	{
 		regenTimer = GetNode<Timer>("RegenTimer");
 		regenTimer.Paused = false;
-		LeafMass = 0;
+		LeafMass = MaxLeaves;
 		regenTimer.Timeout += OnLeafTimerTimeout;
 		setOutlined(false);
 

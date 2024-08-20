@@ -13,7 +13,6 @@ public partial class AnthillUI : Panel
 	private string _depositformat;
 
 
-
 	public void UpdateText(){
 		_infolabel.Text = string.Format(_labelformat, anthill.leafMass);
 		_depositbutton.Text = string.Format(_depositformat, player.getCargo());
@@ -30,6 +29,8 @@ public partial class AnthillUI : Panel
 
 		_depositbutton = GetNode<Button>("MarginContainer/VBoxContainer/DepositButton");
 		_depositformat = _depositbutton.Text;
+
+		
 
 	}
 

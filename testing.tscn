@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=17 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
@@ -6,10 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://mpj4r3rqtn1m" path="res://Trees/TreeUI.tscn" id="4_n6wix"]
 [ext_resource type="PackedScene" uid="uid://dy2g4lfqc406l" path="res://Player/Player.tscn" id="5_1ka04"]
 [ext_resource type="PackedScene" uid="uid://dydxsbjj2mirx" path="res://ground.tscn" id="5_my2hh"]
+[ext_resource type="PackedScene" uid="uid://dem8kblop6pv7" path="res://PlayerUI.tscn" id="5_yd60h"]
+[ext_resource type="PackedScene" uid="uid://c2qw6lxwoq5la" path="res://TutorialUI.tscn" id="6_0e54j"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
 [ext_resource type="PackedScene" uid="uid://cibe3m4xgf7wu" path="res://Player/TrailParticle.tscn" id="7_8bgau"]
 [ext_resource type="PackedScene" uid="uid://bsl8d5okbeoxs" path="res://Leaf/LeafPickup.tscn" id="8_t344i"]
 [ext_resource type="PackedScene" uid="uid://bvo58bbvt58xt" path="res://Trees/BigTree.tscn" id="9_u5sqt"]
+[ext_resource type="PackedScene" uid="uid://0fedht5gnvm2" path="res://OtherScenery/FlowerTree.tscn" id="13_jyv6v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ma6td"]
 sky_top_color = Color(0.521569, 0.592157, 1, 1)
@@ -58,9 +61,32 @@ layout_mode = 0
 offset_left = 50.0
 offset_top = 50.0
 offset_right = 400.0
-offset_bottom = 200.0
+offset_bottom = 250.0
 tree = NodePath("../../Tree")
 player = NodePath("../../PlayerAnt")
+
+[node name="PlayerUI" parent="Control" instance=ExtResource("5_yd60h")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 1041.0
+offset_right = 1081.0
+grow_horizontal = 1
+
+[node name="TutorialUI" parent="Control" instance=ExtResource("6_0e54j")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 343.0
+offset_top = 553.0
+offset_right = 383.0
+offset_bottom = 593.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="AntMap" parent="." instance=ExtResource("5_my2hh")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -5.18376, 0)
@@ -89,7 +115,7 @@ MaxLeaves = 1000.0
 RegenerationRate = 50.0
 
 [node name="Tree3" parent="." instance=ExtResource("6_0mw8x")]
-transform = Transform3D(-0.160364, 0, 0.987058, 0, 1, 0, -0.987058, 0, -0.160364, -10.0252, 0.0746576, 12.8392)
+transform = Transform3D(-0.160364, 0, 0.987058, 0, 1, 0, -0.987058, 0, -0.160364, -10.0252, -0.380643, 12.8392)
 MaxLeaves = 1000.0
 RegenerationRate = 50.0
 
@@ -124,7 +150,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06145, 0.439632, 13.7399)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.8333, -0.540496, 7.23633)
 
 [node name="Tree9" parent="." instance=ExtResource("6_0mw8x")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.99896, -0.997096, -13.8504)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.99896, -1.89547, -25.2153)
 MaxLeaves = 1000.0
 
 [node name="Tree10" parent="." instance=ExtResource("6_0mw8x")]
@@ -142,3 +168,174 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.8923, -0.175146, -20.5073)
 
 [node name="BigTree2" parent="." instance=ExtResource("9_u5sqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.649, -3.27444, -44.0502)
+
+[node name="Tree14" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9497, -1.46086, -23.8532)
+
+[node name="Tree15" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.1287, -0.296221, -16.2887)
+
+[node name="Tree16" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.1644, -3.2203, -43.374)
+
+[node name="Tree17" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.532, -2.99043, -10.724)
+
+[node name="Tree18" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.4103, -1.48086, 7.55748)
+
+[node name="Tree19" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4339, -2.53486, 38.5383)
+
+[node name="Tree20" parent="." instance=ExtResource("6_0mw8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1919, -1.07796, -19.9776)
+
+[node name="LeafPickup4" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97146, -1.09446, -12.3398)
+
+[node name="LeafPickup5" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52684, -0.930819, -19.2976)
+
+[node name="LeafPickup6" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8476, -1.09329, -4.55785)
+
+[node name="LeafPickup7" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8421, -1.92134, -11.0659)
+
+[node name="LeafPickup8" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.08088, -1.7661, -23.2101)
+
+[node name="LeafPickup9" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4027, -0.896165, 3.98637)
+
+[node name="LeafPickup10" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.84899, -0.16123, 9.50149)
+
+[node name="LeafPickup11" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4683, -0.710286, 6.02189)
+
+[node name="LeafPickup12" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0683, -1.58666, -4.99167)
+
+[node name="LeafPickup13" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2092, -1.15837, -19.9244)
+
+[node name="LeafPickup14" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74976, -0.198694, 7.70793)
+
+[node name="LeafPickup15" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5876, -0.141171, 19.4783)
+
+[node name="LeafPickup16" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3319, 0.188238, 27.344)
+
+[node name="LeafPickup17" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09964, -0.0410919, 36.4397)
+
+[node name="LeafPickup18" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5493, -4.01227, 55.8323)
+
+[node name="LeafPickup19" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.736, -3.13944, 28.6775)
+
+[node name="LeafPickup20" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.6855, -3.03353, 26.9703)
+
+[node name="LeafPickup21" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.9212, -1.48795, 8.2885)
+
+[node name="LeafPickup22" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.8069, -1.36868, 6.72221)
+
+[node name="LeafPickup23" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.614, -0.532933, 8.12309)
+
+[node name="LeafPickup24" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4087, -0.487529, 6.26243)
+
+[node name="LeafPickup25" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.8656, -2.96286, -9.63448)
+
+[node name="LeafPickup26" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.5399, -3.38257, -11.3163)
+
+[node name="LeafPickup27" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5908, -1.71183, -23.0293)
+
+[node name="LeafPickup28" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0.000471239, 0, -0.000471239, 1, 46.4736, -1.33052, -24.4555)
+
+[node name="LeafPickup29" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.7563, -3.32128, -43.0785)
+
+[node name="LeafPickup30" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0.000471239, 0, -0.000471239, 1, 64.6391, -3.56727, -44.5047)
+
+[node name="LeafPickup31" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.3176, -0.16752, -21.3949)
+
+[node name="LeafPickup32" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.2472, -0.317932, -19.5336)
+
+[node name="LeafPickup33" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.8603, -0.306956, -16.9466)
+
+[node name="LeafPickup34" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.3459, -0.352974, -16.1124)
+
+[node name="LeafPickup35" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.0997, -0.262963, -4.65062)
+
+[node name="LeafPickup36" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.4322, -0.380192, -2.88466)
+
+[node name="LeafPickup37" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3104, -3.93583, 47.0338)
+
+[node name="LeafPickup38" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5631, -3.45987, 45.5437)
+
+[node name="LeafPickup39" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1302, -3.80778, 45.3313)
+
+[node name="LeafPickup40" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05916, -2.76886, 50.7554)
+
+[node name="LeafPickup41" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62693, -2.50135, 49.518)
+
+[node name="LeafPickup42" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8383, -2.68586, 39.2339)
+
+[node name="LeafPickup43" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9564, -2.31578, 37.764)
+
+[node name="LeafPickup44" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.52115, -0.0817988, 13.3737)
+
+[node name="LeafPickup45" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.162, -0.384556, 11.932)
+
+[node name="LeafPickup46" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4439, -0.26225, 3.12449)
+
+[node name="LeafPickup47" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.63755, -0.419769, 1.62902)
+
+[node name="LeafPickup48" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91509, -1.96944, -26.0446)
+
+[node name="LeafPickup49" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7993, -1.09961, -20.7016)
+
+[node name="LeafPickup50" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3701, -2.96183, -44.041)
+
+[node name="LeafPickup51" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.7071, -3.20262, -45.0336)
+
+[node name="LeafPickup52" parent="." instance=ExtResource("8_t344i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.3023, -3.29236, -42.434)
+
+[node name="FlowerTree" parent="." instance=ExtResource("13_jyv6v")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.69038, -0.241376, 4.10974)

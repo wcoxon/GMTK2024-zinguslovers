@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dem8kblop6pv7"]
+
+[ext_resource type="Script" path="res://PlayerUI.cs" id="1_hnike"]
+
+[node name="PlayerUI" type="Panel"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("1_hnike")
+
+[node name="LeafCount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -144.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Carrying {0} leaves"

@@ -18,7 +18,8 @@ public partial class Anthill : Node3D
 	[Export] public Array<Tree> targetTrees;
 
 	[Export] public uint numAnts = 1;
-
+	
+	private TutorialUI tutorialUI;
 	private double nextAnt;
 
 	public AnthillStat GetStat(Stat stat) {
@@ -26,6 +27,7 @@ public partial class Anthill : Node3D
 	}
 	
 	public void Upgrade(Stat stat) {
+		tutorialUI.completedHint(TutorialUI.Hint.upgrades);
 		AnthillStat obj = GetStat(stat);
 		if (leafMass >= obj.GetCost()) {
 			leafMass -= obj.GetCost();
@@ -57,6 +59,7 @@ public partial class Anthill : Node3D
 	public override void _Ready()
 	{
 		nextAnt = GetStat(Stat.AntBreedings).GetValue();
+		tutorialUI = Owner.GetNode<TutorialUI>("Control/TutorialUI");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

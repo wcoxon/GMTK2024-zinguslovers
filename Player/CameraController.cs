@@ -11,24 +11,33 @@ public partial class CameraController : Node3D
 	float sensitivity = 0.5f;
 
 	bool isDragging = false;
+
+	private TutorialUI _tutorialUI;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		_tutorialUI = Owner.Owner.GetNode<TutorialUI>("Control/TutorialUI");
 	}
     public override void _Input(InputEvent @event)
     {
 		if (@event is InputEventMouseMotion motionEvent && isDragging){
+			_tutorialUI.completedHint(TutorialUI.Hint.looking);
 			yaw += motionEvent.Relative.X*sensitivity;
 			pitch += motionEvent.Relative.Y*sensitivity;
-			pitch = Mathf.Clamp(pitch,20,70);
+			pitch = Mathf.Clamp(pitch,10,80);
 		}
 		if(@event is InputEventMouseButton buttonEvent){
 			
         	if (@event.IsPressed()){
 				
         	    if (buttonEvent.ButtonIndex == MouseButton.Right) isDragging=true;
-        	    if (buttonEvent.ButtonIndex == MouseButton.WheelUp) zoom -= 1;
-        	    if (buttonEvent.ButtonIndex == MouseButton.WheelDown) zoom += 1;
+        	    if (buttonEvent.ButtonIndex == MouseButton.WheelUp){
+					_tutorialUI.completedHint(TutorialUI.Hint.zooming);
+					zoom -= 1;
+				}
+        	    if (buttonEvent.ButtonIndex == MouseButton.WheelDown){
+					 zoom += 1;
+				}
         	    
 				zoom = Mathf.Clamp(zoom, 2, 15);
         	}

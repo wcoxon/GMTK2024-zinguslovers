@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqeqjb630x4vs"]
+[gd_scene load_steps=12 format=3 uid="uid://cqeqjb630x4vs"]
 
 [ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="1_m5yde"]
 [ext_resource type="ArrayMesh" uid="uid://duw1inemfjgxl" path="res://Leaf/Leaf4.obj" id="2_bu0jx"]
@@ -31,6 +31,13 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_djubc"]
 curve = SubResource("Curve_pfi6o")
 
+[sub_resource type="Curve" id="Curve_nrnrh"]
+_data = [Vector2(0, 0), 0.0, 28.2473, 0, 0, Vector2(0.0515464, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rn522"]
+curve = SubResource("Curve_nrnrh")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cjlt8"]
 resource_local_to_scene = true
 lifetime_randomness = 0.07
@@ -52,6 +59,7 @@ tangential_accel_min = -2.23517e-06
 tangential_accel_max = 0.999998
 scale_min = 0.05
 scale_max = 0.05
+scale_curve = SubResource("CurveTexture_rn522")
 
 [sub_resource type="Animation" id="Animation_ya5o7"]
 length = 0.001

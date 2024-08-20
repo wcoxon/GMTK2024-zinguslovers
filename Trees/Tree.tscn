@@ -40,6 +40,7 @@ scale_max = 0.05
 script = ExtResource("1_f3s1k")
 MaxLeaves = 500.0
 RegenerationRate = 10.0
+TreeHeight = 2.5
 
 [node name="RegenTimer" type="Timer" parent="."]
 wait_time = 0.127

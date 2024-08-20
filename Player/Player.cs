@@ -13,6 +13,9 @@ public partial class Player : CharacterBody3D
 
 	private AnthillUI _anthillUI;
 	private TreeUI _treeUI;
+	private PlayerUI _playerUI;
+	private TutorialUI _tutorialUI;
+
 	public CameraController _cameraController;
 
 	protected PackedScene leafScene;
@@ -28,6 +31,8 @@ public partial class Player : CharacterBody3D
 		Debug.WriteLine($"depositing cargo: {cargo}");
 		anthill.Deliver(cargo);
 		cargo = 0;
+		_playerUI.updateLeafCount(cargo);
+		_tutorialUI.completedHint(TutorialUI.Hint.deposit);
 	}
 
 	public void EnterAnthill(Area3D area){
@@ -56,18 +61,26 @@ public partial class Player : CharacterBody3D
 	}
 
 	public void EnterPickup(Area3D area){
+		_tutorialUI.completedHint(TutorialUI.Hint.pickup);
+		//add to cargo
 		cargo += 10;
+		_playerUI.updateLeafCount(cargo);
+		//delete leaf
 		(area.Owner as Node3D).QueueFree();
+		//play particles
 		LeafPoofAnimation();
 	}
 
 	public void StartPathing() {
+		_tutorialUI.completedHint(TutorialUI.Hint.trailStart);
 		trailBuilder = new TrailBuilder(anthill.Position);
 		_trailParticles = new Node();
 		Owner.AddChild(_trailParticles);
 	}
 
 	public void StopPathing() {
+		
+		_tutorialUI.completedHint(TutorialUI.Hint.trailEnd);
 		Owner.RemoveChild(_trailParticles);
 		if (PathHasTree()) {
 			trailBuilder.AddFinal(anthill.Position);
@@ -90,6 +103,8 @@ public partial class Player : CharacterBody3D
 	}
 
 	public void PathAddTree(Tree tree) {
+		
+		_tutorialUI.completedHint(TutorialUI.Hint.trailTree);
 		trailBuilder.tree = tree;
 		trailBuilder.AddPoint(Position);
 		trailBuilder.AddPoint(Position);
@@ -115,8 +130,13 @@ public partial class Player : CharacterBody3D
     {
         _anthillUI = Owner.GetNode<AnthillUI>("Control/AnthillUI");
 		_treeUI = Owner.GetNode<TreeUI>("Control/TreeUI");
+		_playerUI = Owner.GetNode<PlayerUI>("Control/PlayerUI");
+		_tutorialUI = Owner.GetNode<TutorialUI>("Control/TutorialUI");
+
 		leafScene = GD.Load<PackedScene>("res://PlayerPickupParticles.tscn");
 		_cameraController = GetNode<CameraController>("CameraController");
+		
+		_playerUI.updateLeafCount(cargo);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -128,6 +148,8 @@ public partial class Player : CharacterBody3D
 
 		if (direction != Vector3.Zero)
 		{
+			_tutorialUI.completedHint(TutorialUI.Hint.movement);
+
 			velocity += direction * acceleration * (float)delta;
 
 			//limit walking speed
