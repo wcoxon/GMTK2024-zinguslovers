@@ -69,7 +69,6 @@ shader_parameter/border_width = 0.01
 script = ExtResource("1_htxim")
 leafMass = 10.0
 targetTrees = []
-GoalAntNumber = 5
 
 [node name="AntSpeed" type="Node" parent="."]
 script = ExtResource("2_kwy1h")

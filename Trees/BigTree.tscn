@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bvo58bbvt58xt"]
 
-[ext_resource type="PackedScene" path="res://Trees/bi_tree.tscn" id="1_jnj6i"]
+[ext_resource type="PackedScene" uid="uid://7bmpqpljt0cv" path="res://Trees/bi_tree.tscn" id="1_jnj6i"]
 [ext_resource type="Script" path="res://Trees/BigTree.cs" id="1_td25i"]
 [ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="3_3crx1"]
 [ext_resource type="ArrayMesh" uid="uid://duw1inemfjgxl" path="res://Leaf/Leaf4.obj" id="4_e7osw"]
