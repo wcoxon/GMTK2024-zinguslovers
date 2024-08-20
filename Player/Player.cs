@@ -70,7 +70,7 @@ public partial class Player : CharacterBody3D
 		//add to cargo
 		cargo += 10;
 		GetNode<Node3D>("Ants/leaf").Show();
-		GetNode<Node3D>("Ants/leaf").Scale = Vector3.One*(float)Mathf.Lerp(10,20,cargo/100);
+		GetNode<Node3D>("Ants/leaf").Scale = Vector3.One*(float)Mathf.Lerp(5,20,cargo/100);
 		_playerUI.updateLeafCount(cargo);
 		//delete leaf
 		(area.Owner as Node3D).QueueFree();
