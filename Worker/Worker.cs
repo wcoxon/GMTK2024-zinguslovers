@@ -13,6 +13,10 @@ public partial class Worker : PathFollow3D
 	public double cargo;
 	[Export] public Tree targetTree;
 
+	float delay;
+
+	static RandomNumberGenerator rng = new RandomNumberGenerator();
+
 	public override void _Ready()
 	{
 		leaf = GetNode<Node3D>("leaf");
@@ -31,6 +35,7 @@ public partial class Worker : PathFollow3D
 			GetParent()?.RemoveChild(this);
 			anthill.AddChild(this);
 			Hide();
+			delay = rng.RandfRange(0.1f, 2.5f);
 			return;
 		}
 
@@ -49,6 +54,11 @@ public partial class Worker : PathFollow3D
 
 	public override void _Process(double delta)
 	{
+		if (delay > 0) {
+			delay -= (float)delta;
+			return;
+		}
+
 		if (!hasTarget) {
 			chooseTarget();
 			return;
@@ -70,7 +80,7 @@ public partial class Worker : PathFollow3D
 			// deposit leaf // empty cargo
 			anthill.Deliver(cargo);
 			cargo = 0;
-			GetNode<Node3D>("leaf").Hide();
+			leaf.Hide();
 
 			chooseTarget();
 		}
