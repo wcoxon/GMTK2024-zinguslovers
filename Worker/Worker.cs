@@ -73,6 +73,7 @@ public partial class Worker : PathFollow3D
 		if((Position - targetTree.path.Curve.GetPointPosition(targetTree.leafIndex)).Length() < moveDistance && cargo==0){
 			//take leaf
 			cargo = targetTree.TryTakeLeaf(anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue());
+			GetNode<AudioStreamPlayer3D>("Ants/CrunchPlayer").Play();
 			leaf.Show();
 			leaf.Scale = Vector3.Zero.Lerp(Vector3.One*10,(float)(cargo/anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue()));
 			if(targetTree.LeafMass==0 && targetTree is FlowerTree){

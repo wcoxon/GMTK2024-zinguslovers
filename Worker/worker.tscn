@@ -14,3 +14,4 @@ script = ExtResource("1_ll78s")
 
 [node name="leaf" parent="." instance=ExtResource("3_tdc7x")]
 transform = Transform3D(10, 0, 0, 0, 9.53759, -3.00573, 0, 3.00573, 9.53759, 0, 0.0663242, -0.118015)
+visible = false

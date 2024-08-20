@@ -5,12 +5,14 @@
 [ext_resource type="Shader" path="res://Trees/outlineShader.gdshader" id="2_7p577"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_us841"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_7p577")
 shader_parameter/outline_color = Color(0.909804, 0.623529, 0, 1)
 shader_parameter/outline_width = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7yujq"]
+resource_local_to_scene = true
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_us841")
 shader = ExtResource("2_6wyks")
@@ -31,6 +33,7 @@ shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_umpo0"]
+resource_local_to_scene = true
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_us841")
 shader = ExtResource("2_6wyks")
@@ -51,6 +54,7 @@ shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_heyo5"]
+resource_local_to_scene = true
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_us841")
 shader = ExtResource("2_6wyks")

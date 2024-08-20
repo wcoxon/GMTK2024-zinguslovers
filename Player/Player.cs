@@ -69,6 +69,8 @@ public partial class Player : CharacterBody3D
 		_tutorialUI.completedHint(TutorialUI.Hint.pickup);
 		//add to cargo
 		cargo += 10;
+		
+		GetNode<AudioStreamPlayer3D>("Ants/CrunchPlayer").Play();
 		GetNode<Node3D>("Ants/leaf").Show();
 		GetNode<Node3D>("Ants/leaf").Scale = Vector3.One*(float)Mathf.Lerp(5,20,cargo/100);
 		_playerUI.updateLeafCount(cargo);

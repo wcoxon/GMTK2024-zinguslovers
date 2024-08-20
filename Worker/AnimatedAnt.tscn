@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://wjewpvohmfj5"]
+[gd_scene load_steps=9 format=3 uid="uid://wjewpvohmfj5"]
 
 [ext_resource type="PackedScene" uid="uid://c2d2qcraycqc4" path="res://Worker/Ants.fbx" id="1_6dor2"]
 [ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_hykm8"]
+[ext_resource type="AudioStream" uid="uid://cut7oyyujtl3i" path="res://leafysound6.wav" id="3_q0onc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q12yd"]
 resource_local_to_scene = true
@@ -122,3 +123,6 @@ autoplay = "WalkMode"
 playback_auto_capture_transition_type = 2
 playback_auto_capture_ease_type = 2
 speed_scale = 0.6
+
+[node name="CrunchPlayer" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource("3_q0onc")

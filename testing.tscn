@@ -349,7 +349,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 3.69038, -0.241376, 21.82)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_wugkv")
-volume_db = 8.978
 autoplay = true
 parameters/looping = true
 
