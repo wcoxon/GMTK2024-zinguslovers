@@ -161,7 +161,7 @@ RegenerationRate = 20.0
 
 [node name="Tree9" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.99896, -1.89547, -25.2153)
-MaxLeaves = 1000.0
+MaxLeaves = 3000.0
 RegenerationRate = 100.0
 TreeHeight = 3.0
 
