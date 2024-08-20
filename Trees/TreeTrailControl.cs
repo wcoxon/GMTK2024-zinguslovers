@@ -34,7 +34,7 @@ public partial class TreeTrailControl : Button
 	public override void _Pressed() {
 		if (player.anthill.targetTrees.Contains(tree)) {
 			if (tree.pathTrail != null) tree.path.RemoveChild(tree.pathTrail);
-			player.anthill.targetTrees.Remove(tree);
+			player.anthill.removeTrail(tree);
 		} else {
 			player.PathAddTree(tree);
 		}

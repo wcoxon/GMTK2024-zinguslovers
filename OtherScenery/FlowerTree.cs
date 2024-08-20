@@ -32,10 +32,11 @@ public partial class FlowerTree : Tree
 	protected override void UpdateLeaves(){
 		base.UpdateLeaves();
 
-		if (LeafMass < 1){
+		if (LeafMass==0){
 			pollen.Emitting = false;
 
 			LeavesMesh.Scale = new Vector3(0, 0, 0);
+			
 		}
 	}
 

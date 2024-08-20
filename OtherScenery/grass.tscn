@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckmq654vhspk7"]
+[gd_scene load_steps=5 format=3 uid="uid://ckmq654vhspk7"]
 
 [ext_resource type="PackedScene" uid="uid://bkafdt5bvwwps" path="res://OtherScenery/Grass.fbx" id="1_wpvel"]
 [ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_s3kdc"]
+[ext_resource type="Script" path="res://OtherScenery/Grass.cs" id="2_u15cc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8het4"]
 render_priority = 0
@@ -23,6 +24,7 @@ shader_parameter/use_borders = false
 shader_parameter/border_width = -0.16
 
 [node name="Grass" instance=ExtResource("1_wpvel")]
+script = ExtResource("2_u15cc")
 
 [node name="Cylinder" parent="." index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_8het4")

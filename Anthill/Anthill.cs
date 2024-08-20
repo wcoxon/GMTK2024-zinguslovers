@@ -27,6 +27,13 @@ public partial class Anthill : Node3D
 	public AnthillStat GetStat(Stat stat) {
 		return GetNode<AnthillStat>(stat.ToString());
 	}
+
+	public void removeTrail(Tree target){
+		if(!targetTrees.Contains(target)) return;
+		targetTrees.Remove(target);
+		target.pathTrail.QueueFree();
+		target.pathTrail=null;
+	}
 	
 	public void Upgrade(Stat stat) {
 		tutorialUI.completedHint(TutorialUI.Hint.upgrades);
@@ -70,6 +77,7 @@ public partial class Anthill : Node3D
 	{
 		tutorialUI = Owner.GetNode<TutorialUI>("Control/TutorialUI");
 		nextAnt = 60f/GetStat(Stat.AntBreedings).GetValue();
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

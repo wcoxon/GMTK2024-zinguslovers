@@ -75,6 +75,9 @@ public partial class Worker : PathFollow3D
 			cargo = targetTree.TryTakeLeaf(anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue());
 			leaf.Show();
 			leaf.Scale = Vector3.Zero.Lerp(Vector3.One*10,(float)(cargo/anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue()));
+			if(targetTree.LeafMass==0 && targetTree is FlowerTree){
+				anthill.removeTrail(targetTree);
+			}
 		}
 		else if(ProgressRatio==1){
 			// deposit leaf // empty cargo

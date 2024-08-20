@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy2g4lfqc406l"]
+[gd_scene load_steps=8 format=3 uid="uid://dy2g4lfqc406l"]
 
 [ext_resource type="Script" path="res://Player/Player.cs" id="1_s0fi0"]
 [ext_resource type="PackedScene" uid="uid://wjewpvohmfj5" path="res://Worker/AnimatedAnt.tscn" id="2_5owu4"]
 [ext_resource type="Script" path="res://Player/CameraController.cs" id="3_ujr0h"]
+[ext_resource type="PackedScene" uid="uid://6jsk1hue8uf3" path="res://Leaf/leafModel.tscn" id="4_41bsj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f43uj"]
 radius = 0.15
@@ -16,6 +17,10 @@ script = ExtResource("1_s0fi0")
 
 [node name="Ants" parent="." instance=ExtResource("2_5owu4")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="leaf" parent="Ants" instance=ExtResource("4_41bsj")]
+transform = Transform3D(6.66667, 0, 0, 0, 6.3794, -1.9359, 0, 1.9359, 6.3794, 0, 0.0678917, -0.115413)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.170653, 0.028035)

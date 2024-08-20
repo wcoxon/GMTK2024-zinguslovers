@@ -33,6 +33,8 @@ public partial class Player : CharacterBody3D
 	public void DeliverTo(Anthill anthill){
 		Debug.WriteLine($"depositing cargo: {cargo}");
 		anthill.Deliver(cargo);
+		
+		GetNode<Node3D>("Ants/leaf").Hide();
 		cargo = 0;
 		_playerUI.updateLeafCount(cargo);
 		_tutorialUI.completedHint(TutorialUI.Hint.deposit);
@@ -67,6 +69,8 @@ public partial class Player : CharacterBody3D
 		_tutorialUI.completedHint(TutorialUI.Hint.pickup);
 		//add to cargo
 		cargo += 10;
+		GetNode<Node3D>("Ants/leaf").Show();
+		GetNode<Node3D>("Ants/leaf").Scale = Vector3.One*(float)Mathf.Lerp(10,20,cargo/100);
 		_playerUI.updateLeafCount(cargo);
 		//delete leaf
 		(area.Owner as Node3D).QueueFree();
