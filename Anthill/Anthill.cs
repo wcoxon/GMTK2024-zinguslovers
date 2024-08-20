@@ -35,7 +35,7 @@ public partial class Anthill : Node3D
 			SpawnAnt();
 		}
 		if (stat == Stat.AntBreedings) {
-			nextAnt = Math.Min(nextAnt, GetStat(Stat.AntBreedings).GetValue());
+			nextAnt = Math.Min(nextAnt, 60f/GetStat(Stat.AntBreedings).GetValue());
 		}
 	}
 
@@ -56,7 +56,7 @@ public partial class Anthill : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		nextAnt = GetStat(Stat.AntBreedings).GetValue();
+		nextAnt = 60f/GetStat(Stat.AntBreedings).GetValue();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,7 +65,7 @@ public partial class Anthill : Node3D
 		nextAnt -= delta;
 		if (nextAnt < 0) {
 			SpawnAnt();
-			nextAnt = GetStat(Stat.AntBreedings).GetValue();
+			nextAnt = 60f/GetStat(Stat.AntBreedings).GetValue();
 		}
 	}
 }
