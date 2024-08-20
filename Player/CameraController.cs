@@ -10,6 +10,8 @@ public partial class CameraController : Node3D
 	public float yaw = 0;
 	float sensitivity = 0.5f;
 
+	Camera3D mainCamera;
+
 	bool isDragging = false;
 
 	private TutorialUI _tutorialUI;
@@ -17,6 +19,11 @@ public partial class CameraController : Node3D
 	public override void _Ready()
 	{
 		_tutorialUI = Owner.Owner.GetNode<TutorialUI>("Control/TutorialUI");
+		mainCamera = GetNode<Camera3D>("Camera3D");
+
+		EventManager.instance.PostEndingCutscene += () => {
+			mainCamera.MakeCurrent();
+		};
 	}
     public override void _Input(InputEvent @event)
     {
