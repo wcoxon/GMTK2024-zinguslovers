@@ -1,24 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cibe3m4xgf7wu"]
+[gd_scene load_steps=4 format=3 uid="uid://cibe3m4xgf7wu"]
+
+[ext_resource type="Material" uid="uid://swh4htggtlbu" path="res://Player/TrailParticle.tres" id="1_36iig"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30qve"]
 albedo_color = Color(0.904885, 0.676028, 0.275244, 1)
-
-[sub_resource type="Curve" id="Curve_cp3xp"]
-_data = [Vector2(0.0289855, 0.428571), 0.0, 0.0369874, 0, 0, Vector2(0.985507, 0.32967), -1.45816, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_k0twd"]
-curve = SubResource("Curve_cp3xp")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wqj7x"]
-lifetime_randomness = 0.22
-emission_shape = 1
-emission_sphere_radius = 1.55
-spread = 180.0
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
-gravity = Vector3(0, 0, 0)
-scale_curve = SubResource("CurveTexture_k0twd")
 
 [sub_resource type="SphereMesh" id="SphereMesh_nn5bu"]
 lightmap_size_hint = Vector2i(3, 2)
@@ -35,5 +20,5 @@ amount = 2
 lifetime = 0.57
 randomness = 0.42
 collision_base_size = 0.0
-process_material = SubResource("ParticleProcessMaterial_wqj7x")
+process_material = ExtResource("1_36iig")
 draw_pass_1 = SubResource("SphereMesh_nn5bu")

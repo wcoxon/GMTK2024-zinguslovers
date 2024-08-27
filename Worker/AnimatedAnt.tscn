@@ -1,27 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://wjewpvohmfj5"]
 
 [ext_resource type="PackedScene" uid="uid://c2d2qcraycqc4" path="res://Worker/Ants.fbx" id="1_6dor2"]
-[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_hykm8"]
-[ext_resource type="AudioStream" uid="uid://cut7oyyujtl3i" path="res://leafysound6.wav" id="3_q0onc"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q12yd"]
-render_priority = 0
-shader = ExtResource("2_hykm8")
-shader_parameter/albedo = Color(0.844009, 0.461566, 0.319192, 1)
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
-shader_parameter/wrap = 9.5e-08
-shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = false
-shader_parameter/use_specular = false
-shader_parameter/specular_strength = 1.0
-shader_parameter/specular_shininess = 16.0
-shader_parameter/use_rim = false
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
+[ext_resource type="Shader" path="res://Materials/Toon.gdshader" id="2_hykm8"]
+[ext_resource type="Material" uid="uid://vlfspkreq5fd" path="res://Materials/AntBodyMaterial.tres" id="2_jt8n8"]
+[ext_resource type="AudioStream" uid="uid://cut7oyyujtl3i" path="res://Music/leafysound6.wav" id="3_q0onc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tv1i6"]
 render_priority = 0
@@ -107,12 +89,12 @@ _data = {
 
 [node name="AntBody" parent="." index="0"]
 transform = Transform3D(-0.969845, 0.17101, -0.173652, 0.173648, 0.984808, 0, 0.171014, -0.0301545, -0.984807, 1.76232e-25, 0, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_q12yd")
+surface_material_override/0 = ExtResource("2_jt8n8")
 surface_material_override/1 = SubResource("ShaderMaterial_tv1i6")
 
 [node name="AntLegs" parent="." index="1"]
 transform = Transform3D(-0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, -0.984808, 1.76232e-25, 0, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_q12yd")
+surface_material_override/0 = ExtResource("2_jt8n8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {

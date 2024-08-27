@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c72ihbnemf7g2"]
 
 [ext_resource type="PackedScene" uid="uid://dniy07aq5qn0s" path="res://Map/antMap.fbx" id="1_veo2g"]
-[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_mlnh1"]
+[ext_resource type="Shader" path="res://Materials/Toon.gdshader" id="2_mlnh1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dibdf"]
 render_priority = 0

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://7bmpqpljt0cv"]
 
 [ext_resource type="PackedScene" uid="uid://3a3sau7ic31k" path="res://Trees/BiTree.fbx" id="1_foi3j"]
-[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_4v1fp"]
-[ext_resource type="Shader" path="res://Trees/outlineShader.gdshader" id="2_ncpxu"]
+[ext_resource type="Shader" path="res://Materials/Toon.gdshader" id="2_4v1fp"]
+[ext_resource type="Shader" path="res://Materials/outlineShader.gdshader" id="2_ncpxu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t1ej4"]
 resource_local_to_scene = true

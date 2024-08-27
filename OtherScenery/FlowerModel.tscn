@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://2a3x35p2yvju"]
 
 [ext_resource type="PackedScene" uid="uid://dp627pla2k7t" path="res://OtherScenery/FlowerNice.fbx" id="1_rm8ny"]
-[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_6wyks"]
-[ext_resource type="Shader" path="res://Trees/outlineShader.gdshader" id="2_7p577"]
+[ext_resource type="Shader" path="res://Materials/Toon.gdshader" id="2_6wyks"]
+[ext_resource type="Shader" path="res://Materials/outlineShader.gdshader" id="2_7p577"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_us841"]
 resource_local_to_scene = true

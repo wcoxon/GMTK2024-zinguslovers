@@ -153,7 +153,7 @@ public partial class Player : CharacterBody3D
 		_playerUI = Owner.GetNode<PlayerUI>("Control/PlayerUI");
 		_tutorialUI = Owner.GetNode<TutorialUI>("Control/TutorialUI");
 
-		leafScene = GD.Load<PackedScene>("res://PlayerPickupParticles.tscn");
+		leafScene = GD.Load<PackedScene>("res://Leaf/PlayerPickupParticles.tscn");
 		_cameraController = GetNode<CameraController>("CameraController");
 		
 		_playerUI.updateLeafCount(cargo);

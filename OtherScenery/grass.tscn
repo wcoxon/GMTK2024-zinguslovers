@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckmq654vhspk7"]
 
 [ext_resource type="PackedScene" uid="uid://bkafdt5bvwwps" path="res://OtherScenery/Grass.fbx" id="1_wpvel"]
-[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_s3kdc"]
+[ext_resource type="Shader" path="res://Materials/Toon.gdshader" id="2_s3kdc"]
 [ext_resource type="Script" path="res://OtherScenery/Grass.cs" id="2_u15cc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8het4"]

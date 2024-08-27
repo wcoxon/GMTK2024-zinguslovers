@@ -1,0 +1,18 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://swh4htggtlbu"]
+
+[sub_resource type="Curve" id="Curve_cp3xp"]
+_data = [Vector2(0.0289855, 0.428571), 0.0, 0.0369874, 0, 0, Vector2(0.985507, 0.32967), -1.45816, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_k0twd"]
+curve = SubResource("Curve_cp3xp")
+
+[resource]
+lifetime_randomness = 0.22
+emission_shape = 1
+emission_sphere_radius = 1.55
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_k0twd")

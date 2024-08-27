@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://6jsk1hue8uf3"]
 
 [ext_resource type="PackedScene" uid="uid://ccd1sewal3kbr" path="res://Leaf/leaf.fbx" id="1_3rjp6"]
-[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_m4whg"]
+[ext_resource type="Shader" path="res://Materials/Toon.gdshader" id="2_m4whg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bqhjg"]
 render_priority = 0

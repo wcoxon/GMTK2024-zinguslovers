@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2ctulqejyj6b"]
 
 [ext_resource type="PackedScene" uid="uid://d2vdan8u5q1fx" path="res://Map/antTerrain.fbx" id="1_gw7rs"]
-[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="2_dejek"]
+[ext_resource type="Shader" path="res://Materials/Toon.gdshader" id="2_dejek"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bodsh"]
 render_priority = 0

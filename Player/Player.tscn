@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dy2g4lfqc406l"]
 
 [ext_resource type="Script" path="res://Player/Player.cs" id="1_s0fi0"]
-[ext_resource type="PackedScene" uid="uid://d2wbb4rmvpnb3" path="res://Worker/AnimatedAnt.tscn" id="2_5owu4"]
+[ext_resource type="PackedScene" uid="uid://wjewpvohmfj5" path="res://Worker/AnimatedAnt.tscn" id="2_5owu4"]
 [ext_resource type="Script" path="res://Player/CameraController.cs" id="3_ujr0h"]
 [ext_resource type="PackedScene" uid="uid://6jsk1hue8uf3" path="res://Leaf/leafModel.tscn" id="4_41bsj"]
 

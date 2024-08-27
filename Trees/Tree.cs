@@ -42,7 +42,7 @@ public partial class Tree : Node3D
 
 		regenTimer.Timeout += OnLeafTimerTimeout;
 
-		LeafScene = GD.Load<PackedScene>("res://leavesPart.tscn");
+		LeafScene = GD.Load<PackedScene>("res://Leaf/leavesPart.tscn");
 
 		setOutlined(false);
 

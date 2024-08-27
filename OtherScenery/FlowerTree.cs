@@ -20,7 +20,7 @@ public partial class FlowerTree : Tree
 
 		pollen = GetNode<GpuParticles3D>("Leaves");
 
-		LeafScene = GD.Load<PackedScene>("res://leavesPart.tscn");
+		LeafScene = GD.Load<PackedScene>("res://Leaf/leavesPart.tscn");
 
 		setOutlined(false);
 	}
