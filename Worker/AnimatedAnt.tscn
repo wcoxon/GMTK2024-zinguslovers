@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://cut7oyyujtl3i" path="res://leafysound6.wav" id="3_q0onc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q12yd"]
-resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_hykm8")
 shader_parameter/albedo = Color(0.844009, 0.461566, 0.319192, 1)

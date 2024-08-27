@@ -65,7 +65,10 @@ public partial class Tree : Node3D
 		LeafMass -= leavesTaken; //then remove that many leaves from the tree, I don't think we need the Max but I'm just being safe so we don't get negative leaves somehow
 
 		UpdateLeaves();
-		LeafPoofAnimation();
+
+		if(LeafMass > RegenerationRate){
+			LeafPoofAnimation();
+		}
 
 
 
