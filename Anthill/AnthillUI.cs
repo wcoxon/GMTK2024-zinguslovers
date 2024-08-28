@@ -23,6 +23,12 @@ public partial class AnthillUI : Panel
 		player.DeliverTo(anthill);
 	}
 
+	public void upgradePlayerSpeed(){
+		player.upgradeSpeed();
+	}
+	public void UpdatePlayerColour(Color colour){
+		player.updateColour(colour);
+	}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

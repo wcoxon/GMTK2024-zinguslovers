@@ -1,6 +1,6 @@
 shader_type spatial;
 
-instance uniform vec4 albedo : source_color = vec4(1.0f);
+instance uniform vec4 albedo : source_color = vec4(1.0f,0.6f,0.4f,1.0f);
 uniform sampler2D albedo_texture : filter_nearest;
 uniform bool clamp_diffuse_to_max = false;
 

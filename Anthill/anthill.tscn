@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Anthill/Anthill.cs" id="1_htxim"]
 [ext_resource type="Script" path="res://Anthill/AnthillStat.cs" id="2_kwy1h"]
-[ext_resource type="Shader" path="res://Trees/ToonTree.gdshader" id="3_7c5aq"]
+[ext_resource type="Shader" path="res://Materials/Toon.gdshader" id="3_7c5aq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p82n1"]
 resource_name = "Material.001"
@@ -83,7 +83,7 @@ costExpression = "100 + 200 * l"
 [node name="NewAnt" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
 valueExpression = "0"
-costExpression = "floor(25 * l ** 1.5)"
+costExpression = "0*floor(25 * l ** 1.5)"
 
 [node name="AntBreedings" type="Node" parent="."]
 script = ExtResource("2_kwy1h")

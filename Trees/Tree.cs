@@ -68,6 +68,7 @@ public partial class Tree : Node3D
 
 		if(LeafMass > RegenerationRate){
 			LeafPoofAnimation();
+			GetNode<AudioStreamPlayer3D>("CrunchPlayer").Play();
 		}
 
 

@@ -5,7 +5,7 @@ using System.Diagnostics;
 public partial class Player : CharacterBody3D
 {
 	public const float acceleration = 9.0f;
-	public const float maxSpeed = 3.0f;
+	public float maxSpeed = 3.0f;
 	public const float JumpVelocity = 4.5f;
 	double cargo = 0;
 	public TrailBuilder trailBuilder;
@@ -26,6 +26,14 @@ public partial class Player : CharacterBody3D
 
 	private RandomNumberGenerator _rng = new RandomNumberGenerator();
 	private Material _particleMaterial;
+
+	public void updateColour(Color colour){
+		GetNode<MeshInstance3D>("Ants/AntBody").SetInstanceShaderParameter("albedo",colour);
+		GetNode<MeshInstance3D>("Ants/AntLegs").SetInstanceShaderParameter("albedo",colour);
+	}
+	public void upgradeSpeed(){
+		maxSpeed += 0.1f;
+	}
 
 	public double getCargo(){
 		return cargo;

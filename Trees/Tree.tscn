@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw2l7f5x8gaee"]
+[gd_scene load_steps=9 format=3 uid="uid://bw2l7f5x8gaee"]
 
 [ext_resource type="Script" path="res://Trees/Tree.cs" id="1_f3s1k"]
 [ext_resource type="PackedScene" uid="uid://buje34pan8o7e" path="res://Trees/tree_2Model.tscn" id="3_cvd2e"]
 [ext_resource type="PackedScene" uid="uid://cqeqjb630x4vs" path="res://Leaf/leavesPart.tscn" id="4_2d057"]
+[ext_resource type="AudioStream" uid="uid://cut7oyyujtl3i" path="res://Music/leafysound6.wav" id="4_44nnp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3x2q3"]
 
@@ -58,3 +59,7 @@ shape = SubResource("CapsuleShape3D_3x2q3")
 
 [node name="Leaves" parent="." instance=ExtResource("4_2d057")]
 process_material = SubResource("ParticleProcessMaterial_83on8")
+
+[node name="CrunchPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49017, 0)
+stream = ExtResource("4_44nnp")
