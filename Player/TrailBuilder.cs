@@ -7,6 +7,8 @@ public class TrailBuilder {
     public Vector3 point;
     public Tree tree;
 
+    public float PointSpacing = 1.5f;
+
     public TrailBuilder(Vector3 start) {
         curve = new Curve3D();
         curve.UpVectorEnabled = true;

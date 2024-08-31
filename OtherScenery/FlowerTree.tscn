@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://0fedht5gnvm2"]
+[gd_scene load_steps=10 format=3 uid="uid://0fedht5gnvm2"]
 
 [ext_resource type="Script" path="res://OtherScenery/FlowerTree.cs" id="1_fvggc"]
 [ext_resource type="PackedScene" uid="uid://2a3x35p2yvju" path="res://OtherScenery/FlowerModel.tscn" id="1_o4ny8"]
+[ext_resource type="AudioStream" uid="uid://cut7oyyujtl3i" path="res://Music/leafysound6.wav" id="3_ljeh5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lno2i"]
 radius = 0.0776248
@@ -64,3 +65,7 @@ lifetime = 3.0
 randomness = 0.57
 process_material = SubResource("ParticleProcessMaterial_l1vwb")
 draw_pass_1 = SubResource("QuadMesh_xyccc")
+
+[node name="CrunchPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49017, 0)
+stream = ExtResource("3_ljeh5")

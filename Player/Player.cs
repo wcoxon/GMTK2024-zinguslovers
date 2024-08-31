@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 public partial class Player : CharacterBody3D
 {
@@ -235,8 +236,12 @@ public partial class Player : CharacterBody3D
 		Velocity = velocity;
 		MoveAndSlide();
 
-		if (IsPathing() && (trailBuilder.point - Position).Length() > 0.5f) {
+		// if pathing and over 0.5 from the last point, add a new point here
+		if (IsPathing() && (trailBuilder.point - Position).Length() > trailBuilder.PointSpacing) {
+			//add point to trail
 			trailBuilder.AddPoint(Position);
+
+			//add particle emitter
 			GpuParticles3D particle = trailParticle.Instantiate<GpuParticles3D>();
 			particle.Position = Position + new Vector3(0, 0.05f, 0);
 			particle.MaterialOverride = _particleMaterial;

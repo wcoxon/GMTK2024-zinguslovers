@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvo58bbvt58xt"]
+[gd_scene load_steps=11 format=3 uid="uid://bvo58bbvt58xt"]
 
 [ext_resource type="PackedScene" uid="uid://7bmpqpljt0cv" path="res://Trees/bi_tree.tscn" id="1_jnj6i"]
 [ext_resource type="Script" path="res://Trees/BigTree.cs" id="1_td25i"]
 [ext_resource type="Shader" path="res://Materials/Toon.gdshader" id="3_3crx1"]
 [ext_resource type="ArrayMesh" uid="uid://duw1inemfjgxl" path="res://Leaf/Leaf4.obj" id="4_e7osw"]
+[ext_resource type="AudioStream" uid="uid://cut7oyyujtl3i" path="res://Music/leafysound6.wav" id="5_hnd6h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rvkqj"]
 radius = 0.787825
@@ -88,3 +89,7 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_1rlpk")
 draw_pass_1 = ExtResource("4_e7osw")
+
+[node name="CrunchPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49017, 0)
+stream = ExtResource("5_hnd6h")
