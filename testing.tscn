@@ -72,27 +72,14 @@ tree = NodePath("../../Tree")
 player = NodePath("../../PlayerAnt")
 
 [node name="PlayerUI" parent="Control" instance=ExtResource("5_yd60h")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_right = 0.0
-offset_left = 893.0
-offset_right = 1081.0
-grow_horizontal = 1
+layout_mode = 1
 
 [node name="TutorialUI" parent="Control" instance=ExtResource("6_0e54j")]
 layout_mode = 1
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 343.0
-offset_top = 553.0
-offset_right = 796.0
-offset_bottom = 593.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = -250.0
+offset_top = -90.0
+offset_right = 250.0
+offset_bottom = -50.0
 
 [node name="Blackout" parent="Control" instance=ExtResource("6_jswdr")]
 
@@ -161,9 +148,9 @@ RegenerationRate = 20.0
 
 [node name="Tree9" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.99896, -1.89547, -25.2153)
-MaxLeaves = 1000.0
+MaxLeaves = 3000.0
 RegenerationRate = 100.0
-TreeHeight = 3.0
+TreeHeight = 5.0
 
 [node name="Tree10" parent="." instance=ExtResource("6_0mw8x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.2257, -3.09047, 27.8323)

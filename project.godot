@@ -13,6 +13,7 @@ config_version=5
 config/name="GMTK2024ZL"
 run/main_scene="res://testing.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/icon="res://EventLogic/antlogo1.png"
 
 [autoload]
 

@@ -25,7 +25,7 @@ public partial class TutorialUI : Panel
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_hintLabel = GetNode<Label>("HintLabel");
+		_hintLabel = GetNode<Label>("MarginContainer/HintLabel");
 		hints = _hintLabel.Text.Split("\n");
 		updateHint();
 	}
