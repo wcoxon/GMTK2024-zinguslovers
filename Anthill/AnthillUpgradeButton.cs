@@ -14,9 +14,10 @@ public partial class AnthillUpgradeButton : Button
 		if (upgrade == Anthill.Stat.NewAnt) {
 			Text = string.Format(FormatText, stat.level, stat.GetCost(), anthill.numAnts, anthill.numAnts + 1);
 		} else {
-			stat.level++;
-			  double new_val = stat.GetValue();
-			stat.level--;
+			stat.Upgrade();
+			double new_val = stat.GetValue();
+			stat.level-=2;
+			stat.Upgrade();
 			Text = string.Format(FormatText, stat.level, stat.GetCost(), stat.GetValue(), new_val);
 		}
 
@@ -29,13 +30,14 @@ public partial class AnthillUpgradeButton : Button
 		stat = anthill.GetStat(upgrade);
 
 		FormatText = Text;
+		DoFormat();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		Disabled = stat.GetCost() > anthill.leafMass;
-		DoFormat();
+		//DoFormat();
 	}
 
     public override void _Pressed()

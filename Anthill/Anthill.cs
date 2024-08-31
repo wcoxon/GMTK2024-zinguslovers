@@ -7,7 +7,8 @@ public partial class Anthill : Node3D
 {
 	public enum Stat
 	{
-		AntSpeed, AntCarryCapacity, NewAnt, AntBreedings
+		AntSpeed, AntCarryCapacity, NewAnt, AntBreedings,
+		PlayerSpeed, PlayerJump, CollectableValue
 	}
 
 	[Export] public double leafMass;
@@ -25,7 +26,6 @@ public partial class Anthill : Node3D
 
 	private double nextAnt;
 
-	private RandomNumberGenerator rng = new RandomNumberGenerator();
 
 	public AnthillStat GetStat(Stat stat) {
 		return GetNode<AnthillStat>(stat.ToString());
@@ -39,17 +39,23 @@ public partial class Anthill : Node3D
 	}
 	
 	public void Upgrade(Stat stat) {
+
 		tutorialUI.completedHint(TutorialUI.Hint.upgrades);
-		AnthillStat obj = GetStat(stat);
-		if (leafMass >= obj.GetCost()) {
-			leafMass -= obj.GetCost();
-			obj.level++;
-		}
-		if (stat == Stat.NewAnt) {
-			for(int x = 0; x < 50; x++) SpawnAnt();
-		}
-		if (stat == Stat.AntBreedings) {
-			nextAnt = Math.Min(nextAnt, 60f/GetStat(Stat.AntBreedings).GetValue());
+
+		AnthillStat upgrade = GetStat(stat);
+		leafMass -= upgrade.GetCost();
+		
+		upgrade.Upgrade();
+
+		switch(stat){
+			case Stat.NewAnt:
+				for(int x = 0; x < 50; x++) SpawnAnt();
+				break;
+			case Stat.AntBreedings:
+				nextAnt = Math.Min(nextAnt, 60f/GetStat(Stat.AntBreedings).GetValue());
+				break;
+				
+			
 		}
 	}
 
@@ -64,8 +70,12 @@ public partial class Anthill : Node3D
 		Worker instance = antScene.Instantiate<Worker>();
 		instance.Position = antSpawningPos;
 		instance.anthill = this;
-		instance.Scale = Vector3.One * rng.RandfRange(0.7f, 1f);
 
+		//random variations
+
+		RandomNumberGenerator rng = new RandomNumberGenerator();
+
+		instance.Scale = Vector3.One * rng.RandfRange(0.7f, 1f);
 
 		var AntColour = Color.FromHsv(rng.RandfRange(0.02f, 0.07f), rng.RandfRange(0.52f, 0.72f), rng.RandfRange(0.75f, 0.95f));
 		MeshInstance3D body = instance.GetNode<MeshInstance3D>("Ants/AntBody");
@@ -73,6 +83,7 @@ public partial class Anthill : Node3D
 		MeshInstance3D legs = instance.GetNode<MeshInstance3D>("Ants/AntLegs");
 		legs.SetInstanceShaderParameter("albedo",AntColour);
 		
+		//set it on a trail
 		instance.chooseTarget();
 
 		if	(numAnts == GoalAntNumber){

@@ -5,8 +5,13 @@ using System.Diagnostics;
 public partial class Player : CharacterBody3D
 {
 	public const float acceleration = 9.0f;
-	public float maxSpeed = 3.0f;
-	public const float JumpVelocity = 4.5f;
+	//public float maxSpeed = 3.0f;
+	public AnthillStat maxSpeed;
+
+	//public const float JumpVelocity = 4.5f;
+	public AnthillStat JumpVelocity;
+
+	public AnthillStat CollectableValue;
 	double cargo = 0;
 	public TrailBuilder trailBuilder;
 	private Node _trailParticles;
@@ -30,9 +35,6 @@ public partial class Player : CharacterBody3D
 	public void updateColour(Color colour){
 		GetNode<MeshInstance3D>("Ants/AntBody").SetInstanceShaderParameter("albedo",colour);
 		GetNode<MeshInstance3D>("Ants/AntLegs").SetInstanceShaderParameter("albedo",colour);
-	}
-	public void upgradeSpeed(){
-		maxSpeed += 0.1f;
 	}
 
 	public double getCargo(){
@@ -81,7 +83,7 @@ public partial class Player : CharacterBody3D
 	public void EnterPickup(Area3D area){
 		_tutorialUI.completedHint(TutorialUI.Hint.pickup);
 		//add to cargo
-		cargo += 10;
+		cargo += CollectableValue.GetValue();
 		
 		GetNode<AudioStreamPlayer3D>("Ants/CrunchPlayer").Play();
 		GetNode<Node3D>("Ants/leaf").Show();
@@ -165,6 +167,10 @@ public partial class Player : CharacterBody3D
 		_cameraController = GetNode<CameraController>("CameraController");
 		
 		_playerUI.updateLeafCount(cargo);
+
+		maxSpeed = anthill.GetStat(Anthill.Stat.PlayerSpeed);
+		JumpVelocity = anthill.GetStat(Anthill.Stat.PlayerJump);
+		CollectableValue = anthill.GetStat(Anthill.Stat.CollectableValue);
     }
 
     public override void _PhysicsProcess(double delta)
@@ -181,7 +187,7 @@ public partial class Player : CharacterBody3D
 			velocity += direction * acceleration * (float)delta;
 
 			//limit walking speed
-			velocity = velocity.Normalized() * Mathf.Min(velocity.Length(),maxSpeed);
+			velocity = velocity.Normalized() * Mathf.Min(velocity.Length(),(float)maxSpeed.GetValue());
 			
 			GetNode<AnimationPlayer>("Ants/AnimationPlayer").Play();
 		}
@@ -206,7 +212,7 @@ public partial class Player : CharacterBody3D
 		// Handle Jump
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
-			velocity.Y = JumpVelocity;
+			velocity.Y = (float)JumpVelocity.GetValue();
 		}
 
 		if (Input.IsActionJustReleased("jump"))

@@ -90,6 +90,21 @@ script = ExtResource("2_kwy1h")
 valueExpression = "l-1"
 costExpression = "floor(100 * l ** (1.5 + 0.1 * l))"
 
+[node name="PlayerSpeed" type="Node" parent="."]
+script = ExtResource("2_kwy1h")
+valueExpression = "3 + l*0.1"
+costExpression = "floor(100 * l)"
+
+[node name="PlayerJump" type="Node" parent="."]
+script = ExtResource("2_kwy1h")
+valueExpression = "4.5 + l*0.1"
+costExpression = "floor(100 * l)"
+
+[node name="CollectableValue" type="Node" parent="."]
+script = ExtResource("2_kwy1h")
+valueExpression = "l*50"
+costExpression = "floor(100 * l)"
+
 [node name="Cube_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(55.73, 0, 0, 0, -2.43604e-06, 85.601, 0, -55.73, -3.74174e-06, 0, -0.117101, 0)
 mesh = SubResource("ArrayMesh_hv2ij")

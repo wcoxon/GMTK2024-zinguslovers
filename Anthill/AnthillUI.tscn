@@ -46,14 +46,28 @@ layout_mode = 2
 text = "Upgrade Player Speed
 Level {0} ({2}→{3})
 {1} Leaves"
+script = ExtResource("1_23b12")
+upgrade = 4
 
 [node name="JumpUpgrade" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Character"]
 layout_mode = 2
-text = "Upgrade Jump"
+text = "Upgrade Jump
+Level {0} ({2}→{3})
+{1} Leaves"
+script = ExtResource("1_23b12")
+upgrade = 5
 
 [node name="CollectableUpgrade" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Character"]
 layout_mode = 2
-text = "Upgrade Collectable Value"
+text = "Upgrade Collectable Value
+Level {0} ({2}→{3})
+{1} Leaves"
+script = ExtResource("1_23b12")
+upgrade = 6
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/Character"]
+layout_mode = 2
+text = "player colour:"
 
 [node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer/TabContainer/Character"]
 layout_mode = 2
@@ -106,5 +120,4 @@ text = "Start Trail/Stop Trail"
 script = ExtResource("2_4fxkd")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/DepositButton" to="." method="DepositLeaves"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/TabContainer/Character/SpeedUpgrade" to="." method="upgradePlayerSpeed"]
 [connection signal="color_changed" from="MarginContainer/VBoxContainer/TabContainer/Character/ColorPicker" to="." method="UpdatePlayerColour"]

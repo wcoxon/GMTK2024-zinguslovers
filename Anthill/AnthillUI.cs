@@ -22,10 +22,6 @@ public partial class AnthillUI : Panel
 	public void DepositLeaves(){
 		player.DeliverTo(anthill);
 	}
-
-	public void upgradePlayerSpeed(){
-		player.upgradeSpeed();
-	}
 	public void UpdatePlayerColour(Color colour){
 		player.updateColour(colour);
 	}
@@ -52,6 +48,5 @@ public partial class AnthillUI : Panel
 	public override void _Process(double delta)
 	{
 		UpdateText();
-
 	}
 }
