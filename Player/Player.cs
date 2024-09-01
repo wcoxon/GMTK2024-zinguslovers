@@ -31,7 +31,8 @@ public partial class Player : CharacterBody3D
 	[Export] public PackedScene trailParticle;
 
 	private RandomNumberGenerator _rng = new RandomNumberGenerator();
-	private Material _particleMaterial;
+	
+	private Color trailColour;
 
 	public void updateColour(Color colour){
 		GetNode<MeshInstance3D>("Ants/AntBody").SetInstanceShaderParameter("albedo",colour);
@@ -98,15 +99,15 @@ public partial class Player : CharacterBody3D
 
 	public void StartPathing() {
 		_tutorialUI.completedHint(TutorialUI.Hint.trailStart);
+
 		trailBuilder = new TrailBuilder(anthill.Position);
 		_trailParticles = new Node();
 		Owner.AddChild(_trailParticles);
-
-		_particleMaterial = new StandardMaterial3D() {AlbedoColor = new Color(
+		trailColour = new Color(
 			_rng.RandfRange(0.3f, 1f), 
 			_rng.RandfRange(0.3f, 1f), 
 			_rng.RandfRange(0.2f, 0.5f)
-		)};
+		);
 	}
 
 	public void StopPathing() {
@@ -244,7 +245,7 @@ public partial class Player : CharacterBody3D
 			//add particle emitter
 			GpuParticles3D particle = trailParticle.Instantiate<GpuParticles3D>();
 			particle.Position = Position + new Vector3(0, 0.05f, 0);
-			particle.MaterialOverride = _particleMaterial;
+			particle.SetInstanceShaderParameter("albedo", trailColour);
 			_trailParticles.AddChild(particle);
 		}
 

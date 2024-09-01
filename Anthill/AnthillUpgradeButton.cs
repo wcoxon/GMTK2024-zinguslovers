@@ -37,7 +37,7 @@ public partial class AnthillUpgradeButton : Button
 	public override void _Process(double delta)
 	{
 		Disabled = stat.GetCost() > anthill.leafMass;
-		//DoFormat();
+		DoFormat();
 	}
 
     public override void _Pressed()

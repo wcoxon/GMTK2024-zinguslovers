@@ -1,17 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cibe3m4xgf7wu"]
+[gd_scene load_steps=5 format=3 uid="uid://cibe3m4xgf7wu"]
 
 [ext_resource type="Material" uid="uid://swh4htggtlbu" path="res://Player/TrailParticle.tres" id="1_36iig"]
-[ext_resource type="Shader" path="res://Materials/Toon.gdshader" id="2_4hom3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30qve"]
-albedo_color = Color(0.904885, 0.676028, 0.275244, 1)
+[ext_resource type="Shader" path="res://Materials/ToonInstanced.gdshader" id="1_o6lhq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wv6w8"]
 render_priority = 0
-shader = ExtResource("2_4hom3")
-shader_parameter/albedo = Color(1, 1, 1, 1)
+shader = ExtResource("1_o6lhq")
 shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
+shader_parameter/cuts = 2
 shader_parameter/wrap = 0.0
 shader_parameter/steepness = 1.0
 shader_parameter/use_attenuation = false
@@ -27,15 +23,15 @@ shader_parameter/border_width = 0.01
 
 [sub_resource type="SphereMesh" id="SphereMesh_nn5bu"]
 lightmap_size_hint = Vector2i(3, 2)
-material = SubResource("ShaderMaterial_wv6w8")
 radius = 0.05
 height = 0.1
-radial_segments = 8
-rings = 4
+radial_segments = 6
+rings = 6
 
 [node name="TrailParticle" type="GPUParticles3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_30qve")
+material_override = SubResource("ShaderMaterial_wv6w8")
+cast_shadow = 0
 gi_mode = 0
 amount = 2
 lifetime = 0.57
