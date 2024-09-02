@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using Godot.Collections;
+using System.Diagnostics;
 
 
 public partial class Anthill : Node3D
@@ -22,7 +23,7 @@ public partial class Anthill : Node3D
 	
 	private TutorialUI tutorialUI;
 
-	[Export] public int GoalAntNumber = 1000;
+	[Export] public int GoalAntNumber = 5000;
 
 	private double nextAnt;
 
@@ -63,28 +64,21 @@ public partial class Anthill : Node3D
 	{
 		leafMass += mass;
 	}
+	
 	private void SpawnAnt()
 	{
 		numAnts++;
 
-		Worker instance = antScene.Instantiate<Worker>();
-		instance.Position = antSpawningPos;
-		instance.anthill = this;
+		var scene = (PackedScene)GD.Load("res://Worker/worker.tscn");
+		var instance = scene.Instantiate();
 
-		//random variations
+		instance.Set("position",antSpawningPos);
+		instance.Set("anthill", this);
 
-		RandomNumberGenerator rng = new RandomNumberGenerator();
+		//random variation happens in the GDscript worker's ready function at the moment
 
-		instance.Scale = Vector3.One * rng.RandfRange(0.7f, 1f);
-
-		var AntColour = Color.FromHsv(rng.RandfRange(0.02f, 0.07f), rng.RandfRange(0.52f, 0.72f), rng.RandfRange(0.75f, 0.95f));
-		MeshInstance3D body = instance.GetNode<MeshInstance3D>("Ants/AntBody");
-		body.SetInstanceShaderParameter("albedo",AntColour);
-		MeshInstance3D legs = instance.GetNode<MeshInstance3D>("Ants/AntLegs");
-		legs.SetInstanceShaderParameter("albedo",AntColour);
-		
 		//set it on a trail
-		instance.chooseTarget();
+		instance.Call("chooseTarget");
 
 		if	(numAnts == GoalAntNumber){
 			EventManager.instance.EmitSignal(EventManager.SignalName.BeginEndingCutscene);
@@ -99,9 +93,11 @@ public partial class Anthill : Node3D
 
 	}
 
+	public double moveDistance;
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		moveDistance = GetStat(Stat.AntSpeed).GetValue()*delta;
 		nextAnt -= delta;
 		if (nextAnt < 0) {
 			SpawnAnt();

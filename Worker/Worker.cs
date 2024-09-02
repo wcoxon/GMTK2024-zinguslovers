@@ -58,7 +58,6 @@ public partial class Worker : PathFollow3D
 			delay -= (float)delta;
 			return;
 		}
-
 		if (!hasTarget) {
 			chooseTarget();
 			return;
@@ -68,9 +67,7 @@ public partial class Worker : PathFollow3D
 
 		Progress += (float)moveDistance;
 
-		
-
-		if((Position - targetTree.path.Curve.GetPointPosition(targetTree.leafIndex)).Length() < moveDistance && cargo==0){
+		if(ProgressRatio > targetTree.leafProgress && !leaf.Visible){
 
 			//take leaf
 			cargo = targetTree.TryTakeLeaf(anthill.GetStat(Anthill.Stat.AntCarryCapacity).GetValue());
@@ -83,7 +80,6 @@ public partial class Worker : PathFollow3D
 			}
 		}
 		else if(ProgressRatio==1){
-			// deposit leaf // empty cargo
 			anthill.Deliver(cargo);
 			cargo = 0;
 			leaf.Hide();

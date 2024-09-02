@@ -43,7 +43,6 @@ public partial class Player : CharacterBody3D
 		return cargo;
 	}
 	public void DeliverTo(Anthill anthill){
-		Debug.WriteLine($"depositing cargo: {cargo}");
 		anthill.Deliver(cargo);
 		
 		GetNode<Node3D>("Ants/leaf").Hide();
@@ -113,6 +112,8 @@ public partial class Player : CharacterBody3D
 	public void StopPathing() {
 		
 		_tutorialUI.completedHint(TutorialUI.Hint.trailEnd);
+
+
 		Owner.RemoveChild(_trailParticles);
 		if (PathHasTree()) {
 			trailBuilder.AddFinal(anthill.Position);
@@ -129,6 +130,11 @@ public partial class Player : CharacterBody3D
 			trailBuilder.tree.path.AddChild(_trailParticles);
 
 			anthill.targetTrees.Add(trailBuilder.tree);
+
+
+			//leaf progress ratio
+			trailBuilder.tree.leafProgress = (float)trailBuilder.tree.leafIndex / (float)trailBuilder.curve.PointCount;
+			
 		}
 		trailBuilder = null;
 		_trailParticles = null;
@@ -145,6 +151,7 @@ public partial class Player : CharacterBody3D
 		trailBuilder.AddPoint(tree.Position + Vector3.Up * tree.TreeHeight);
 		trailBuilder.AddPoint(tree.Position + Vector3.Up * tree.TreeHeight);
 		trailBuilder.AddPoint(tree.Position + Vector3.Up * tree.TreeHeight);
+
 		trailBuilder.tree.leafIndex = trailBuilder.curve.PointCount;
 
 		trailBuilder.AddPoint(Position);

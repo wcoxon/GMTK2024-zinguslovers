@@ -13,6 +13,8 @@ public partial class Tree : Node3D
 	public Path3D path;
 	public Node pathTrail = null;
 	public int leafIndex = 3;
+	public float leafProgress;
+
 
 	[Export]
 	public double MaxLeaves; //maximum leaves on a tree

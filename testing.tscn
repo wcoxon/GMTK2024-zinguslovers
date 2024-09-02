@@ -53,6 +53,7 @@ grow_vertical = 2
 
 [node name="AnthillUI" parent="Control" node_paths=PackedStringArray("anthill", "player") instance=ExtResource("2_aj380")]
 layout_mode = 2
+anchors_preset = 0
 offset_left = 50.0
 offset_top = 50.0
 offset_right = 400.0

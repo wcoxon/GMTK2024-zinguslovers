@@ -39,9 +39,44 @@ text = "Deposit {0} Leaves"
 layout_mode = 2
 current_tab = 0
 
-[node name="Character" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+[node name="Colony" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
+
+[node name="AntSpeed" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Colony"]
+layout_mode = 2
+text = "Upgrade Ant Speed
+Level {0} ({2} → {3})
+{1} Leaves"
+script = ExtResource("1_23b12")
+
+[node name="AntCarryCapacity" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Colony"]
+layout_mode = 2
+text = "Upgrade Ant Carry Capacity 
+Level {0} ({2} → {3})
+{1} Leaves"
+script = ExtResource("1_23b12")
+upgrade = 1
+
+[node name="AddAnt" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Colony"]
+layout_mode = 2
+text = "New Ant ({2} → {3})
+{1} Leaves"
+script = ExtResource("1_23b12")
+upgrade = 2
+
+[node name="UpgradeAntNest" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Colony"]
+layout_mode = 2
+text = "Upgrade Ant Nest
+({2} → {3} Ants Per Minute)
+{1} Leaves"
+script = ExtResource("1_23b12")
+upgrade = 3
+
+[node name="Character" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="SpeedUpgrade" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Character"]
 layout_mode = 2
@@ -80,41 +115,6 @@ sampler_visible = false
 color_modes_visible = false
 hex_visible = false
 presets_visible = false
-
-[node name="Colony" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="AntSpeed" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Colony"]
-layout_mode = 2
-text = "Upgrade Ant Speed
-Level {0} ({2} → {3})
-{1} Leaves"
-script = ExtResource("1_23b12")
-
-[node name="AntCarryCapacity" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Colony"]
-layout_mode = 2
-text = "Upgrade Ant Carry Capacity 
-Level {0} ({2} → {3})
-{1} Leaves"
-script = ExtResource("1_23b12")
-upgrade = 1
-
-[node name="AddAnt" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Colony"]
-layout_mode = 2
-text = "New Ant ({2} → {3})
-{1} Leaves"
-script = ExtResource("1_23b12")
-upgrade = 2
-
-[node name="UpgradeAntNest" type="Button" parent="MarginContainer/VBoxContainer/TabContainer/Colony"]
-layout_mode = 2
-text = "Upgrade Ant Nest
-({2} → {3} Ants Per Minute)
-{1} Leaves"
-script = ExtResource("1_23b12")
-upgrade = 3
 
 [node name="TrailButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
