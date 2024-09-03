@@ -181,6 +181,33 @@ public partial class Player : CharacterBody3D
 		return trailBuilder != null;
 	}
 
+	public void updateRotation(){
+		if(!Velocity.IsZeroApprox()){
+			Vector3 up = GetFloorNormal();
+			if(up == Vector3.Zero){
+				up = Vector3.Up;
+			}
+
+			Vector3 forward = GetRealVelocity().Normalized();
+			
+			if(!up.Cross(forward).IsZeroApprox()){
+				GetNode<Node3D>("Ants").LookAt(Position+forward,up,false);
+			}
+		}
+	}
+
+	public void updateAnimation(){
+		var animationPlayer = GetNode<AnimationPlayer>("Ants/AnimationPlayer");
+
+		if(Velocity.IsZeroApprox()){
+			animationPlayer.Pause();
+		}
+		else{
+			animationPlayer.Play();
+			animationPlayer.SpeedScale = Velocity.Length()/2.0f;
+		}
+	}
+
     public override void _Ready()
     {
         _anthillUI = Owner.GetNode<AnthillUI>("Control/AnthillUI");
@@ -198,35 +225,28 @@ public partial class Player : CharacterBody3D
 		CollectableValue = anthill.GetStat(Anthill.Stat.CollectableValue);
     }
 
+
     public override void _PhysicsProcess(double delta)
 	{
 		Vector3 velocity = new Vector3(Velocity.X,0,Velocity.Z);
 
-		var animationPlayer = GetNode<AnimationPlayer>("Ants/AnimationPlayer");
+		Vector2 inputVector = Input.GetVector("left", "right", "up", "down");
+		Vector3 inputDirection = new Vector3(inputVector.X, 0, inputVector.Y).Rotated(Vector3.Up,-Mathf.DegToRad(_cameraController.yaw)).Normalized();
 
-		Vector2 inputDir = Input.GetVector("left", "right", "up", "down");
-		Vector3 direction = new Vector3(inputDir.X, 0, inputDir.Y).Rotated(Vector3.Up,-Mathf.DegToRad(_cameraController.yaw)).Normalized();
-
-		if (direction != Vector3.Zero)
+		if (inputDirection != Vector3.Zero)
 		{
 			_tutorialUI.completedHint(TutorialUI.Hint.movement);
 
-			velocity += direction * acceleration * (float)delta;
+			//accelerate in input direction
+			velocity += inputDirection * acceleration * (float)delta;
 
-			//limit walking speed
+			//limit speed
 			velocity = velocity.Normalized() * Mathf.Min(velocity.Length(),(float)maxSpeed.GetValue());
-			
-			animationPlayer.Play();
 		}
 		else
 		{
-			velocity = velocity.Normalized() * (float)Mathf.Max(velocity.Length()-acceleration*delta,0);
-		}
-		
-		animationPlayer.SpeedScale = velocity.Length()/2.0f;
-
-		if(velocity == Vector3.Zero){
-			animationPlayer.Pause();
+			//decelerate towards 0
+			velocity = velocity.Normalized() * Mathf.Max(velocity.Length()-acceleration*(float)delta,0);
 		}
 
 		//add vertical component after limited speed
@@ -249,20 +269,13 @@ public partial class Player : CharacterBody3D
 		}
 
 		Velocity = velocity;
-		bool collided = MoveAndSlide();
 
-		if(!Velocity.IsEqualApprox(Vector3.Zero)){
-			Vector3 up = Vector3.Up;
-			Vector3 forward = Velocity;
+		MoveAndSlide();
 
-			if(collided){
-				up = GetFloorNormal();
-				forward = GetLastMotion();
-			}
+		updateAnimation();
 
-			GetNode<Node3D>("Ants").LookAt(Position+forward,up,false);
-			
-		}
+		updateRotation();
+		
 
 		// if pathing and over 0.5 from the last point, add a new point here
 		if (IsPathing() && (trailBuilder.point - Position).Length() > trailBuilder.PointSpacing) {
