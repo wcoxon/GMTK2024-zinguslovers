@@ -37,7 +37,12 @@ public partial class CameraController : Node3D
 			
         	if (@event.IsPressed()){
 				
-        	    if (buttonEvent.ButtonIndex == MouseButton.Right) isDragging=true;
+        	    if (buttonEvent.ButtonIndex == MouseButton.Right){
+					isDragging=true;
+					Input.MouseMode = Input.MouseModeEnum.ConfinedHidden;
+					
+				}
+
         	    if (buttonEvent.ButtonIndex == MouseButton.WheelUp){
 					_tutorialUI.completedHint(TutorialUI.Hint.zooming);
 					zoom -= 1;
@@ -49,7 +54,10 @@ public partial class CameraController : Node3D
 				zoom = Mathf.Clamp(zoom, 2, 15);
         	}
 			if (@event.IsReleased()){
-				if (buttonEvent.ButtonIndex == MouseButton.Right) isDragging=false;
+				if (buttonEvent.ButtonIndex == MouseButton.Right){
+					isDragging=false;
+					Input.MouseMode = Input.MouseModeEnum.Visible;
+				}
 			}
 		}
     }
@@ -58,6 +66,7 @@ public partial class CameraController : Node3D
 	{
 
 		Position = Quaternion.FromEuler(new Vector3(-Mathf.DegToRad(pitch),-Mathf.DegToRad(yaw),0))*Vector3.Back*zoom;
+
 		LookAt((GetParent() as Node3D).Position);
 	}
 }

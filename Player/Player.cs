@@ -81,15 +81,22 @@ public partial class Player : CharacterBody3D
 		(area.Owner as Tree).setOutlined(false);
 	}
 
+	public void updateCollected(){
+		var leaf = GetNode<Node3D>("Ants/leaf");
+
+		if(cargo==0) leaf.Hide();
+		else leaf.Show();
+
+		leaf.Scale = Vector3.One*(float)Mathf.Lerp(5,20,cargo/100);
+		_playerUI.updateLeafCount(cargo);
+	}
 	public void EnterPickup(Area3D area){
 		_tutorialUI.completedHint(TutorialUI.Hint.pickup);
 		//add to cargo
 		cargo += CollectableValue.GetValue();
 		
-		GetNode<AudioStreamPlayer3D>("Ants/CrunchPlayer").Play();
-		GetNode<Node3D>("Ants/leaf").Show();
-		GetNode<Node3D>("Ants/leaf").Scale = Vector3.One*(float)Mathf.Lerp(5,20,cargo/100);
-		_playerUI.updateLeafCount(cargo);
+		updateCollected();
+
 		//delete leaf
 		(area.Owner as Node3D).QueueFree();
 		//play particles
@@ -140,6 +147,15 @@ public partial class Player : CharacterBody3D
 		_trailParticles = null;
 	}
 
+	public void PathAddPoint(){
+		//add point to trail
+		trailBuilder.AddPoint(Position);
+		//add particle emitter
+		GpuParticles3D particle = trailParticle.Instantiate<GpuParticles3D>();
+		particle.Position = Position + new Vector3(0, 0.05f, 0);
+		particle.SetInstanceShaderParameter("albedo", trailColour);
+		_trailParticles.AddChild(particle);
+	}
 	public void PathAddTree(Tree tree) {
 		
 		_tutorialUI.completedHint(TutorialUI.Hint.trailTree);
@@ -186,6 +202,8 @@ public partial class Player : CharacterBody3D
 	{
 		Vector3 velocity = new Vector3(Velocity.X,0,Velocity.Z);
 
+		var animationPlayer = GetNode<AnimationPlayer>("Ants/AnimationPlayer");
+
 		Vector2 inputDir = Input.GetVector("left", "right", "up", "down");
 		Vector3 direction = new Vector3(inputDir.X, 0, inputDir.Y).Rotated(Vector3.Up,-Mathf.DegToRad(_cameraController.yaw)).Normalized();
 
@@ -198,62 +216,57 @@ public partial class Player : CharacterBody3D
 			//limit walking speed
 			velocity = velocity.Normalized() * Mathf.Min(velocity.Length(),(float)maxSpeed.GetValue());
 			
-			GetNode<AnimationPlayer>("Ants/AnimationPlayer").Play();
+			animationPlayer.Play();
 		}
 		else
 		{
 			velocity = velocity.Normalized() * (float)Mathf.Max(velocity.Length()-acceleration*delta,0);
 		}
 		
-		GetNode<AnimationPlayer>("Ants/AnimationPlayer").SpeedScale = velocity.Length()/2.0f;
-		if(velocity == Vector3.Zero){
-			GetNode<AnimationPlayer>("Ants/AnimationPlayer").Pause();
-		}
+		animationPlayer.SpeedScale = velocity.Length()/2.0f;
 
+		if(velocity == Vector3.Zero){
+			animationPlayer.Pause();
+		}
 
 		//add vertical component after limited speed
 		velocity.Y = Velocity.Y;
+
 		//add gravity
 		if (!IsOnFloor())
 		{
 			velocity += GetGravity() * (float)delta;
 		}
+
 		// Handle Jump
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = (float)JumpVelocity.GetValue();
 		}
-
-		if (Input.IsActionJustReleased("jump"))
+		if (Input.IsActionJustReleased("jump") && velocity.Y > 0)
 		{
-			if (velocity.Y > 0){
-				velocity.Y *= 0.4f;
-			}
-			
+			velocity.Y *= 0.4f;
 		}
 
-		if(!velocity.IsEqualApprox(Vector3.Zero)){
-			
-			Vector3 up = GetFloorNormal();
-			if(up==Vector3.Zero){
-				up = Vector3.Up;
-			}
-			if(Mathf.Abs(velocity.Normalized().Y)!=1)GetNode<Node3D>("Ants").LookAt(Position+velocity,up,false);
-		}
-		
 		Velocity = velocity;
-		MoveAndSlide();
+		bool collided = MoveAndSlide();
+
+		if(!Velocity.IsEqualApprox(Vector3.Zero)){
+			Vector3 up = Vector3.Up;
+			Vector3 forward = Velocity;
+
+			if(collided){
+				up = GetFloorNormal();
+				forward = GetLastMotion();
+			}
+
+			GetNode<Node3D>("Ants").LookAt(Position+forward,up,false);
+			
+		}
 
 		// if pathing and over 0.5 from the last point, add a new point here
 		if (IsPathing() && (trailBuilder.point - Position).Length() > trailBuilder.PointSpacing) {
-			//add point to trail
-			trailBuilder.AddPoint(Position);
-
-			//add particle emitter
-			GpuParticles3D particle = trailParticle.Instantiate<GpuParticles3D>();
-			particle.Position = Position + new Vector3(0, 0.05f, 0);
-			particle.SetInstanceShaderParameter("albedo", trailColour);
-			_trailParticles.AddChild(particle);
+			PathAddPoint();
 		}
 
 		if (Position.Y < -4.9f) {
@@ -272,7 +285,10 @@ public partial class Player : CharacterBody3D
 			Owner.RemoveChild(_trailParticles);
 			_trailParticles = null;
 		}
+
 		cargo = 0;
+		updateCollected();
+
 		trailBuilder = null;
 	}
 }
