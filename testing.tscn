@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bphr4o5lqd8bk"]
+[gd_scene load_steps=27 format=3 uid="uid://bphr4o5lqd8bk"]
 
 [ext_resource type="PackedScene" uid="uid://c5056uasx8wna" path="res://Anthill/anthill.tscn" id="1_cindc"]
 [ext_resource type="PackedScene" uid="uid://cx5uhblqsym7w" path="res://Anthill/AnthillUI.tscn" id="2_aj380"]
@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://mpj4r3rqtn1m" path="res://Trees/TreeUI.tscn" id="4_n6wix"]
 [ext_resource type="PackedScene" uid="uid://dy2g4lfqc406l" path="res://Player/Player.tscn" id="5_1ka04"]
 [ext_resource type="PackedScene" uid="uid://dydxsbjj2mirx" path="res://ground.tscn" id="5_my2hh"]
-[ext_resource type="PackedScene" path="res://PlayerUI.tscn" id="5_yd60h"]
-[ext_resource type="PackedScene" path="res://TutorialUI.tscn" id="6_0e54j"]
+[ext_resource type="PackedScene" uid="uid://dem8kblop6pv7" path="res://PlayerUI.tscn" id="5_yd60h"]
+[ext_resource type="PackedScene" uid="uid://c2qw6lxwoq5la" path="res://TutorialUI.tscn" id="6_0e54j"]
 [ext_resource type="PackedScene" uid="uid://bw2l7f5x8gaee" path="res://Trees/Tree.tscn" id="6_0mw8x"]
 [ext_resource type="PackedScene" uid="uid://bwu2y072lacuf" path="res://EventLogic/BlackoutCanvas.tscn" id="6_jswdr"]
 [ext_resource type="PackedScene" uid="uid://cibe3m4xgf7wu" path="res://Player/TrailParticle.tscn" id="7_8bgau"]
@@ -17,6 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://0fedht5gnvm2" path="res://OtherScenery/FlowerTree.tscn" id="13_jyv6v"]
 [ext_resource type="AudioStream" uid="uid://ew3axi56o7s5" path="res://Leaf/breecore.mp3" id="16_wugkv"]
 [ext_resource type="PackedScene" uid="uid://ckmq654vhspk7" path="res://OtherScenery/grass.tscn" id="17_u5phd"]
+[ext_resource type="Script" path="res://UI/Pause.cs" id="18_rf3qd"]
+[ext_resource type="FontFile" uid="uid://d2queac365j3a" path="res://UI/fonts/Bangers-Regular.ttf" id="19_vfsbw"]
+[ext_resource type="Texture2D" uid="uid://bn1mail2wah6p" path="res://UI/img/antlogo1.webp" id="19_vud8j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ma6td"]
 sky_top_color = Color(0.521569, 0.592157, 1, 1)
@@ -35,6 +38,25 @@ ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.5
 ambient_light_energy = 0.0
+
+[sub_resource type="Theme" id="Theme_nl741"]
+default_font = ExtResource("19_vfsbw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjuth"]
+bg_color = Color(4.06705e-06, 0.562046, 0.121372, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0.8, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ab3aq"]
+bg_color = Color(0.886275, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.487756, 1.02879e-06, 3.36915e-07, 1)
 
 [node name="test node" type="Node3D"]
 
@@ -763,3 +785,55 @@ transform = Transform3D(-2.89876, 0, -0.772765, 0, 3, 0, 0.772765, 0, -2.89876, 
 
 [node name="Grass68" parent="." instance=ExtResource("17_u5phd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.56323, 0.247755, -4.97032)
+
+[node name="Pause" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_rf3qd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -33.0
+offset_right = 36.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="Pause/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("19_vud8j")
+
+[node name="Label" type="Label" parent="Pause/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("19_vfsbw")
+theme_override_font_sizes/font_size = 72
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="Pause/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_nl741")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_hjuth")
+text = "RESUME"
+
+[node name="Quit" type="Button" parent="Pause/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("19_vfsbw")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ab3aq")
+text = "QUIT"
