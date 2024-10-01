@@ -50,7 +50,7 @@ public partial class Anthill : Node3D
 
 		switch(stat){
 			case Stat.NewAnt:
-				for(int x = 0; x < 50; x++) SpawnAnt();
+				SpawnAnt();
 				break;
 			case Stat.AntBreedings:
 				nextAnt = Math.Min(nextAnt, 60f/GetStat(Stat.AntBreedings).GetValue());

@@ -72,38 +72,38 @@ targetTrees = []
 
 [node name="AntSpeed" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
-valueExpression = "1 + 0.05 * l"
-costExpression = "100 + 50 *l + 2 ** l"
+valueExpression = "1+0.05 * l"
+costExpression = " l + 2 ** l"
 
 [node name="AntCarryCapacity" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
-valueExpression = "100 + 10 * l"
-costExpression = "100 + 200 * l"
+valueExpression = "l"
+costExpression = "2 * l"
 
 [node name="NewAnt" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
 valueExpression = "0"
-costExpression = "0*floor(25 * l ** 1.5)"
+costExpression = "floor(3 * l ** 1.5)"
 
 [node name="AntBreedings" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
 valueExpression = "l-1"
-costExpression = "floor(100 * l ** (1.5 + 0.1 * l))"
+costExpression = "floor(l ** (1.5 + 0.1 * l))"
 
 [node name="PlayerSpeed" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
 valueExpression = "3 + l*0.1"
-costExpression = "floor(100 * l)"
+costExpression = "l"
 
 [node name="PlayerJump" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
 valueExpression = "4.5 + l*0.1"
-costExpression = "floor(100 * l)"
+costExpression = "l"
 
 [node name="CollectableValue" type="Node" parent="."]
 script = ExtResource("2_kwy1h")
-valueExpression = "l*50"
-costExpression = "floor(100 * l)"
+valueExpression = "l"
+costExpression = "l"
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(55.73, 0, 0, 0, -2.43604e-06, 85.601, 0, -55.73, -3.74174e-06, 0, -0.117101, 0)

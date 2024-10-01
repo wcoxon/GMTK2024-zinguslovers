@@ -4,19 +4,47 @@
 [ext_resource type="Script" path="res://Anthill/AnthillUpgradeButton.cs" id="1_23b12"]
 [ext_resource type="Script" path="res://Anthill/AnthillTrailControl.cs" id="2_4fxkd"]
 
-[node name="AnthillUI" type="Panel"]
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 337.0
-grow_vertical = 2
-script = ExtResource("1_8cpm0")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
+[node name="AnthillUI" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8cpm0")
+
+[node name="DepositButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_right = 75.0
+offset_bottom = 31.0
+grow_horizontal = 2
+pivot_offset = Vector2(75.17, 0)
+text = "Deposit {0} Leaves"
+
+[node name="TrailButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.5
+offset_top = -31.0
+offset_right = 158.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start Trail/Stop Trail"
+script = ExtResource("2_4fxkd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 242.0
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -30,10 +58,6 @@ layout_mode = 2
 layout_mode = 2
 text = "Nest: {0:.##} Leaves"
 horizontal_alignment = 1
-
-[node name="DepositButton" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Deposit {0} Leaves"
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -116,10 +140,5 @@ color_modes_visible = false
 hex_visible = false
 presets_visible = false
 
-[node name="TrailButton" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Start Trail/Stop Trail"
-script = ExtResource("2_4fxkd")
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/DepositButton" to="." method="DepositLeaves"]
+[connection signal="pressed" from="DepositButton" to="." method="DepositLeaves"]
 [connection signal="color_changed" from="MarginContainer/VBoxContainer/TabContainer/Character/ColorPicker" to="." method="UpdatePlayerColour"]

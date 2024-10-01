@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class AnthillUI : Panel
+public partial class AnthillUI : Control
 {
 	[Export] public Anthill anthill;
 	[Export] public Player player;
@@ -31,7 +31,7 @@ public partial class AnthillUI : Panel
 		_infolabel = GetNode<Label>("MarginContainer/VBoxContainer/Label");
 		_labelformat = _infolabel.Text;
 
-		_depositbutton = GetNode<Button>("MarginContainer/VBoxContainer/DepositButton");
+		_depositbutton = GetNode<Button>("DepositButton");
 		_depositformat = _depositbutton.Text;
 
 		EventManager.instance.BeginEndingCutscene += () => {
